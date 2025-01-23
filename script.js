@@ -8,8 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Set profile image if available
     if (personalData.profileImage) {
-        const profileImg = document.querySelector('.profile-img-placeholder');
-        profileImg.innerHTML = `<img src="${personalData.profileImage}" alt="Profile photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+        const profileImg = document.querySelector('.profile-img-container img');
+        if (profileImg) {
+            profileImg.src = personalData.profileImage;
+            profileImg.alt = personalData.name;
+        }
     }
     
     // Set up contact links
@@ -95,14 +98,29 @@ function createSkillsElement(category, skills) {
 function createProjectElement(project) {
     const div = document.createElement('div');
     div.className = 'project-card';
+    
+    // Create the project URL (slugified version of project name)
+    const projectSlug = project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    
+    // Get the first detail as summary, or create a summary if available
+    const summary = project.summary || project.details[0];
+    
     div.innerHTML = `
-        ${project.image ? `<div class="project-image"><img src="${project.image}" alt="${project.name}"></div>` : ''}
-        <h3>${project.name}</h3>
-        ${project.role ? `<h4>${project.role}</h4>` : ''}
-        <p class="date">${project.date}</p>
-        <ul>
-            ${project.details.map(detail => `<li>${detail}</li>`).join('')}
-        </ul>
+        <div class="project-image">
+            ${project.image ? `<img src="${project.image}" alt="${project.name}">` : ''}
+        </div>
+        <a href="projects/${projectSlug}.html" class="project-link-wrapper">
+            <h3>${project.name}</h3>
+            ${project.role ? `<h4 class="project-role">${project.role}</h4>` : ''}
+            <p class="date">${project.date}</p>
+            <p class="project-summary">${summary}</p>
+        </a>
+        <div class="project-footer">
+            <a href="${project.github}" target="_blank" class="github-link">
+                <i class="fab fa-github"></i>
+                View on GitHub
+            </a>
+        </div>
     `;
     return div;
 }

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Board Game: Santorini - Jason Li</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+            color: white;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../assets/images/santorini-project.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            filter: brightness(0.5);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .project-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .project-section {
+            margin-bottom: 3rem;
+        }
+
+        .project-section h2 {
+            color: #007bff;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .architecture-diagram {
+            width: 100%;
+            max-width: 600px;
+            margin: 2rem auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .award-badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .award-badge {
+            background: #ffd700;
+            color: #333;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            margin: 0.5rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .award-badge i {
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .github-badge {
+            background: #333;
+            color: white;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Back to Projects
+    </a>
+
+    <header class="project-header">
+        <h1>Web Board Game: Santorini</h1>
+        <p class="date">June 2024</p>
+        <div class="award-badges"></div>
+            <a href="https://github.com/Jasonic121/Santorini.git" target="_blank" class="award-badge github-badge">
+                <i class="fab fa-github"></i>
+                View on GitHub
+            </a>
+        </div>
+    </header>
+
+    <main class="project-content">
+        <section class="project-section">
+            <h2>Overview</h2>
+            <p>A web-based implementation of the popular board game Santorini, featuring a modern architecture, robust testing, and automated deployment pipeline. The project demonstrates software engineering best practices and scalable design patterns.</p>
+        </section>
+
+        <section class="project-section">
+            <h2>Key Features</h2>
+            <ul>
+                <li>Modular and extensible game design using object-oriented principles</li>
+                <li>Comprehensive testing suite with 95% coverage</li>
+                <li>Automated CI/CD pipeline</li>
+                <li>Real-time multiplayer functionality</li>
+                <li>Responsive web interface</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>Technologies Used</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">Maven</span>
+                <span class="tech-tag">JUnit</span>
+                <span class="tech-tag">Jacoco</span>
+                <span class="tech-tag">GitHub Actions</span>
+                <span class="tech-tag">UML</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>Architecture</h2>
+            <p>The project follows a clean architecture approach with:</p>
+            <ul>
+                <li>Domain-driven design principles</li>
+                <li>Clear separation of concerns</li>
+                <li>Low coupling and high cohesion</li>
+                <li>Extensive use of design patterns</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>Development Process</h2>
+            <ul>
+                <li>Agile development methodology</li>
+                <li>Test-driven development (TDD)</li>
+                <li>Continuous integration and deployment</li>
+                <li>Regular code reviews and pair programming</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html> 

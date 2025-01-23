@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WatchPoint - Jason Li</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+            color: white;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../assets/images/NOVA-award-pic.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            filter: brightness(0.5);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .project-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .project-section {
+            margin-bottom: 3rem;
+        }
+
+        .project-section h2 {
+            color: #007bff;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .award-badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .award-badge {
+            background: #cd7f32;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            margin: 0.5rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .award-badge i {
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .github-badge {
+            background: #333;
+            color: white;
+            text-decoration: none;
+        }
+
+        .github-badge:hover {
+            background: #000;
+            transform: translateY(-2px);
+        }
+
+        .demo-video {
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin: 2rem 0;
+            background: #000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+        }
+
+        /* Video controls styling */
+        video::-webkit-media-controls {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        video::-webkit-media-controls-panel {
+            padding: 0 10px;
+        }
+
+        /* Loading state */
+        .video-container::before {
+            content: 'Loading video...';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            z-index: 1;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .video-container.loaded::before {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .award-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .award-badge {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Back to Projects
+    </a>
+
+    <header class="project-header">
+        <h1>WatchPoint</h1>
+        <p>Team Lead - CMU Hackathon</p>
+        <p class="date">2024</p>
+        <div class="award-badges">
+            <div class="award-badge">
+                <i class="fas fa-medal"></i>
+                Bronze Medal - CMU Hackathon
+            </div>
+            <a href="https://github.com/Jasonic121/WatchPoint" target="_blank" class="award-badge github-badge">
+                <i class="fab fa-github"></i>
+                View on GitHub
+            </a>
+        </div>
+    </header>
+
+    <main class="project-content">
+        <section class="project-section">
+            <h2>Overview</h2>
+            <p>WatchPoint is an innovative parental monitoring application that leverages AI technology to protect children from harmful digital content. The project was developed during the CMU Hackathon, where it earned the Bronze Medal for its innovative approach to digital safety.</p>
+        </section>
+
+        <section class="project-section">
+            <h2>Demo Video</h2>
+            <div class="video-container">
+                <video id="demoVideo" controls preload="metadata" poster="../assets/images/NOVA-award-pic.jpg">
+                    <source src="../assets/videos/watchpoint-demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>Key Features</h2>
+            <ul>
+                <li>Real-time monitoring of digital content using AI</li>
+                <li>Advanced sentiment analysis for detecting harmful content</li>
+                <li>Customizable privacy settings for different age groups</li>
+                <li>Instant alert system for parents</li>
+                <li>User-friendly dashboard for monitoring and configuration</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>Technologies Used</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">AI/ML</span>
+                <span class="tech-tag">Sentiment Analysis</span>
+                <span class="tech-tag">Real-time Monitoring</span>
+                <span class="tech-tag">Natural Language Processing</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>Impact</h2>
+            <p>WatchPoint addresses the growing concern of children's online safety by providing:</p>
+            <ul>
+                <li>Proactive protection against cyberbullying and harmful content</li>
+                <li>Real-time monitoring without compromising privacy</li>
+                <li>Customizable solutions for different age groups and family needs</li>
+                <li>Easy-to-use interface for parents to ensure their children's digital safety</li>
+            </ul>
+        </section>
+    </main>
+    <script>
+        document.getElementById('demoVideo').addEventListener('loadeddata', function() {
+            this.parentElement.classList.add('loaded');
+        });
+    </script>
+</body>
+</html> 

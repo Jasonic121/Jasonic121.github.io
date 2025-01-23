@@ -80,12 +80,31 @@ const personalData = {
     },
     projects: [
         {
+            name: "WatchPoint",
+            role: "Team Lead - CMU Hackathon",
+            date: "2024",
+            image: "assets/images/NOVA-award-pic.jpg",
+            github: "https://github.com/Jasonic121/WatchPoint",
+            demoVideo: "assets/videos/watchpoint-demo.mp4",
+            summary: "Bronze Medal-winning parental monitoring app using AI for detecting harmful digital content, developed at CMU Hackathon.",
+            details: [
+                "Led a team to develop an AI-powered parental monitoring application that ensures children's online safety",
+                "Implemented advanced sentiment analysis for real-time detection of abusive or harmful content",
+                "Designed customizable privacy settings and real-time alert system for parents",
+                "Won Bronze Medal at CMU Hackathon for innovative approach to digital safety",
+                "Built using Python, sentiment analysis, and real-time monitoring technologies"
+            ]
+        },
+        {
             name: "Conversational AI for Wireless Networks",
             role: "Research Assistant - Laboratory for Emerging Wireless Technologies (CMU)",
             date: "Sept. 2024 - Present",
             image: "assets/images/ai-project.jpg",
+            github: "https://github.com/Jasonic121/WiLL.git",
+            summary: "Lead author of paper accepted at HotMobile 2025, developing AI systems to revolutionize wireless network troubleshooting.",
             details: [
-                "Co-author: \"Can we make FCC experts out of LLMs\" under review for HotMobile 2025",
+                "Lead author of \"Can we make FCC experts out of LLMs\" accepted at HotMobile 2025 (ACM International Workshop on Mobile Computing Systems and Applications)",
+                "Selected as the conference presenter to showcase research findings at HotMobile 2025",
                 "Designed a LLM pipeline to address wireless technology issues using in-context learning and RAG",
                 "Conducted an extensive review of research papers on state-of-the-art LLM techniques"
             ]
@@ -94,6 +113,8 @@ const personalData = {
             name: "Web Board Game: Santorini",
             date: "June 2024",
             image: "assets/images/santorini-project.jpg",
+            github: "https://github.com/Jasonic121/Santorini",
+            summary: "A modern web implementation of Santorini with automated testing and CI/CD pipeline, achieving 95% test coverage.",
             details: [
                 "Designed detailed domain models, object diagrams, and sequence diagrams",
                 "Automated deployment, continuous integration, and testing pipelines using Maven"
@@ -103,6 +124,8 @@ const personalData = {
             name: "Detection and Warning System for Motorcycle Rear Mirrors",
             date: "May 2022",
             image: "assets/images/motorcycle-project.jpg",
+            github: "https://github.com/Jasonic121/Motorcycle-Safety",
+            summary: "Award-winning safety system using computer vision to enhance motorcycle safety, earning Gold Medal at Y.S. Award.",
             details: [
                 "Designed a vehicle detection system integrating Raspberry Pi, Python, and OpenCV",
                 "Earned the \"Gold Medal in Software Application\" at the 19th Y.S. Award, MiTAC-Synnex Group"

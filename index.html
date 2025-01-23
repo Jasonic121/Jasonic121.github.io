@@ -52,23 +52,23 @@
             <div id="experience-container" class="experience-grid"></div>
         </section>
 
-        <section id="skills">
-            <h2>Skills</h2>
-            <div id="skills-container" class="skills-grid"></div>
-        </section>
-
         <section id="projects">
             <h2>Projects</h2>
             <div id="projects-container" class="projects-grid"></div>
         </section>
 
+        <section id="skills">
+            <h2>Skills</h2>
+            <div id="skills-container" class="skills-grid"></div>
+        </section>
+
         <section id="contact">
             <h2>Contact Me</h2>
             <div class="contact-content">
-                <form id="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" required></textarea>
+                <form id="contact-form" action="mailto:jasonli5@andrew.cmu.edu" method="POST" enctype="text/plain">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Message" required></textarea>
                     <button type="submit">Send Message</button>
                 </form>
             </div>

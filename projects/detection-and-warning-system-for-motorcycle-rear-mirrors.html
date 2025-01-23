@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection and Warning System for Motorcycle Rear Mirrors - Jason Li</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+            color: white;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../assets/images/motorcycle-project.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            filter: brightness(0.5);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .project-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .project-section {
+            margin-bottom: 3rem;
+        }
+
+        .project-section h2 {
+            color: #007bff;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .award-badge {
+            background: #ffd700;
+            color: #333;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Back to Projects
+    </a>
+
+    <header class="project-header">
+        <h1>Detection and Warning System for Motorcycle Rear Mirrors</h1>
+        <p class="date">May 2022</p>
+        <div class="award-badge">
+            <i class="fas fa-trophy"></i>
+            Gold Medal in Software Application - 19th Y.S. Award
+        </div>
+    </header>
+
+    <main class="project-content">
+        <section class="project-section">
+            <h2>Overview</h2>
+            <p>An innovative safety system designed to enhance motorcycle rider safety through real-time vehicle detection and warning mechanisms. The project combines computer vision technology with embedded systems to create a practical solution for motorcycle safety.</p>
+        </section>
+
+        <section class="project-section">
+            <h2>Key Features</h2>
+            <ul>
+                <li>Real-time vehicle detection using computer vision</li>
+                <li>Intelligent warning system for approaching vehicles</li>
+                <li>Low-latency processing on embedded hardware</li>
+                <li>Weather-resistant design for practical use</li>
+                <li>Energy-efficient operation</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>Technologies Used</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">Raspberry Pi</span>
+                <span class="tech-tag">Computer Vision</span>
+                <span class="tech-tag">Embedded Systems</span>
+                <span class="tech-tag">Real-time Processing</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>Technical Implementation</h2>
+            <ul>
+                <li>Implemented computer vision algorithms for vehicle detection</li>
+                <li>Optimized processing for embedded hardware constraints</li>
+                <li>Developed robust error handling and system recovery</li>
+                <li>Created user-friendly warning interface</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>Impact & Recognition</h2>
+            <p>The project was awarded the Gold Medal in Software Application at the 19th Y.S. Award, MiTAC-Synnex Group, recognizing its innovative approach to motorcycle safety and potential impact on road safety.</p>
+            <ul>
+                <li>Potential to reduce motorcycle accidents</li>
+                <li>Cost-effective solution for safety enhancement</li>
+                <li>Scalable design for different motorcycle models</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html> 
