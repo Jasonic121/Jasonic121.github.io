@@ -6,6 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('title-placeholder').textContent = personalData.title;
     document.getElementById('footer-name').textContent = personalData.name;
     
+    // Set profile image if available
+    if (personalData.profileImage) {
+        const profileImg = document.querySelector('.profile-img-placeholder');
+        profileImg.innerHTML = `<img src="${personalData.profileImage}" alt="Profile photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+    }
+    
     // Set up contact links
     document.getElementById('linkedin-link').href = `https://${personalData.contact.linkedin}`;
     document.getElementById('email-link').href = `mailto:${personalData.contact.email}`;
@@ -46,6 +52,7 @@ function createEducationElement(edu) {
     const div = document.createElement('div');
     div.className = 'education-item';
     div.innerHTML = `
+        ${edu.logo ? `<img src="${edu.logo}" alt="${edu.school} logo" class="school-logo">` : ''}
         <h3>${edu.school}</h3>
         <p>${edu.degree}</p>
         <p class="date">${edu.date}</p>
@@ -61,6 +68,7 @@ function createExperienceElement(exp) {
     const div = document.createElement('div');
     div.className = 'experience-card';
     div.innerHTML = `
+        ${exp.logo ? `<img src="${exp.logo}" alt="${exp.company} logo" class="company-logo">` : ''}
         <h3>${exp.company}</h3>
         <h4>${exp.role}</h4>
         <p class="date">${exp.date}</p>
@@ -88,6 +96,7 @@ function createProjectElement(project) {
     const div = document.createElement('div');
     div.className = 'project-card';
     div.innerHTML = `
+        ${project.image ? `<div class="project-image"><img src="${project.image}" alt="${project.name}"></div>` : ''}
         <h3>${project.name}</h3>
         ${project.role ? `<h4>${project.role}</h4>` : ''}
         <p class="date">${project.date}</p>

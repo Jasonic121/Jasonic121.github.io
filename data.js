@@ -1,6 +1,7 @@
 const personalData = {
     name: "Jason Li",
     title: "Software & Electrical Engineer",
+    profileImage: "assets/images/profile.jpg",
     contact: {
         phone: "+1 (412) 954-8572",
         email: "jasonli5@andrew.cmu.edu",
@@ -12,6 +13,7 @@ const personalData = {
             degree: "Master of Science in Electrical and Computer Engineering",
             location: "Pittsburgh, PA",
             date: "Expected May 2025",
+            logo: "assets/images/cmu-logo.png",
             courses: [
                 "Principles of Software Construction",
                 "Machine Learning",
@@ -26,6 +28,7 @@ const personalData = {
             degree: "Master of Engineering in Electrical and Computer Engineering",
             location: "Vancouver, Canada",
             date: "Sept. 2023 – Dec. 2023",
+            logo: "assets/images/ubc-logo.png",
             courses: ["Machine Learning Models", "Relational Databases"]
         },
         {
@@ -33,6 +36,7 @@ const personalData = {
             degree: "Bachelor of Science in Electrical Engineering",
             location: "Taipei, Taiwan",
             date: "2022",
+            logo: "assets/images/ntust-logo.png",
             courses: [
                 "Communication Systems",
                 "Data Networks",
@@ -50,6 +54,7 @@ const personalData = {
             role: "Software Engineering Intern",
             location: "Montreal, Canada",
             date: "May 2024 - Aug. 2024",
+            logo: "assets/images/apple-logo.png",
             achievements: [
                 "Committed infrastructure tools to production for the Tap-to-Pay team using Swift and Xcode. Resulted in a 40% boost in operational efficiency and enabling faster development cycles.",
                 "Led the development of a production project, delivered the project 2 weeks ahead of schedule and showcased wireless technology innovations to a team of 60 engineers.",
@@ -61,6 +66,7 @@ const personalData = {
             role: "Electrical Engineering Intern",
             location: "Hsinchu, Taiwan",
             date: "Feb. 2022 - July 2022",
+            logo: "assets/images/logitech-logo.png",
             achievements: [
                 "Engineered new firmware features for Logitech Gaming keyboards, integrated proximity sensor research to enable adaptive user interaction, resulting in a 15% improvement in responsiveness.",
                 "Optimized power consumption of prototype keyboards by 20% by creating efficient power management algorithms in embedded software, utilizing low-power mode designs to minimize energy usage."
@@ -77,6 +83,7 @@ const personalData = {
             name: "Conversational AI for Wireless Networks",
             role: "Research Assistant - Laboratory for Emerging Wireless Technologies (CMU)",
             date: "Sept. 2024 - Present",
+            image: "assets/images/ai-project.jpg",
             details: [
                 "Co-author: \"Can we make FCC experts out of LLMs\" under review for HotMobile 2025",
                 "Designed a LLM pipeline to address wireless technology issues using in-context learning and RAG",
@@ -86,6 +93,7 @@ const personalData = {
         {
             name: "Web Board Game: Santorini",
             date: "June 2024",
+            image: "assets/images/santorini-project.jpg",
             details: [
                 "Designed detailed domain models, object diagrams, and sequence diagrams",
                 "Automated deployment, continuous integration, and testing pipelines using Maven"
@@ -94,6 +102,7 @@ const personalData = {
         {
             name: "Detection and Warning System for Motorcycle Rear Mirrors",
             date: "May 2022",
+            image: "assets/images/motorcycle-project.jpg",
             details: [
                 "Designed a vehicle detection system integrating Raspberry Pi, Python, and OpenCV",
                 "Earned the \"Gold Medal in Software Application\" at the 19th Y.S. Award, MiTAC-Synnex Group"
