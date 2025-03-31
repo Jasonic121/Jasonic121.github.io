@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-primary;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #13ADC7 0%, #945DD6 50%, #F46737 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-button hover:bg-button/80 px-6 py-3 rounded-full transition-colors;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent border border-accent hover:bg-accent/10 text-accent px-6 py-3 rounded-full transition-colors;
+  }
+} 
