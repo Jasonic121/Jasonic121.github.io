@@ -75,11 +75,12 @@ Replace the placeholder `public/resume.pdf` with your own resume.
 
 ## Deployment
 
-This site can be easily deployed to Vercel:
+This site is automatically deployed to GitHub Pages using GitHub Actions. The deployment workflow:
 
-1. Push your code to GitHub
-2. Import your repository in Vercel
-3. Deploy
+1. Builds the Next.js site
+2. Exports it to static HTML/CSS/JS
+3. Deploys to the gh-pages branch
+4. Serves it at jasonli-hub.com
 
 ## Built With
 
