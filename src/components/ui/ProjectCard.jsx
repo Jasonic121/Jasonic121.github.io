@@ -18,6 +18,7 @@ const ProjectCard = ({ project, delay = 0 }) => {
           alt={project.title} 
           layout="fill" 
           objectFit="cover"
+          unoptimized
         />
       </div>
       <div className="p-6">

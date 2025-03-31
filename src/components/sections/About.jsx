@@ -35,6 +35,7 @@ const About = () => {
                 alt="Workspace" 
                 layout="fill" 
                 objectFit="cover"
+                unoptimized
               />
             </div>
           </motion.div>

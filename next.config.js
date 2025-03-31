@@ -3,6 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: [],
+    unoptimized: true, // Required for static export
   },
   // Ensure trailing slashes are handled correctly
   trailingSlash: true,
@@ -20,6 +21,8 @@ const nextConfig = {
       },
     ];
   },
+  // Used only in export
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/' : '',
 }
 
 module.exports = nextConfig 

@@ -22,6 +22,7 @@ const Hero = () => {
                 layout="fill" 
                 objectFit="cover"
                 priority
+                unoptimized
               />
             </div>
           </motion.div>
