@@ -9,6 +9,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout 🛎️
@@ -29,6 +31,14 @@ jobs:
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
           folder: out
-          clean: true 
+          branch: main
+          clean-exclude: |
+            .github
+            src
+            node_modules
+            package.json
+            package-lock.json
+            next.config.js
+            postcss.config.js
+            tailwind.config.js 
