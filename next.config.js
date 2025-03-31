@@ -4,6 +4,8 @@ const nextConfig = {
   images: {
     domains: [],
     unoptimized: true, // Required for static export
+    loader: 'custom',
+    loaderFile: './src/utils/imageLoader.js',
   },
   // Ensure trailing slashes are handled correctly
   trailingSlash: true,
