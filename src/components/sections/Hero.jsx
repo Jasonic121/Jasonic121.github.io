@@ -23,8 +23,8 @@ const TypedText = () => {
           // Initialize typed only when the DOM element is available
           typedInstance = new Typed(elementRef.current, {
             strings: [
-              'Jason Li',
               'Software Engineer',
+              'Tennis Lover',
               'Problem Solver',
               'AI Enthusiast',
             ],
@@ -100,19 +100,32 @@ const MotionWrapper = ({ children, className, initial, animate, transition }) =>
   return <DynamicMotion />;
 };
 
-const Hero = () => {
+const ContactButton = () => {
   const [contactButtonText, setContactButtonText] = useState('Contact');
 
-  const copyEmailToClipboard = () => {
+  const copyEmailToClipboard = (e) => {
+    e.preventDefault();
     navigator.clipboard.writeText('jason.li.jobs@gmail.com');
-    // Update button text
     setContactButtonText('Copied!');
-    // Reset button text after 2 seconds
     setTimeout(() => {
       setContactButtonText('Contact');
     }, 2000);
   };
 
+  return (
+    <button 
+      className="mt-2 inline-flex items-center font-bold py-2 px-7 border-2 rounded-full transition-all duration-300 ease-in-out border-blue-400 text-gray-300 hover:bg-blue-400 hover:text-white"
+      onClick={copyEmailToClipboard}
+    >
+      <svg className="h-4 w-4 mr-2 pb-[1px]" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M0 4v16h24V4H0zm22 2v.01L12 13 2 6V6h20zM2 18V8l10 7 10-7v10H2z"></path>
+      </svg>
+      <span>{contactButtonText}</span>
+    </button>
+  );
+};
+
+const Hero = () => {
   return (
     <section className="min-h-screen flex items-center pt-20">
       <div className="container mx-auto px-4">
@@ -127,7 +140,7 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-amber-400"></div>
               <div className="absolute inset-[2px] rounded-full overflow-hidden">
                 <img 
-                  src="/images/profilepic.JPG" 
+                  src="/assets/images/profilepic.JPG" 
                   alt="Profile" 
                   className="w-full h-full object-cover"
                 />
@@ -142,13 +155,13 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
-              <span className="bg-gradient-to-r from-blue-400 to-amber-400 text-transparent bg-clip-text">Hello I'm</span>
+              <span className="bg-gradient-to-r from-blue-400 to-amber-400 text-transparent bg-clip-text">Hello, I'm a</span>
             </h2>
             <h1 className="text-5xl md:text-6xl font-mono font-bold mb-4">
               <TypedText />
             </h1>
             <p className="text-lg text-gray-300 mb-8">
-              I am a Software Engineer just graduated from Carnegie Mellon University studying Computer Engineering and I am proficient in various programming languages and technologies.
+              Lover of building products using technology.
             </p>
             
             <div className="flex flex-wrap gap-4 mb-8">
@@ -159,18 +172,10 @@ const Hero = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                <span className="flex items-center justify-center bg-black hover:bg-gradient-to-br hover:from-blue-400 hover:to-amber-400 rounded-full px-7 py-2">Resume</span>
+                <span className="flex items-center justify-center bg-black hover:bg-gradient-to-br hover:from-blue-400 hover:to-amber-400 rounded-full px-7 py-2">Résumé</span>
               </a>
 
-              <button 
-                className="mt-2 inline-flex items-center font-bold py-2 px-7 border-2 rounded-full transition-all duration-300 ease-in-out border-blue-400 text-gray-300 hover:bg-blue-400 hover:text-white"
-                onClick={copyEmailToClipboard}
-              >
-                <svg className="h-4 w-4 mr-2 pb-[1px]" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M0 4v16h24V4H0zm22 2v.01L12 13 2 6V6h20zM2 18V8l10 7 10-7v10H2z"></path>
-                </svg>
-                <span>{contactButtonText}</span>
-              </button>
+              <ContactButton />
             </div>
             
             <div className="flex space-x-4">
@@ -225,18 +230,6 @@ const Hero = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 sm:border-[#33353F] sm:border rounded-md sm:py-8 sm:px-16">
           <div className="flex flex-col items-center justify-start mx-4 my-4 sm:my-0 h-full">
             <h2 className="text-white sm:text-4xl text-xl font-bold flex flex-row">
-              <AnimatedCounter end={getCoffeeCount()} label="" />
-            </h2>
-            <p className="text-[#ADB7BE] text-base">Coffees Drank This Year ☕</p>
-          </div>
-          <div className="flex flex-col items-center justify-start mx-4 my-4 sm:my-0 h-full">
-            <h2 className="text-white sm:text-4xl text-xl font-bold flex flex-row">
-              <AnimatedCounter end={7} label="" />
-            </h2>
-            <p className="text-[#ADB7BE] text-base">Countries Visited 🌍</p>
-          </div>
-          <div className="flex flex-col items-center justify-start mx-4 my-4 sm:my-0 h-full">
-            <h2 className="text-white sm:text-4xl text-xl font-bold flex flex-row">
               <AnimatedCounter end={3} label="" />
             </h2>
             <p className="text-[#ADB7BE] text-base">Companies Worked At 💼</p>
@@ -246,6 +239,18 @@ const Hero = () => {
               <AnimatedCounter end={4} label="" />
             </h2>
             <p className="text-[#ADB7BE] text-base">Side Projects Ongoing 🚀</p>
+          </div>
+          <div className="flex flex-col items-center justify-start mx-4 my-4 sm:my-0 h-full">
+            <h2 className="text-white sm:text-4xl text-xl font-bold flex flex-row">
+              <AnimatedCounter end={getCoffeeCount()} label="" />
+            </h2>
+            <p className="text-[#ADB7BE] text-base">Coffees Drank This Year ☕</p>
+          </div>
+          <div className="flex flex-col items-center justify-start mx-4 my-4 sm:my-0 h-full">
+            <h2 className="text-white sm:text-4xl text-xl font-bold flex flex-row">
+              <AnimatedCounter end={7} label="" />
+            </h2>
+            <p className="text-[#ADB7BE] text-base">Countries Visited 🌍</p>
           </div>
         </div>
       </div>

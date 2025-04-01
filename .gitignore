@@ -6,3 +6,6 @@ node_modules/
 
 # Ignore output directory
 out/
+
+# Ignore macOS system files
+**/.DS_Store
