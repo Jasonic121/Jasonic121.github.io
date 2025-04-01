@@ -13,8 +13,10 @@ export default function WirelessAIProject() {
       </Head>
 
       <Link href="/#projects" className="fixed top-8 left-8 bg-background/90 text-white hover:bg-accent px-4 py-2 rounded flex items-center gap-2 z-50 transition-all hover:-translate-y-1">
-        <FaArrowLeft />
-        <span>Back to Projects</span>
+        <div className="flex items-center gap-2">
+          <FaArrowLeft />
+          <span>Back to Projects</span>
+        </div>
       </Link>
 
       <header className="relative flex items-center justify-center py-32 px-4 text-center text-white overflow-hidden">

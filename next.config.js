@@ -3,7 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   basePath: '',
   images: {
-    loader: 'default',
+    loader: 'akamai',
+    path: '/',
     domains: [],
     unoptimized: true,
   },
@@ -13,6 +14,7 @@ const nextConfig = {
   ) {
     return {
       '/': { page: '/' },
+      '/projects/wireless-ai': { page: '/projects/wireless-ai' },
     }
   },
   // Next.js 13 introduced the appDir property
@@ -21,19 +23,21 @@ const nextConfig = {
   // For static site export
   trailingSlash: true,
   // Add your domain if needed
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on',
-          },
-        ],
-      },
-    ];
-  },
+  ...(process.env.NEXT_PHASE !== 'phase-export' && {
+    async headers() {
+      return [
+        {
+          source: '/(.*)',
+          headers: [
+            {
+              key: 'X-DNS-Prefetch-Control',
+              value: 'on',
+            },
+          ],
+        },
+      ];
+    },
+  }),
   // Used only in export
   assetPrefix: process.env.NODE_ENV === 'production' ? '/' : '',
 }
