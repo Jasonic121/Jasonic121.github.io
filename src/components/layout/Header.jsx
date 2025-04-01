@@ -35,7 +35,7 @@ const Header = () => {
       <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/90 backdrop-blur-sm py-2' : 'py-4'}`}>
         <div className="container mx-auto px-4 flex justify-between items-center">
           <Link href="/">
-            <a className="text-2xl font-mono font-bold text-amber-400">JasonLi</a>
+            <a className="text-2xl font-mono font-bold text-amber-400">Jason Li</a>
           </Link>
           
           {/* Desktop Navigation */}

@@ -10,5 +10,11 @@ export const experience = [
     position: "Electrical Engineering Intern",
     company: "Logitech",
     duration: "Feb. 2022 - July 2022",
-  }
+  },
+  {
+    id: 3,
+    position: "Loudspeaker Engineering Intern",
+    company: "Multistar Industries",
+    duration: "July 2021 - Sep. 2021",
+  },
 ]; 

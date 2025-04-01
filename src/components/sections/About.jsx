@@ -10,6 +10,7 @@ const About = () => {
   
   const images = [
     '/assets/images/AboutMe.JPG',
+    '/assets/images/jason-conference.JPG',
     '/assets/images/main-bg.JPG',
     '/assets/images/cmu-logo.png',
     '/assets/images/apple-jason.JPG',
@@ -90,10 +91,9 @@ const About = () => {
             viewport={{ once: true }}
           >
             <p className="text-lg text-gray-300 mb-8">
-              I am a new grad Software Engineer just graduated from University. My passion lies in developing innovative software solutions, particularly in the realms of web development and machine learning. With experience in full-stack development, I've worked on projects ranging from e-commerce platforms to AI-driven applications.
-            </p>
+              I’m Jason Li, a recent graduate with a Master’s degree in Electrical and Computer Engineering from Carnegie Mellon University. I’m deeply passionate about building things—from scalable backend systems to AI-powered applications that tackle real-world challenges. Whether it’s deploying full-stack apps or conducting research with large language models, I thrive on learning and innovating at the intersection of software and intelligence.            </p>
             <p className="text-lg text-gray-300 mb-8">
-              My toolkit includes <span className="text-accent">Python</span>, <span className="text-accent-2">JavaScript</span>, and <span className="text-accent-3">C++</span>, as well as frameworks such as <span className="text-accent">React.js</span>, <span className="text-accent-2">Node.js</span>, and <span className="text-accent-3">Pytorch</span>. Always eager to learn and tackle new challenges, I'm excited about opportunities to create impactful applications that push the boundaries of technology.
+              My toolkit includes <span className="text-accent">Python</span>, <span className="text-accent-2">Java</span>, and <span className="text-accent-3">C++</span>, as well as frameworks such as <span className="text-accent">React.js</span>, <span className="text-accent-2">Node.js</span>, and <span className="text-accent-3">Pytorch</span>. Always eager to learn and tackle new challenges, I'm excited about opportunities to create impactful applications that push the boundaries of technology.
             </p>
             
             <div className="flex border-b border-gray-800 mb-6">

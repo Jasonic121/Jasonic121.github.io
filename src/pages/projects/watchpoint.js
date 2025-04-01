@@ -180,10 +180,17 @@ export default function WatchPoint() {
         }
 
         .tech-tag {
-          background: #f0f0f0;
+          background: #2d3748;
+          color: white;
           padding: 0.5rem 1rem;
           border-radius: 20px;
           font-size: 0.9rem;
+          transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .award-badges {

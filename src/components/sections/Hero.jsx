@@ -198,7 +198,7 @@ const Hero = () => {
                 href="https://github.com/Jasonic121" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="group mt-2 inline-flex items-center justify-center h-12 w-12 hover:w-28 rounded-full border-2 border-blue-400 text-gray-300 hover:border-blue-400 hover:bg-blue-400 hover:text-white transition-all duration-300 overflow-hidden"
+                className="group mt-2 inline-flex items-center justify-center h-12 w-12 hover:w-28 rounded-full border-2 border-red-400 text-gray-300 hover:border-blue-400 hover:bg-blue-400 hover:text-white transition-all duration-300 overflow-hidden"
                 aria-label="GitHub Profile"
               >
                 <div className="flex items-center justify-center w-full transition-all duration-300">
@@ -209,7 +209,7 @@ const Hero = () => {
                 </div>
               </a>
               
-              <a 
+              {/* <a 
                 href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
@@ -222,7 +222,7 @@ const Hero = () => {
                   </div>
                   <span className="font-bold w-0 group-hover:w-full overflow-hidden transition-all duration-300 flex items-center justify-center">Instagram</span>
                 </div>
-              </a>
+              </a> */}
             </div>
           </MotionWrapper>
         </div>
@@ -243,6 +243,7 @@ const Hero = () => {
           <div className="flex flex-col items-center justify-start mx-4 my-4 sm:my-0 h-full">
             <h2 className="text-white sm:text-4xl text-xl font-bold flex flex-row">
               <AnimatedCounter end={getCoffeeCount()} label="" />
+            +
             </h2>
             <p className="text-[#ADB7BE] text-base">Coffees Drank This Year ☕</p>
           </div>

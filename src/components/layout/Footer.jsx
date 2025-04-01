@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <Link href="/">
-            <a className="text-xl font-mono font-bold mb-4 md:mb-0">Jason</a>
+            <a className="text-xl font-mono font-bold mb-4 md:mb-0">Jason Li</a>
           </Link>
           
           <div className="flex space-x-4 mb-4 md:mb-0">
