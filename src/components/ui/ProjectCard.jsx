@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaStar } from 'react-icons/fa';
 
@@ -19,12 +18,10 @@ const ProjectCard = ({ project, delay = 0 }) => {
         </div>
       )}
       <div className="relative h-48">
-        <Image 
+        <img 
           src={project.image} 
           alt={project.title} 
-          layout="fill" 
-          objectFit="cover"
-          unoptimized
+          className="w-full h-full object-cover"
         />
       </div>
       <div className="p-6">

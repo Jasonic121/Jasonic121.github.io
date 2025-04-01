@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { skills } from '../../data/skills';
 import { education } from '../../data/education';
@@ -30,12 +29,10 @@ const About = () => {
             viewport={{ once: true }}
           >
             <div className="relative w-full h-[700px] rounded-lg overflow-hidden">
-              <Image 
+              <img 
                 src="/images/AboutMe.JPG" 
                 alt="Workspace" 
-                layout="fill" 
-                objectFit="cover"
-                unoptimized
+                className="w-full h-full object-cover"
               />
             </div>
           </motion.div>

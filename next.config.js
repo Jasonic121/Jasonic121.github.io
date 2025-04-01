@@ -2,12 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   basePath: '',
-  images: {
-    loader: 'akamai',
-    path: '/',
-    domains: [],
-    unoptimized: true,
-  },
   exportPathMap: async function (
     defaultPathMap,
     { dev, dir, outDir, distDir, buildId }

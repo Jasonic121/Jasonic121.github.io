@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
 import AnimatedCounter from '../ui/AnimatedCounter';
 
@@ -127,13 +126,10 @@ const Hero = () => {
             <div className="relative sm:w-[280px] sm:h-[280px] lg:w-[400px] lg:h-[400px] w-[250px] h-[250px] overflow-hidden">
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-amber-400"></div>
               <div className="absolute inset-[2px] rounded-full overflow-hidden">
-                <Image 
+                <img 
                   src="/images/profilepic.jpg" 
                   alt="Profile" 
-                  width={500}
-                  height={500}
-                  style={{ objectFit: "cover" }}
-                  priority
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
