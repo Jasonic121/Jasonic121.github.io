@@ -35,26 +35,17 @@ const Header = () => {
       <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/90 backdrop-blur-sm py-2' : 'py-4'}`}>
         <div className="container mx-auto px-4 flex justify-between items-center">
           <Link href="/">
-            <a className="text-2xl font-mono font-bold">yourname</a>
+            <a className="text-2xl font-mono font-bold text-amber-400">JasonLi</a>
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="hover:text-accent transition-colors">
+          <nav className="hidden md:flex font-mono space-x-12">
+            <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="hover:text-accent transition-colors text-xl">
               About
             </a>
-            <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')} className="hover:text-accent transition-colors">
+            <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')} className="hover:text-accent transition-colors text-xl">
               Projects
             </a>
-            <a href="/resume.pdf" className="hover:text-accent transition-colors" target="_blank" rel="noopener noreferrer">
-              Resume
-            </a>
-            <button 
-              className="bg-button hover:bg-button/80 px-4 py-2 rounded-full transition-colors"
-              onClick={() => setContactModalOpen(true)}
-            >
-              Contact
-            </button>
           </nav>
           
           {/* Mobile Menu Button */}
@@ -73,18 +64,6 @@ const Header = () => {
               <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')} className="hover:text-accent transition-colors">
                 Projects
               </a>
-              <a href="/resume.pdf" className="hover:text-accent transition-colors" target="_blank" rel="noopener noreferrer">
-                Resume
-              </a>
-              <button 
-                className="bg-button hover:bg-button/80 px-4 py-2 rounded-full transition-colors w-full"
-                onClick={() => {
-                  setIsOpen(false);
-                  setContactModalOpen(true);
-                }}
-              >
-                Contact
-              </button>
             </div>
           </div>
         )}

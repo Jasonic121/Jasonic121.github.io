@@ -1,13 +1,35 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useInView } from 'framer-motion';
 
 const AnimatedCounter = ({ end, duration = 2000, label }) => {
   const [count, setCount] = useState(0);
+  const [isInView, setIsInView] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
   
+  // Setup and check if component is mounted (client-side only)
   useEffect(() => {
-    if (isInView) {
+    setIsMounted(true);
+    
+    // Setup intersection observer only on client side
+    if (typeof window !== 'undefined' && ref.current) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.1 }
+      );
+      
+      observer.observe(ref.current);
+      return () => observer.disconnect();
+    }
+  }, []);
+  
+  // Animate the counter when in view and mounted
+  useEffect(() => {
+    if (isInView && isMounted) {
       let startTime;
       let animationFrame;
       
@@ -25,16 +47,18 @@ const AnimatedCounter = ({ end, duration = 2000, label }) => {
       
       animationFrame = requestAnimationFrame(animate);
       
-      return () => cancelAnimationFrame(animationFrame);
+      return () => {
+        if (animationFrame) {
+          cancelAnimationFrame(animationFrame);
+        }
+      };
     }
-  }, [isInView, end, duration]);
+  }, [isInView, end, duration, isMounted]);
   
   return (
-    <div ref={ref} className="p-4 border border-gray-800 rounded-lg text-center">
-      <h3 className="text-3xl font-bold mb-2">
-        {isNaN(count) ? 'NaN' : count}
-      </h3>
-      <p className="text-gray-400">{label}</p>
+    <div ref={ref}>
+      {isNaN(count) ? 'NaN' : count}
+      {label && <p className="text-[#ADB7BE] text-base">{label}</p>}
     </div>
   );
 };

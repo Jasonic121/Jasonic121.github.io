@@ -1,13 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  basePath: '',
   images: {
+    loader: 'default',
     domains: [],
-    unoptimized: true, // Required for static export
-    loader: 'custom',
-    loaderFile: './src/utils/imageLoader.js',
+    unoptimized: true,
   },
-  // Ensure trailing slashes are handled correctly
+  exportPathMap: async function (
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return {
+      '/': { page: '/' },
+    }
+  },
+  // Next.js 13 introduced the appDir property
+  // If using Next.js 12 or earlier, this can be removed
+  // appDir: false,
+  // For static site export
   trailingSlash: true,
   // Add your domain if needed
   async headers() {

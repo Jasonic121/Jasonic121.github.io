@@ -1,17 +1,23 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaStar } from 'react-icons/fa';
 
 const ProjectCard = ({ project, delay = 0 }) => {
   return (
     <motion.div 
-      className="bg-background/30 border border-gray-800 rounded-lg overflow-hidden hover:shadow-lg transition-all hover:-translate-y-1"
+      className={`bg-background/30 border ${project.featured ? 'border-accent/50' : 'border-gray-800'} rounded-lg overflow-hidden hover:shadow-lg transition-all hover:-translate-y-1 relative`}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
       viewport={{ once: true }}
     >
+      {project.featured && (
+        <div className="absolute top-3 right-3 bg-accent text-white text-xs px-2 py-1 rounded-full flex items-center gap-1 z-10">
+          <FaStar className="text-xs" />
+          <span>Featured</span>
+        </div>
+      )}
       <div className="relative h-48">
         <Image 
           src={project.image} 

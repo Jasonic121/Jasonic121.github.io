@@ -1,16 +1,14 @@
 export const experience = [
   {
     id: 1,
-    position: "Software Engineer",
-    company: "Company Name",
-    duration: "June 2023 - Present",
-    description: "Developed and maintained web applications using React and Node.js. Implemented new features and improved existing functionality."
+    position: "Software Engineering Intern",
+    company: "Apple",
+    duration: "May 2024 - Aug. 2024",
   },
   {
     id: 2,
-    position: "Software Engineer Intern",
-    company: "Internship Company",
-    duration: "Summer 2022",
-    description: "Worked on front-end development using React. Collaborated with the team to implement responsive designs."
+    position: "Electrical Engineering Intern",
+    company: "Logitech",
+    duration: "Feb. 2022 - July 2022",
   }
 ]; 

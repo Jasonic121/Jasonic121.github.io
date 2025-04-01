@@ -1,15 +1,32 @@
 export const skills = [
-  "React", 
-  "Next.js", 
-  "Node.js", 
-  "Express", 
+  // Software
+  "Java",
   "Python", 
+  "Swift",
+  "C",
+  "C++",
+  "Objective-C",
+  "MATLAB",
+  "HTML",
   "JavaScript",
-  "TypeScript",
-  "HTML/CSS",
-  "Tailwind CSS",
-  "MongoDB",
-  "PostgreSQL",
+  "Assembly Code",
+  
+  // Tools
+  "Kubernetes",
+  "Docker",
+  "AWS",
+  "GCP",
+  "PyTorch",
+  "Node.js",
+  "React.js",
+  "SQL",
   "Git",
-  "Docker"
+  "Linux",
+  "GitLab CI/CD",
+  
+  // Competencies
+  "Software Development",
+  "iOS Development",
+  "Machine Learning",
+  "Large Language Models"
 ]; 

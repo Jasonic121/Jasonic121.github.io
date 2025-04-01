@@ -29,9 +29,9 @@ const About = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
+            <div className="relative w-full h-[700px] rounded-lg overflow-hidden">
               <Image 
-                src="/images/workspace.jpg" 
+                src="/images/AboutMe.JPG" 
                 alt="Workspace" 
                 layout="fill" 
                 objectFit="cover"
@@ -89,8 +89,8 @@ const About = () => {
               <div className="space-y-4">
                 {education.map((item) => (
                   <div key={item.id}>
-                    <h3 className="text-xl font-bold">{item.degree}</h3>
-                    <p className="text-gray-400">{item.institution}, {item.duration}</p>
+                    <h3 className="text-xl font-bold">{item.institution}</h3>
+                    <p className="text-gray-400">{item.degree} {item.duration}</p>
                     <p className="text-gray-300 mt-2">{item.description}</p>
                   </div>
                 ))}
@@ -101,8 +101,8 @@ const About = () => {
               <div className="space-y-4">
                 {experience.map((item) => (
                   <div key={item.id}>
-                    <h3 className="text-xl font-bold">{item.position}</h3>
-                    <p className="text-gray-400">{item.company}, {item.duration}</p>
+                    <h3 className="text-xl font-bold">{item.company}</h3>
+                    <p className="text-gray-400">{item.position}, {item.duration}</p>
                     <p className="text-gray-300 mt-2">{item.description}</p>
                   </div>
                 ))}

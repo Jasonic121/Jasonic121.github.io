@@ -1,5 +1,16 @@
 export const projects = [
   {
+    id: 5,
+    title: "Conversational AI for Wireless Networks",
+    description: "Research exploring how LLMs can solve complex wireless technology issues. Paper accepted at HotMobile 2025.",
+    image: "/images/projects/ai-project.jpg",
+    category: "ai",
+    technologies: ["Python", "PyTorch", "Large Language Models", "RAG", "NLP", "Wireless Communications"],
+    githubUrl: "https://github.com/Jasonic121/WiLL.git",
+    liveUrl: "/projects/wireless-ai",
+    featured: true
+  },
+  {
     id: 1,
     title: "Personal Typing Game",
     description: "Minimalistic Typing Game built with Next.js",

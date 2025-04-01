@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <Layout>
       <Head>
-        <title>Your Name - Portfolio</title>
+        <title>Jason Li - Portfolio</title>
         <meta name="description" content="Personal portfolio website showcasing my projects and skills" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
