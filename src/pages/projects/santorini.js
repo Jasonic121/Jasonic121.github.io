@@ -79,11 +79,12 @@ export default function Santorini() {
 
       <style jsx>{`
         .project-header {
-          background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+          background: linear-gradient(135deg, rgba(17, 24, 39, 0.95) 0%, rgba(31, 41, 55, 0.85) 100%);
           color: white;
           padding: 6rem 2rem 4rem;
           text-align: center;
           position: relative;
+          overflow: hidden;
         }
 
         .project-header::before {
@@ -97,110 +98,205 @@ export default function Santorini() {
           background-size: cover;
           background-position: center;
           z-index: -1;
-          filter: brightness(0.5);
+          filter: brightness(0.3);
+          transform: scale(1.1);
+          transition: transform 0.3s ease;
+        }
+
+        .project-header:hover::before {
+          transform: scale(1.15);
+        }
+
+        .project-header h1 {
+          font-size: 3.5rem;
+          font-weight: 800;
+          line-height: 1.2;
+          margin-bottom: 1.5rem;
+          letter-spacing: -0.02em;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          color: #ffffff;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-header p {
+          font-size: 1.25rem;
+          line-height: 1.6;
+          margin-bottom: 0.75rem;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 0.95);
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-header .date {
+          font-size: 1.1rem;
+          color: rgba(255, 255, 255, 0.9);
+          font-weight: 500;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .back-button {
           position: fixed;
           top: 2rem;
           left: 2rem;
-          background: rgba(255, 255, 255, 0.9);
-          color: #333;
-          padding: 0.5rem 1rem;
-          border-radius: 5px;
+          background: rgba(255, 255, 255, 0.95);
+          color: #1a1a1a;
+          padding: 0.75rem 1.25rem;
+          border-radius: 8px;
           text-decoration: none;
           display: flex;
           align-items: center;
           gap: 0.5rem;
           z-index: 100;
           transition: all 0.3s ease;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          font-weight: 500;
+          font-size: 1rem;
+          letter-spacing: 0.01em;
         }
 
         .back-button:hover {
           background: white;
           transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         .project-content {
           max-width: 800px;
           margin: 0 auto;
           padding: 4rem 2rem;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          color: #e5e7eb;
         }
 
         .project-section {
-          margin-bottom: 3rem;
+          margin-bottom: 4rem;
         }
 
         .project-section h2 {
-          color: #007bff;
-          margin-bottom: 1.5rem;
+          color: #60a5fa;
+          margin-bottom: 2rem;
           text-align: left;
+          font-weight: 700;
+          font-size: 2rem;
+          letter-spacing: -0.01em;
+        }
+
+        .project-section p {
+          font-size: 1.125rem;
+          line-height: 1.7;
+          color: #e5e7eb;
+          margin-bottom: 1.5rem;
+          font-weight: 400;
+        }
+
+        .project-section ul {
+          list-style-type: none;
+          padding-left: 0;
+          margin-bottom: 1.5rem;
+        }
+
+        .project-section ul li {
+          font-size: 1.125rem;
+          line-height: 1.7;
+          color: #e5e7eb;
+          margin-bottom: 1rem;
+          padding-left: 1.5rem;
+          position: relative;
+        }
+
+        .project-section ul li:before {
+          content: "•";
+          color: #60a5fa;
+          font-weight: bold;
+          position: absolute;
+          left: 0;
         }
 
         .tech-stack {
           display: flex;
           flex-wrap: wrap;
-          gap: 0.5rem;
-          margin: 1rem 0;
+          gap: 0.75rem;
+          margin: 1.5rem 0;
         }
 
         .tech-tag {
-          background: #2d3748;
+          background: #1e40af;
           color: white;
-          padding: 0.5rem 1rem;
+          padding: 0.625rem 1.25rem;
           border-radius: 20px;
-          font-size: 0.9rem;
+          font-size: 0.95rem;
+          font-weight: 500;
+          letter-spacing: 0.01em;
           transition: all 0.3s ease;
         }
 
         .tech-tag:hover {
           transform: translateY(-1px);
           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .architecture-diagram {
-          width: 100%;
-          max-width: 600px;
-          margin: 2rem auto;
-          display: block;
-          border-radius: 8px;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          background: #1e3a8a;
         }
 
         .award-badges {
           display: flex;
-          gap: 1rem;
+          gap: 1.25rem;
           justify-content: center;
           flex-wrap: wrap;
-          margin-top: 2rem;
+          margin-top: 2.5rem;
         }
 
         .award-badge {
-          background: #ffd700;
-          color: #333;
+          background: rgba(255, 255, 255, 0.1);
+          color: white;
           padding: 1rem 2rem;
           border-radius: 8px;
           display: inline-flex;
           align-items: center;
           margin: 0.5rem;
-          font-weight: bold;
+          font-weight: 600;
+          font-size: 1.1rem;
+          letter-spacing: 0.01em;
           transition: all 0.3s ease;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .award-badge i {
           margin-right: 0.8rem;
-          font-size: 1.2rem;
+          font-size: 1.3rem;
         }
 
         .github-badge {
-          background: #333;
+          background: rgba(26, 26, 26, 0.9);
           color: white;
           text-decoration: none;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .github-badge:hover {
-          background: #000;
+          background: rgba(0, 0, 0, 0.95);
           transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+          .project-header h1 {
+            font-size: 2.5rem;
+          }
+
+          .project-header p {
+            font-size: 1.1rem;
+          }
+
+          .project-section h2 {
+            font-size: 1.75rem;
+          }
+
+          .award-badge {
+            font-size: 1rem;
+            padding: 0.875rem 1.75rem;
+          }
         }
       `}</style>
     </>

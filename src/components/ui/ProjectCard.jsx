@@ -44,8 +44,6 @@ const ProjectCard = ({ project, delay = 0 }) => {
             {project.detailsUrl && (
               <a 
                 href={project.detailsUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
                 className="group/button inline-flex items-center h-12 w-12 hover:w-36 rounded-full bg-white/90 text-gray-900 transition-all duration-500 ease-in-out hover:scale-110 hover:bg-white overflow-hidden"
                 aria-label="View Details"
               >

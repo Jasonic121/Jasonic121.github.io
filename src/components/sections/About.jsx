@@ -9,18 +9,18 @@ const About = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const images = [
+    '/assets/images/apple-jason.JPG',
+    '/assets/images/logi-jason.png',
+    '/assets/images/CMU-id.JPG',
     '/assets/images/AboutMe.JPG',
     '/assets/images/jason-conference.JPG',
     '/assets/images/main-bg.JPG',
-    '/assets/images/cmu-logo.png',
-    '/assets/images/apple-jason.JPG',
-    '/assets/images/logi-jason.png',
   ];
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Increased to 5 seconds to give more time to view each image
+    }, 4500); // Increased to 5 seconds to give more time to view each image
 
     return () => clearInterval(timer);
   }, []);

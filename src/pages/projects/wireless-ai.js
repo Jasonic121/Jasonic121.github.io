@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FaArrowLeft, FaStar, FaMicrophone, FaGithub } from 'react-icons/fa';
+import { FaArrowLeft, FaStar, FaMicrophone, FaGithub, FaFileAlt } from 'react-icons/fa';
 
 export default function WirelessAIProject() {
   return (
@@ -31,6 +31,10 @@ export default function WirelessAIProject() {
             <i className="fas fa-microphone"></i>
             Selected Conference Presenter
           </div>
+          <a href="https://doi.org/10.1145/3708468.3711885" target="_blank" rel="noopener noreferrer" className="award-badge paper-badge">
+            <i className="fas fa-file-alt"></i>
+            Read Paper
+          </a>
           <a href="https://github.com/Jasonic121/WiLL.git" target="_blank" rel="noopener noreferrer" className="award-badge github-badge">
             <i className="fab fa-github"></i>
             View on GitHub
@@ -61,19 +65,54 @@ export default function WirelessAIProject() {
 
         <section className="project-section">
           <h2>Key Achievements</h2>
-          <ul>
-            <li>Co-author of "Can we make FCC experts out of LLMs" accepted at HotMobile 2025 (ACM International Workshop on Mobile Computing Systems and Applications)</li>
-            <li>Selected as the conference presenter to showcase our research findings at HotMobile 2025</li>
-            <li>Designed and implemented an innovative LLM pipeline utilizing in-context learning and RAG for wireless technology problem-solving</li>
-            <li>Conducted comprehensive research on state-of-the-art LLM techniques and their applications in wireless communications</li>
-          </ul>
+          <div className="achievements-container">
+            <div className="achievement-card">
+              <div className="achievement-icon">
+                <i className="fas fa-file-alt"></i>
+              </div>
+              <div className="achievement-content">
+                <h3>Published Research</h3>
+                <p>Co-author of "Can we make FCC experts out of LLMs" accepted at HotMobile 2025 (ACM International Workshop on Mobile Computing Systems and Applications)</p>
+                <a href="https://doi.org/10.1145/3708468.3711885" target="_blank" rel="noopener noreferrer" className="doi-link">DOI: 10.1145/3708468.3711885</a>
+              </div>
+            </div>
+            
+            <div className="achievement-card">
+              <div className="achievement-icon">
+                <i className="fas fa-microphone-alt"></i>
+              </div>
+              <div className="achievement-content">
+                <h3>Conference Speaker</h3>
+                <p>Selected as the conference presenter to showcase our research findings at HotMobile 2025</p>
+              </div>
+            </div>
+            
+            <div className="achievement-card">
+              <div className="achievement-icon">
+                <i className="fas fa-brain"></i>
+              </div>
+              <div className="achievement-content">
+                <h3>LLM Pipeline Design</h3>
+                <p>Designed and implemented an innovative LLM pipeline utilizing in-context learning and RAG for wireless technology problem-solving</p>
+              </div>
+            </div>
+            
+            <div className="achievement-card">
+              <div className="achievement-icon">
+                <i className="fas fa-search"></i>
+              </div>
+              <div className="achievement-content">
+                <h3>Research Contributions</h3>
+                <p>Conducted comprehensive research on state-of-the-art LLM techniques and their applications in wireless communications</p>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section className="project-section">
           <h2>Technologies Used</h2>
           <div className="tech-stack">
             <span className="tech-tag">Python</span>
-            <span className="tech-tag">PyTorch</span>
             <span className="tech-tag">Large Language Models</span>
             <span className="tech-tag">RAG</span>
             <span className="tech-tag">Natural Language Processing</span>
@@ -94,11 +133,12 @@ export default function WirelessAIProject() {
 
       <style jsx>{`
         .project-header {
-          background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+          background: linear-gradient(135deg, rgba(17, 24, 39, 0.95) 0%, rgba(31, 41, 55, 0.85) 100%);
           color: white;
           padding: 6rem 2rem 4rem;
           text-align: center;
           position: relative;
+          overflow: hidden;
         }
 
         .project-header::before {
@@ -112,106 +152,202 @@ export default function WirelessAIProject() {
           background-size: cover;
           background-position: center;
           z-index: -1;
-          filter: brightness(0.5);
+          filter: brightness(0.3);
+          transform: scale(1.1);
+          transition: transform 0.3s ease;
+        }
+
+        .project-header:hover::before {
+          transform: scale(1.15);
+        }
+
+        .project-header h1 {
+          font-size: 3.5rem;
+          font-weight: 800;
+          line-height: 1.2;
+          margin-bottom: 1.5rem;
+          letter-spacing: -0.02em;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          color: #ffffff;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-header p {
+          font-size: 1.25rem;
+          line-height: 1.6;
+          margin-bottom: 0.75rem;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 0.95);
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-header .date {
+          font-size: 1.1rem;
+          color: rgba(255, 255, 255, 0.9);
+          font-weight: 500;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .back-button {
           position: fixed;
           top: 2rem;
           left: 2rem;
-          background: rgba(255, 255, 255, 0.9);
-          color: #333;
-          padding: 0.5rem 1rem;
-          border-radius: 5px;
+          background: rgba(255, 255, 255, 0.95);
+          color: #1a1a1a;
+          padding: 0.75rem 1.25rem;
+          border-radius: 8px;
           text-decoration: none;
           display: flex;
           align-items: center;
           gap: 0.5rem;
           z-index: 100;
           transition: all 0.3s ease;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          font-weight: 500;
+          font-size: 1rem;
+          letter-spacing: 0.01em;
         }
 
         .back-button:hover {
           background: white;
           transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         .project-content {
           max-width: 800px;
           margin: 0 auto;
           padding: 4rem 2rem;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          color: #e5e7eb;
         }
 
         .project-section {
-          margin-bottom: 3rem;
+          margin-bottom: 4rem;
         }
 
         .project-section h2 {
-          color: #007bff;
-          margin-bottom: 1.5rem;
+          color: #60a5fa;
+          margin-bottom: 2rem;
           text-align: left;
+          font-weight: 700;
+          font-size: 2rem;
+          letter-spacing: -0.01em;
+        }
+
+        .project-section p {
+          font-size: 1.125rem;
+          line-height: 1.7;
+          color: #e5e7eb;
+          margin-bottom: 1.5rem;
+          font-weight: 400;
+        }
+
+        .project-section ul {
+          list-style-type: none;
+          padding-left: 0;
+          margin-bottom: 1.5rem;
+        }
+
+        .project-section ul li {
+          font-size: 1.125rem;
+          line-height: 1.7;
+          color: #e5e7eb;
+          margin-bottom: 1rem;
+          padding-left: 1.5rem;
+          position: relative;
+        }
+
+        .project-section ul li:before {
+          content: "•";
+          color: #60a5fa;
+          font-weight: bold;
+          position: absolute;
+          left: 0;
         }
 
         .tech-stack {
           display: flex;
           flex-wrap: wrap;
-          gap: 0.5rem;
-          margin: 1rem 0;
+          gap: 0.75rem;
+          margin: 1.5rem 0;
         }
 
         .tech-tag {
-          background: #2d3748;
+          background: #1e40af;
           color: white;
-          padding: 0.5rem 1rem;
+          padding: 0.625rem 1.25rem;
           border-radius: 20px;
-          font-size: 0.9rem;
+          font-size: 0.95rem;
+          font-weight: 500;
+          letter-spacing: 0.01em;
           transition: all 0.3s ease;
         }
 
         .tech-tag:hover {
           transform: translateY(-1px);
           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          background: #1e3a8a;
         }
 
         .award-badges {
           display: flex;
-          gap: 1rem;
+          gap: 1.25rem;
           justify-content: center;
           flex-wrap: wrap;
-          margin-top: 2rem;
+          margin-top: 2.5rem;
         }
 
         .award-badge {
-          background: #ffd700;
-          color: #333;
+          background: #fbbf24;
+          color: #1a1a1a;
           padding: 1rem 2rem;
           border-radius: 8px;
           display: inline-flex;
           align-items: center;
           margin: 0.5rem;
-          font-weight: bold;
+          font-weight: 600;
+          font-size: 1.1rem;
+          letter-spacing: 0.01em;
           transition: all 0.3s ease;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .award-badge i {
           margin-right: 0.8rem;
-          font-size: 1.2rem;
+          font-size: 1.3rem;
         }
 
         .presenter-badge {
-          background: #00a8ff;
+          background: #3b82f6;
           color: white;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .github-badge {
-          background: #333;
+          background: #1a1a1a;
           color: white;
           text-decoration: none;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .github-badge:hover {
           background: #000;
           transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .doi-link {
+          color: #2563eb;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 1rem;
+          letter-spacing: 0.01em;
+        }
+
+        .doi-link:hover {
+          text-decoration: underline;
+          color: #1e40af;
         }
 
         .video-container {
@@ -231,19 +367,154 @@ export default function WirelessAIProject() {
           height: 100%;
         }
 
+        /* Enhanced Key Achievements Section */
+        .achievements-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          gap: 2rem;
+          margin-top: 2.5rem;
+        }
+
+        .achievement-card {
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 12px;
+          padding: 2rem;
+          display: flex;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s ease;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+        }
+
+        .achievement-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+          border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Published Research Card */
+        .achievement-card:nth-child(1) .achievement-icon {
+          color: #60a5fa;
+        }
+
+        .achievement-card:nth-child(1) .achievement-content h3 {
+          color: #93c5fd;
+        }
+
+        .achievement-card:nth-child(1) .achievement-content p {
+          color: #bfdbfe;
+        }
+
+        .achievement-card:nth-child(1) .doi-link {
+          color: #60a5fa;
+        }
+
+        /* Conference Speaker Card */
+        .achievement-card:nth-child(2) .achievement-icon {
+          color: #f472b6;
+        }
+
+        .achievement-card:nth-child(2) .achievement-content h3 {
+          color: #f9a8d4;
+        }
+
+        .achievement-card:nth-child(2) .achievement-content p {
+          color: #fbcfe8;
+        }
+
+        /* LLM Pipeline Card */
+        .achievement-card:nth-child(3) .achievement-icon {
+          color: #4ade80;
+        }
+
+        .achievement-card:nth-child(3) .achievement-content h3 {
+          color: #86efac;
+        }
+
+        .achievement-card:nth-child(3) .achievement-content p {
+          color: #bbf7d0;
+        }
+
+        /* Research Contributions Card */
+        .achievement-card:nth-child(4) .achievement-icon {
+          color: #fbbf24;
+        }
+
+        .achievement-card:nth-child(4) .achievement-content h3 {
+          color: #fcd34d;
+        }
+
+        .achievement-card:nth-child(4) .achievement-content p {
+          color: #fde68a;
+        }
+
+        .achievement-icon {
+          margin-right: 1.5rem;
+          font-size: 2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 48px;
+          transition: all 0.3s ease;
+        }
+
+        .achievement-content h3 {
+          margin-bottom: 1rem;
+          font-size: 1.4rem;
+          font-weight: 700;
+          letter-spacing: -0.01em;
+        }
+
+        .achievement-content p {
+          line-height: 1.7;
+          margin-bottom: 1rem;
+          font-size: 1.1rem;
+          font-weight: 400;
+        }
+
+        .achievement-card:hover .achievement-icon {
+          transform: scale(1.1);
+        }
+
         @media (max-width: 768px) {
-          .award-badges {
-            flex-direction: column;
-            align-items: center;
+          .project-header h1 {
+            font-size: 2.5rem;
+          }
+
+          .project-header p {
+            font-size: 1.1rem;
+          }
+
+          .project-section h2 {
+            font-size: 1.75rem;
           }
 
           .award-badge {
-            width: 100%;
-            max-width: 300px;
-            justify-content: center;
+            font-size: 1rem;
+            padding: 0.875rem 1.75rem;
           }
+
+          .achievement-content h3 {
+            font-size: 1.25rem;
+          }
+
+          .achievement-content p {
+            font-size: 1rem;
+          }
+        }
+
+        .paper-badge {
+          background: #059669;
+          color: white;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .paper-badge:hover {
+          background: #047857;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
       `}</style>
     </>
   );
-} 
+}

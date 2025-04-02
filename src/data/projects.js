@@ -25,7 +25,7 @@ export const projects = [
     id: 3,
     title: "Web Board Game: Santorini",
     description: "A web-based implementation of the popular board game Santorini, featuring a modern architecture, robust testing, and automated deployment pipeline.",
-    image: "/images/projects/santorini/santorini.png",
+    image: "/images/projects/santorini/santorini-cover.png",
     category: "web",
     technologies: ["Java", "Typescript", "Maven", "JUnit", "Jacoco", "CI/CD", "GitHub Actions", "UML"],
     githubUrl: "https://github.com/Jasonic121/Santorini.git",

@@ -1,33 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
 export default function WatchPoint() {
-  const [loadingProgress, setLoadingProgress] = useState(0);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const video = document.getElementById('demoVideo');
-    if (video) {
-      video.addEventListener('loadeddata', function() {
-        this.parentElement.classList.add('loaded');
-        setLoadingProgress(100);
-      });
-
-      video.addEventListener('progress', function() {
-        if (video.buffered.length > 0) {
-          const progress = (video.buffered.end(video.buffered.length - 1) / video.duration) * 100;
-          setLoadingProgress(Math.min(progress, 99));
-        }
-      });
-
-      video.addEventListener('error', function(e) {
-        setError('Failed to load video. Please try again later.');
-        console.error('Video loading error:', e);
-      });
-    }
-  }, []);
-
   return (
     <>
       <Head>
@@ -114,11 +88,12 @@ export default function WatchPoint() {
 
       <style jsx>{`
         .project-header {
-          background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+          background: linear-gradient(135deg, rgba(17, 24, 39, 0.95) 0%, rgba(31, 41, 55, 0.85) 100%);
           color: white;
           padding: 6rem 2rem 4rem;
           text-align: center;
           position: relative;
+          overflow: hidden;
         }
 
         .project-header::before {
@@ -132,113 +107,200 @@ export default function WatchPoint() {
           background-size: cover;
           background-position: center;
           z-index: -1;
-          filter: brightness(0.5);
+          filter: brightness(0.3);
+          transform: scale(1.1);
+          transition: transform 0.3s ease;
+        }
+
+        .project-header:hover::before {
+          transform: scale(1.15);
+        }
+
+        .project-header h1 {
+          font-size: 3.5rem;
+          font-weight: 800;
+          line-height: 1.2;
+          margin-bottom: 1.5rem;
+          letter-spacing: -0.02em;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          color: #ffffff;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-header p {
+          font-size: 1.25rem;
+          line-height: 1.6;
+          margin-bottom: 0.75rem;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 0.95);
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-header .date {
+          font-size: 1.1rem;
+          color: rgba(255, 255, 255, 0.9);
+          font-weight: 500;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .back-button {
           position: fixed;
           top: 2rem;
           left: 2rem;
-          background: rgba(255, 255, 255, 0.9);
-          color: #333;
-          padding: 0.5rem 1rem;
-          border-radius: 5px;
+          background: rgba(255, 255, 255, 0.95);
+          color: #1a1a1a;
+          padding: 0.75rem 1.25rem;
+          border-radius: 8px;
           text-decoration: none;
           display: flex;
           align-items: center;
           gap: 0.5rem;
           z-index: 100;
           transition: all 0.3s ease;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          font-weight: 500;
+          font-size: 1rem;
+          letter-spacing: 0.01em;
         }
 
         .back-button:hover {
           background: white;
           transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         .project-content {
           max-width: 800px;
           margin: 0 auto;
           padding: 4rem 2rem;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          color: #e5e7eb;
         }
 
         .project-section {
-          margin-bottom: 3rem;
+          margin-bottom: 4rem;
         }
 
         .project-section h2 {
-          color: #007bff;
-          margin-bottom: 1.5rem;
+          color: #60a5fa;
+          margin-bottom: 2rem;
           text-align: left;
+          font-weight: 700;
+          font-size: 2rem;
+          letter-spacing: -0.01em;
+        }
+
+        .project-section p {
+          font-size: 1.125rem;
+          line-height: 1.7;
+          color: #e5e7eb;
+          margin-bottom: 1.5rem;
+          font-weight: 400;
+        }
+
+        .project-section ul {
+          list-style-type: none;
+          padding-left: 0;
+          margin-bottom: 1.5rem;
+        }
+
+        .project-section ul li {
+          font-size: 1.125rem;
+          line-height: 1.7;
+          color: #e5e7eb;
+          margin-bottom: 1rem;
+          padding-left: 1.5rem;
+          position: relative;
+        }
+
+        .project-section ul li:before {
+          content: "•";
+          color: #60a5fa;
+          font-weight: bold;
+          position: absolute;
+          left: 0;
         }
 
         .tech-stack {
           display: flex;
           flex-wrap: wrap;
-          gap: 0.5rem;
-          margin: 1rem 0;
+          gap: 0.75rem;
+          margin: 1.5rem 0;
         }
 
         .tech-tag {
-          background: #2d3748;
+          background: #1e40af;
           color: white;
-          padding: 0.5rem 1rem;
+          padding: 0.625rem 1.25rem;
           border-radius: 20px;
-          font-size: 0.9rem;
+          font-size: 0.95rem;
+          font-weight: 500;
+          letter-spacing: 0.01em;
           transition: all 0.3s ease;
         }
 
         .tech-tag:hover {
           transform: translateY(-1px);
           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          background: #1e3a8a;
         }
 
         .award-badges {
           display: flex;
-          gap: 1rem;
+          gap: 1.25rem;
           justify-content: center;
           flex-wrap: wrap;
-          margin-top: 2rem;
+          margin-top: 2.5rem;
         }
 
         .award-badge {
-          background: #cd7f32;
+          background: rgba(205, 127, 50, 0.9);
           color: white;
           padding: 1rem 2rem;
           border-radius: 8px;
           display: inline-flex;
           align-items: center;
           margin: 0.5rem;
-          font-weight: bold;
+          font-weight: 600;
+          font-size: 1.1rem;
+          letter-spacing: 0.01em;
           transition: all 0.3s ease;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .award-badge i {
           margin-right: 0.8rem;
-          font-size: 1.2rem;
+          font-size: 1.3rem;
         }
 
         .github-badge {
-          background: #333;
+          background: rgba(26, 26, 26, 0.9);
           color: white;
           text-decoration: none;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .github-badge:hover {
-          background: #000;
+          background: rgba(0, 0, 0, 0.95);
           transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          border-color: rgba(255, 255, 255, 0.2);
         }
 
         .video-container {
           position: relative;
           width: 100%;
-          padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+          padding-bottom: 56.25%;
           height: 0;
           overflow: hidden;
-          border-radius: 8px;
+          border-radius: 12px;
           margin: 2rem 0;
-          background: #000;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          background: rgba(0, 0, 0, 0.5);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .video-container iframe {
@@ -247,6 +309,7 @@ export default function WatchPoint() {
           left: 0;
           width: 100%;
           height: 100%;
+          border-radius: 12px;
         }
 
         /* Video controls styling */
@@ -258,113 +321,22 @@ export default function WatchPoint() {
           padding: 0 10px;
         }
 
-        /* Loading state */
-        .video-container::before {
-          content: 'Loading video...';
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 1;
-          color: white;
-          font-size: 1rem;
-          opacity: 0.8;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 1rem;
-        }
-
-        .video-container::after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 1;
-          width: 50px;
-          height: 50px;
-          border: 4px solid rgba(255, 255, 255, 0.3);
-          border-radius: 50%;
-          border-top-color: white;
-          animation: spin 1s linear infinite;
-          margin-top: 2rem;
-        }
-
-        .loading-progress {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 4px;
-          background: rgba(255, 255, 255, 0.1);
-          z-index: 2;
-        }
-
-        .progress-bar {
-          height: 100%;
-          background: #007bff;
-          transition: width 0.3s ease;
-        }
-
-        .progress-text {
-          position: absolute;
-          right: 10px;
-          top: -20px;
-          color: white;
-          font-size: 0.8rem;
-          opacity: 0.8;
-        }
-
-        .video-error {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          background: #000;
-          color: white;
-          text-align: center;
-          padding: 1rem;
-        }
-
-        .video-error img {
-          max-width: 100%;
-          max-height: 80%;
-          object-fit: contain;
-          margin-bottom: 1rem;
-        }
-
-        .video-error p {
-          color: #ff4444;
-          font-size: 1rem;
-        }
-
-        @keyframes spin {
-          to {
-            transform: translate(-50%, -50%) rotate(360deg);
-          }
-        }
-
-        .video-container.loaded::before,
-        .video-container.loaded::after {
-          display: none;
-        }
-
         @media (max-width: 768px) {
-          .award-badges {
-            flex-direction: column;
-            align-items: center;
+          .project-header h1 {
+            font-size: 2.5rem;
+          }
+
+          .project-header p {
+            font-size: 1.1rem;
+          }
+
+          .project-section h2 {
+            font-size: 1.75rem;
           }
 
           .award-badge {
-            width: 100%;
-            max-width: 300px;
-            justify-content: center;
+            font-size: 1rem;
+            padding: 0.875rem 1.75rem;
           }
         }
       `}</style>
