@@ -9,6 +9,8 @@ const nextConfig = {
     return {
       '/': { page: '/' },
       '/projects/wireless-ai': { page: '/projects/wireless-ai' },
+      '/projects/watchpoint': { page: '/projects/watchpoint' },
+      '/projects/santorini': { page: '/projects/santorini' }
     }
   },
   // Next.js 13 introduced the appDir property
