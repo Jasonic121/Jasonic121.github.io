@@ -5,14 +5,14 @@ import { FaGithub, FaExternalLinkAlt, FaStar, FaCode, FaEye } from 'react-icons/
 const ProjectCard = ({ project, delay = 0 }) => {
   return (
     <motion.div 
-      className={`bg-background/30 border-4 ${project.featured ? 'border-red-500/50' : 'border-gray-800'} rounded-lg overflow-hidden transition-all duration-300 ease-out hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:scale-[1.02] hover:-translate-y-2 relative group`}
+      className={`bg-background/30 border-4 ${project.featured ? 'border-accent/50' : 'border-gray-800'} rounded-lg overflow-hidden transition-all duration-300 ease-out hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:scale-[1.02] hover:-translate-y-2 relative group`}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
       viewport={{ once: true }}
     >
       {project.featured && (
-        <div className="absolute top-3 right-3 bg-red-500 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1 z-10">
+        <div className="absolute top-3 right-3 bg-accent text-white text-xs px-2 py-1 rounded-full flex items-center gap-1 z-10">
           <FaStar className="text-xs" />
           <span>Featured</span>
         </div>

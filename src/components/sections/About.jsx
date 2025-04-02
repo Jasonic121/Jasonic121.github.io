@@ -11,7 +11,7 @@ const About = () => {
   const images = [
     '/assets/images/apple-jason.JPG',
     '/assets/images/logi-jason.png',
-    '/assets/images/CMU-id.JPG',
+    '/assets/images/CMU-id.jpg',
     '/assets/images/AboutMe.JPG',
     '/assets/images/jason-conference.JPG',
     '/assets/images/main-bg.JPG',
@@ -91,9 +91,9 @@ const About = () => {
             viewport={{ once: true }}
           >
             <p className="text-lg text-gray-300 mb-8">
-              I’m Jason Li, a recent graduate with a Master’s degree in Electrical and Computer Engineering from Carnegie Mellon University. I’m deeply passionate about building things—from scalable backend systems to AI-powered applications that tackle real-world challenges. Whether it’s deploying full-stack apps or conducting research with large language models, I thrive on learning and innovating at the intersection of software and intelligence.            </p>
+              I'm Jason Li, a recent graduate with a Master's degree in Electrical and Computer Engineering from Carnegie Mellon University. I'm deeply passionate about building things—from scalable backend systems to AI-powered applications that tackle real-world challenges. Whether it's deploying full-stack apps or conducting research with large language models, I thrive on learning and innovating at the intersection of software and intelligence.            </p>
             <p className="text-lg text-gray-300 mb-8">
-              My toolkit includes <span className="text-accent">Python</span>, <span className="text-accent-2">Java</span>, and <span className="text-accent-3">C++</span>, as well as frameworks such as <span className="text-accent">React.js</span>, <span className="text-accent-2">Node.js</span>, and <span className="text-accent-3">Pytorch</span>. Always eager to learn and tackle new challenges, I'm excited about opportunities to create impactful applications that push the boundaries of technology.
+              My toolkit includes <span className="text-accent">Python</span>, <span className="text-accent-2">Java</span>, and <span className="text-accent-3">Swift</span>, as well as frameworks such as <span className="text-accent">React.js</span>, <span className="text-accent-2">Node.js</span>, and <span className="text-accent-3">Pytorch</span>. Always eager to learn and tackle new challenges, I'm excited about opportunities to create impactful applications that push the boundaries of technology.
             </p>
             
             <div className="flex border-b border-gray-800 mb-6">
@@ -178,12 +178,17 @@ const About = () => {
               {activeTab === 'experience' && (
                 <div className="space-y-8">
                   {experience.map((item) => (
-                    <div key={item.id} className="relative pl-8 border-l-2 border-accent-2">
-                      <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-accent-2"></div>
+                    <div key={item.id} className={`relative pl-8 border-l-2 ${item.isUpcoming ? 'border-accent' : 'border-accent-2'}`}>
+                      <div className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full ${item.isUpcoming ? 'bg-accent' : 'bg-accent-2'}`}></div>
                       <div className="space-y-2">
-                        <h3 className="text-2xl font-bold text-accent-2">{item.company}</h3>
+                        <h3 className={`text-2xl font-bold ${item.isUpcoming ? 'text-accent' : 'text-accent-2'}`}>{item.company}</h3>
                         <p className="text-lg text-gray-300">{item.position}</p>
                         <p className="text-sm text-gray-400">{item.duration}</p>
+                        {item.isUpcoming && (
+                          <span className="inline-block px-3 py-1 text-sm font-semibold text-accent bg-accent/10 rounded-full">
+                            Upcoming Position
+                          </span>
+                        )}
                         {item.description && (
                           <p className="text-gray-300 mt-2">{item.description}</p>
                         )}

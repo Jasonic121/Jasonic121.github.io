@@ -1,7 +1,14 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function WatchPoint() {
+  const router = useRouter();
+
+  const handleBack = () => {
+    router.push('/#projects');
+  };
+
   return (
     <>
       <Head>
@@ -10,10 +17,12 @@ export default function WatchPoint() {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
       </Head>
 
-      <a href="/" className="back-button">
-        <i className="fas fa-arrow-left"></i>
-        Back to Projects
-      </a>
+      <button onClick={handleBack} className="back-button">
+        <div className="flex items-center gap-0.5">
+          <i className="fas fa-arrow-left"></i>
+          Back to Projects
+        </div>
+      </button>
 
       <header className="project-header">
         <h1>WatchPoint</h1>
@@ -83,6 +92,44 @@ export default function WatchPoint() {
             <li>Customizable solutions for different age groups and family needs</li>
             <li>Easy-to-use interface for parents to ensure their children's digital safety</li>
           </ul>
+        </section>
+
+        <section className="project-section">
+          <h2>Photo Gallery</h2>
+          <div className="photo-gallery">
+            <div className="photo-item">
+              <img 
+                src="/images/projects/watchpoint/NOVA-award-pic.jpg" 
+                alt="WatchPoint Team with NOVA Award" 
+                className="gallery-image"
+              />
+              <div className="photo-caption">Team receiving the Bronze Medal</div>
+            </div>
+            <div className="photo-item">
+              <img 
+                src="/images/projects/watchpoint/GroupPhotoWhileHacking.JPG" 
+                alt="Team working during hackathon" 
+                className="gallery-image"
+              />
+              <div className="photo-caption">Team collaborating during the development phase</div>
+            </div>
+            <div className="photo-item">
+              <img 
+                src="/images/projects/watchpoint/Hackathon-opening.JPG" 
+                alt="Hackathon opening ceremony" 
+                className="gallery-image"
+              />
+              <div className="photo-caption">Opening ceremony of the CMU Hackathon</div>
+            </div>
+            <div className="photo-item">
+              <img 
+                src="/images/projects/watchpoint/LockingIn.jpg" 
+                alt="Team focused on coding" 
+                className="gallery-image"
+              />
+              <div className="photo-caption">Team locked in during intense coding session</div>
+            </div>
+          </div>
         </section>
       </main>
 
@@ -240,9 +287,8 @@ export default function WatchPoint() {
         }
 
         .tech-tag:hover {
-          transform: translateY(-1px);
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-          background: #1e3a8a;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .award-badges {
@@ -338,6 +384,45 @@ export default function WatchPoint() {
             font-size: 1rem;
             padding: 0.875rem 1.75rem;
           }
+        }
+
+        .photo-gallery {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          margin-top: 2rem;
+        }
+
+        .photo-item {
+          position: relative;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover {
+          transform: translateY(-5px);
+        }
+
+        .gallery-image {
+          width: 100%;
+          height: 300px;
+          object-fit: cover;
+          display: block;
+        }
+
+        .photo-caption {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: rgba(0, 0, 0, 0.5);
+          color: white;
+          padding: 0.5rem;
+          font-size: 0.9rem;
+          text-align: center;
+          backdrop-filter: blur(4px);
         }
       `}</style>
     </>

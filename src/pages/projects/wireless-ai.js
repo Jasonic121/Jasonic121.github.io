@@ -1,10 +1,17 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { FaArrowLeft, FaStar, FaMicrophone, FaGithub, FaFileAlt } from 'react-icons/fa';
 
 export default function WirelessAIProject() {
+  const router = useRouter();
+
+  const handleBack = () => {
+    router.push('/#projects');
+  };
+
   return (
     <>
       <Head>
@@ -13,10 +20,12 @@ export default function WirelessAIProject() {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
       </Head>
 
-      <a href="/" className="back-button">
-        <i className="fas fa-arrow-left"></i>
-        Back to Projects
-      </a>
+      <button onClick={handleBack} className="back-button">
+        <div className="flex items-center gap-0.5">
+          <i className="fas fa-arrow-left"></i>
+          Back to Projects
+        </div>
+      </button>
 
       <header className="project-header">
         <h1>Conversational AI for Wireless Networks</h1>

@@ -1,5 +1,12 @@
 export const experience = [
   {
+    id: 0,
+    position: "Software Engineer",
+    company: "Apple",
+    duration: "June 2025 - Present",
+    isUpcoming: true,
+  },
+  {
     id: 1,
     position: "Software Engineering Intern",
     company: "Apple",

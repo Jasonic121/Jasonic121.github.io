@@ -1,7 +1,14 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Santorini() {
+  const router = useRouter();
+
+  const handleBack = () => {
+    router.push('/#projects');
+  };
+
   return (
     <>
       <Head>
@@ -10,10 +17,12 @@ export default function Santorini() {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
       </Head>
 
-      <a href="/" className="back-button">
-        <i className="fas fa-arrow-left"></i>
-        Back to Projects
-      </a>
+      <button onClick={handleBack} className="back-button">
+        <div className="flex items-center gap-0.5">
+          <i className="fas fa-arrow-left"></i>
+          Back to Projects
+        </div>
+      </button>
 
       <header className="project-header">
         <h1>Web Board Game: Santorini</h1>

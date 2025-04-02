@@ -9,6 +9,11 @@ const Header = () => {
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
   useEffect(() => {
+    // Prevent automatic scrolling to anchor on page load
+    if (window.location.hash) {
+      window.history.replaceState(null, null, ' ');
+    }
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
