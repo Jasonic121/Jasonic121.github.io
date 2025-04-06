@@ -3,7 +3,7 @@ export const experience = [
     id: 0,
     position: "Software Engineer",
     company: "Apple",
-    duration: "June 2025 - Present",
+    duration: "June 2025",
     isUpcoming: true,
   },
   {
