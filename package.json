@@ -11,10 +11,14 @@
   },
   "dependencies": {
     "framer-motion": "^6.3.0",
+    "googleapis": "^148.0.0",
+    "gray-matter": "^4.0.3",
     "next": "12.1.5",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-icons": "^4.3.1",
+    "remark": "^14.0.3",
+    "remark-html": "^15.0.2",
     "typed.js": "^2.0.12"
   },
   "devDependencies": {
