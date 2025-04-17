@@ -24,6 +24,7 @@ const TypedText = () => {
           typedInstance = new Typed(elementRef.current, {
             strings: [
               'Software Engineer',
+              'CMU Alumni',
               'Tennis Lover',
               'Problem Solver',
               'AI Enthusiast',
@@ -140,7 +141,7 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-amber-400"></div>
               <div className="absolute inset-[2px] rounded-full overflow-hidden">
                 <img 
-                  src="/assets/images/profilepic.JPG" 
+                  src="/assets/images/Graduation.JPG" 
                   alt="Profile" 
                   className="w-full h-full object-cover"
                 />

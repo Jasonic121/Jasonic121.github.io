@@ -9,12 +9,12 @@ const About = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const images = [
+    '/assets/images/Graduation.JPG',
     '/assets/images/apple-jason.JPG',
     '/assets/images/logi-jason.png',
     '/assets/images/CMU-id.jpg',
     '/assets/images/AboutMe.JPG',
-    '/assets/images/jason-conference.JPG',
-    '/assets/images/main-bg.JPG',
+    '/assets/images/jason-conference.JPG'
   ];
 
   useEffect(() => {
