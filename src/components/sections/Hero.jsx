@@ -158,9 +158,11 @@ const Hero = () => {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
               <span className="bg-gradient-to-r from-blue-400 to-amber-400 text-transparent bg-clip-text">Hello, I'm a</span>
             </h2>
-            <h1 className="text-5xl md:text-6xl font-mono font-bold mb-4">
-              <TypedText />
-            </h1>
+            <div className="h-[110px] md:h-[100px] mb-4 md:mb-4">
+              <h1 className="text-5xl md:text-6xl font-mono font-bold">
+                <TypedText />
+              </h1>
+            </div>
             <p className="text-lg text-gray-300 mb-8">
               Lover of building products using technology.
             </p>

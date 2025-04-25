@@ -15,8 +15,8 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
       // Container height is 300px (from CommentWall), leave 70px spacing for bubble height
       const availableHeight = 300 - 70;
       const sectionHeight = availableHeight / totalCount;
-      // Position each bubble within its section plus a small random offset
-      yPosition = (index * sectionHeight) + (Math.random() * 10);
+      // Position each bubble within its section with a smaller random offset
+      yPosition = (index * sectionHeight) + (Math.random() * 5);
       
       // Keep bubbles within reasonable bounds (10px-240px)
       yPosition = Math.max(10, Math.min(yPosition, 240));
@@ -28,40 +28,40 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
     // Calculate horizontal distance to travel (container width + bubble width)
     const distance = 2000; // Wider to ensure full traversal on all screen sizes
     
-    // Random speed/duration between 20-40 seconds for full traversal
-    const duration = 20 + Math.random() * 20;
+    // More consistent speeds between 25-35 seconds for full traversal
+    const duration = 25 + Math.random() * 10;
     
-    // Small vertical bobbing motion
-    const yVariation = 5 + Math.random() * 5; // Reduced vertical variation to minimize overlap
+    // Smaller vertical bobbing motion
+    const yVariation = 3 + Math.random() * 3; // Reduced vertical variation to minimize overlap
     
     return {
       x: -distance, // Move left (negative x direction)
       yPosition,
       yVariation,
       duration,
-      delay
+      delay: delay * 2 // Double the delay to space out appearance
     };
   });
   
-  // Generate a random rotation for additional effect
-  const rotation = Math.random() * 6 - 3;
+  // Generate a smaller rotation for subtle effect
+  const rotation = Math.random() * 4 - 2;
   
   // Get a random bubble style from site color scheme
   const [bubbleStyle] = useState(() => {
     // Bubble background colors based on the website's theme
     const colors = [
-      'bg-accent/10',     // Teal accent
-      'bg-accent-2/10',   // Purple accent
-      'bg-accent-3/10',   // Orange accent
-      'bg-button/10',     // Button color (purple)
+      'bg-accent/30',     // Teal accent - increased opacity from 10% to 30%
+      'bg-accent-2/30',   // Purple accent - increased opacity from 10% to 30%
+      'bg-accent-3/30',   // Orange accent - increased opacity from 10% to 30%
+      'bg-button/30',     // Button color (purple) - increased opacity from 10% to 30%
     ];
     
     // Matching border colors
     const borderClasses = [
-      'border-accent/30',
-      'border-accent-2/30',
-      'border-accent-3/30',
-      'border-button/30',
+      'border-accent/50',  // Increased opacity from 30% to 50%
+      'border-accent-2/50',
+      'border-accent-3/50',
+      'border-button/50',
     ];
     
     const colorIndex = Math.floor(Math.random() * colors.length);
@@ -119,9 +119,10 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
     <motion.div
       className={`absolute rounded-xl overflow-hidden backdrop-blur-sm ${bubbleStyle.colorClass} border ${bubbleStyle.borderClass} shadow-lg`}
       style={{ 
-        // Stagger starting positions based on index to prevent bubbles from all starting at the same point
-        right: -200 + (index * 300 % 800), // Distribute starting positions
-        top: animation.yPosition // Position based on calculated vertical position
+        // Position at the right edge of the container
+        right: -220, // Start just outside the right edge
+        top: animation.yPosition, // Position based on calculated vertical position
+        boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)' // Add subtle glow effect
       }}
       animate={controls}
       initial={{ 
@@ -136,7 +137,7 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
         transition: { duration: 0.3 }
       }}
     >
-      <div className="p-4 max-w-[220px]">
+      <div className="p-4 max-w-[220px] bg-black/40">
         {React.Children.map(children, child => {
           // If it's a direct text content div, apply our styling
           if (React.isValidElement(child) && child.type === 'div') {
@@ -155,7 +156,7 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
                 // Message text is white
                 if (index === 1) {
                   return React.cloneElement(subChild, {
-                    className: "text-sm mt-1 text-white"
+                    className: "text-sm mt-1 text-white font-medium"
                   });
                 }
                 // Timestamp stays semi-transparent

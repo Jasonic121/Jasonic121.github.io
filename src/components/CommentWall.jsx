@@ -70,7 +70,7 @@ const CommentWall = () => {
         setName('');
         
         // Show success message
-        setSuccessMessage('Your message is floating through space... and awaiting approval! ✨');
+        setSuccessMessage('Your graduation message has lifted off! It will appear in the sky after approval. 🎓');
         
         // Hide form after successful submission
         setShowForm(false);
@@ -92,7 +92,7 @@ const CommentWall = () => {
     if (successMessage) {
       const timer = setTimeout(() => {
         setSuccessMessage(null);
-      }, 5000);
+      }, 10000);
       
       return () => clearTimeout(timer);
     }
@@ -112,9 +112,9 @@ const CommentWall = () => {
     const emojis = {
       happy: '😊',
       excited: '🤩',
-      curious: '🧐',
+      curious: '🎓',
       surprised: '😲',
-      thoughtful: '🤔',
+      thoughtful: '🎊',
       sad: '😔'
     };
     return emojis[selectedMood] || '😊';
@@ -122,7 +122,7 @@ const CommentWall = () => {
 
   return (
     <div className="w-full my-12">
-      <h2 className="text-3xl font-bold text-center mb-6 text-white">See what others say</h2>
+      <h2 className="text-3xl font-bold text-center mb-6 text-white">Graduation Congratulations Wall</h2>
       
       {/* Success message */}
       {successMessage && (
@@ -144,8 +144,17 @@ const CommentWall = () => {
       {/* Floating bubbles container with transparent background */}
       <div 
         ref={commentContainerRef}
-        className="relative h-[300px] w-full overflow-hidden my-8 border border-button/20 rounded-xl bg-background/30 backdrop-blur-sm"
+        className="relative h-[300px] w-full overflow-hidden my-8 border border-button/20 rounded-xl backdrop-blur-sm"
+        style={{
+          backgroundImage: 'url("/assets/images/Sky.JPG")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
       >
+        {/* Semi-transparent overlay for better text readability */}
+        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+        
         {isLoading ? (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-button"></div>
@@ -154,7 +163,7 @@ const CommentWall = () => {
           <>
             {comments.length === 0 ? (
               <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-primary/60 text-lg">No comments yet. Be the first to leave a message!</p>
+                <p className="text-primary/60 text-lg">No congratulations yet. Be the first to leave a graduation message!</p>
               </div>
             ) : (
               <>
@@ -162,7 +171,7 @@ const CommentWall = () => {
                   <FloatingBubble 
                     key={comment.id || index} 
                     initialPosition={comment.position}
-                    delay={index * 3} // Increased delay between bubbles for better spacing
+                    delay={index * 2} // Increased delay between bubbles to space them out more
                     index={index}
                     totalCount={comments.length}
                   >
@@ -190,11 +199,11 @@ const CommentWall = () => {
       <div className="flex justify-center mb-8">
         <motion.button
           onClick={() => setShowForm(!showForm)}
-          className="bg-button hover:bg-button/80 text-white font-mono px-6 py-3 rounded-full flex items-center gap-2 group transform hover:scale-105 transition-all duration-300"
+          className="bg-gradient-to-r from-accent via-accent-2 to-accent-3 hover:bg-gradient-to-r hover:from-accent/90 hover:via-accent-2/90 hover:to-accent-3/90 text-white font-mono px-6 py-3 rounded-full flex items-center gap-2 group transform hover:scale-105 transition-all duration-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <span>{showForm ? 'Hide Form' : 'Leave a Message'}</span>
+          <span>{showForm ? 'Hide Form' : 'Congratulate Me!'}</span>
           <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
         </motion.button>
       </div>
@@ -209,7 +218,7 @@ const CommentWall = () => {
           className="max-w-md mx-auto mb-10 bg-background/90 backdrop-blur-lg p-6 rounded-xl border border-button/20 shadow-lg"
         >
           <h2 className="text-2xl font-bold text-center mb-6 text-white">
-            Share Your Thoughts <span className="animate-pulse">✨</span>
+            Send Your Congratulations <span className="animate-pulse">🎓</span>
           </h2>
           
           {error && (
@@ -257,14 +266,14 @@ const CommentWall = () => {
             
             <div className="mb-6">
               <label htmlFor="comment" className="block text-sm font-medium mb-1 text-button">
-                <span className="inline-block mr-2">💭</span> Your Message
+                <span className="inline-block mr-2">🎉</span> Your Congratulations Message
               </label>
               <textarea
                 id="comment"
                 value={newComment}
                 onChange={(e) => setNewComment(sanitizeInput(e.target.value))}
                 className="w-full px-4 py-2 bg-background/80 border border-button/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-button text-white"
-                placeholder="Share something cool, ask a question, or just say hi!"
+                placeholder="Share your graduation wishes, memories, or say hello :-)"
                 rows="3"
                 required
               />
@@ -272,7 +281,7 @@ const CommentWall = () => {
             
             <motion.button 
               type="submit" 
-              className="w-full bg-button hover:bg-button/90 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 transform hover:translate-y-[-2px]"
+              className="w-full bg-gradient-to-r from-accent via-accent-2 to-accent-3 hover:bg-gradient-to-r hover:from-accent/90 hover:via-accent-2/90 hover:to-accent-3/90 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 transform hover:translate-y-[-2px]"
               disabled={isLoading}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -287,8 +296,8 @@ const CommentWall = () => {
                 </span>
               ) : (
                 <span className="flex items-center justify-center">
-                  <span>Send Message</span>
-                  <span className="ml-2">✨</span>
+                  <span>Send Congratulations</span>
+                  <span className="ml-2">🎓</span>
                 </span>
               )}
             </motion.button>
