@@ -3,6 +3,7 @@ import Layout from '../components/layout/Layout';
 import Hero from '../components/sections/Hero';
 import About from '../components/sections/About';
 import Projects from '../components/sections/Projects';
+import CommentWall from '../components/CommentWall';
 
 export default function Home() {
   return (
@@ -14,6 +15,9 @@ export default function Home() {
       </Head>
 
       <Hero />
+      <div className="container mx-auto px-4">
+        <CommentWall />
+      </div>
       <About />
       <Projects />
     </Layout>

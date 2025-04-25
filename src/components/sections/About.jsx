@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { skills } from '../../data/skills';
 import { education } from '../../data/education';
 import { experience } from '../../data/experience';
 
 const About = () => {
-  const [activeTab, setActiveTab] = useState('skills');
+  const [activeTab, setActiveTab] = useState('experience');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isAutoplay, setIsAutoplay] = useState(true);
+  const [isImageTransitioning, setIsImageTransitioning] = useState(false);
+  const autoplayTimeoutRef = useRef(null);
+  const autoplayIntervalRef = useRef(null);
   
   const images = [
     '/assets/images/Graduation.JPG',
@@ -18,15 +22,49 @@ const About = () => {
   ];
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 4500); // Increased to 5 seconds to give more time to view each image
+    if (isAutoplay) {
+      autoplayIntervalRef.current = setInterval(() => {
+        if (!isImageTransitioning) {
+          setIsImageTransitioning(true);
+          setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+          
+          setTimeout(() => {
+            setIsImageTransitioning(false);
+          }, 600);
+        }
+      }, 4500);
+    }
 
-    return () => clearInterval(timer);
-  }, []);
+    return () => {
+      if (autoplayIntervalRef.current) {
+        clearInterval(autoplayIntervalRef.current);
+      }
+    };
+  }, [isAutoplay, images.length, isImageTransitioning]);
 
   const handleImageChange = (index) => {
+    if (isImageTransitioning || index === currentImageIndex) return;
+    
+    setIsAutoplay(false);
+    setIsImageTransitioning(true);
     setCurrentImageIndex(index);
+    
+    setTimeout(() => {
+      setIsImageTransitioning(false);
+    }, 600);
+    
+    if (autoplayTimeoutRef.current) {
+      clearTimeout(autoplayTimeoutRef.current);
+    }
+    
+    autoplayTimeoutRef.current = setTimeout(() => {
+      setIsAutoplay(true);
+    }, 10000);
+  };
+  
+  const handleTabChange = (tabName) => {
+    if (tabName === activeTab) return;
+    setActiveTab(tabName);
   };
   
   return (
@@ -42,7 +80,7 @@ const About = () => {
           About Me
         </motion.h2>
         
-        <div className="flex flex-col md:flex-row items-center gap-12">
+        <div className="flex flex-col md:flex-row items-start gap-12">
           <motion.div 
             className="w-full md:w-1/2"
             initial={{ opacity: 0, x: -50 }}
@@ -57,9 +95,9 @@ const About = () => {
                   src={images[currentImageIndex]}
                   alt="Profile" 
                   className="w-full h-full object-cover absolute"
-                  initial={{ x: 100, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -100, opacity: 0 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{ 
                     duration: 0.5,
                     ease: "easeInOut"
@@ -99,25 +137,25 @@ const About = () => {
             <div className="flex border-b border-gray-800 mb-6">
               <button 
                 className={`px-4 py-2 ${activeTab === 'experience' ? 'border-b-2 border-accent text-accent' : 'text-gray-400'}`}
-                onClick={() => setActiveTab('experience')}
+                onClick={() => handleTabChange('experience')}
               >
                 Experience
               </button>
               <button 
                 className={`px-4 py-2 ${activeTab === 'education' ? 'border-b-2 border-accent text-accent' : 'text-gray-400'}`}
-                onClick={() => setActiveTab('education')}
+                onClick={() => handleTabChange('education')}
               >
                 Education
               </button>
               <button 
                 className={`px-4 py-2 ${activeTab === 'skills' ? 'border-b-2 border-accent text-accent' : 'text-gray-400'}`}
-                onClick={() => setActiveTab('skills')}
+                onClick={() => handleTabChange('skills')}
               >
                 Skills
               </button>
             </div>
             
-            <div className="min-h-[400px]">
+            <div className="min-h-[300px]">
               {activeTab === 'skills' && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-4">
