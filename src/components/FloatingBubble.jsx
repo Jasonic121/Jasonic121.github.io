@@ -7,64 +7,48 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
   
   // Generate random animation parameters
   const [animation] = useState(() => {
-    // Calculate vertical position based on index to avoid overlaps
-    // If we have the index and total count, evenly distribute bubbles
-    let yPosition;
-    if (index !== undefined && totalCount > 1) {
-      // Only use the top third of the container (500px / 3 ≈ 167px)
-      // Leave 120px spacing for bubble height within this region
-      const maxHeight = 167;
-      const availableHeight = maxHeight - 120;
-      const sectionHeight = availableHeight / totalCount;
-      // Position each bubble exactly in the middle of its section
-      yPosition = (index * sectionHeight) + (sectionHeight / 2);
-      
-      // Keep bubbles within reasonable bounds (30px-140px)
-      yPosition = Math.max(30, Math.min(yPosition, 140));
-    } else {
-      // Fallback to upper area if index/totalCount aren't provided
-      yPosition = 85; // Middle of the upper third
-    }
+    // Determine which row this bubble should be in (top or bottom)
+    const isTopRow = index % 2 === 0;
+    
+    // Calculate vertical position based on row
+    const yPosition = isTopRow ? 50 : 200; // Top row at y=100px, bottom row at y=300px
     
     // Calculate horizontal distance to travel (container width + bubble width)
     const distance = 2000; // Wider to ensure full traversal on all screen sizes
     
-    // Use consistent speed for all bubbles
-    const duration = 30; // Fixed 30 seconds for all bubbles
+    // Use faster animation duration
+    const duration = 30; // Reduced from 30 to 20 seconds
     
     // Calculate delay based on index to spread bubbles horizontally
-    // Each bubble starts 1/6 of the total duration after the previous one
-    // This creates more frequent bubbles while still maintaining spacing
-    const baseDelay = (index * duration) / 6;
+    // Each bubble starts 1/8 of the total duration after the previous one (reduced from 1/6)
+    const baseDelay = (index * duration) / 8;
     
     // Smaller vertical bobbing motion
-    const yVariation = 1 + Math.random() * 1; // Further reduced vertical variation
+    const yVariation = 1 + Math.random() * 1; // Small vertical variation
     
     return {
-      x: -distance, // Move left (negative x direction)
+      x: -distance,
       yPosition,
       yVariation,
       duration,
-      delay: baseDelay // Use calculated delay for even horizontal spacing
+      delay: baseDelay
     };
   });
   
   // Generate a smaller rotation for subtle effect
-  const rotation = Math.random() * 2 - 1; // Reduced rotation range
+  const rotation = Math.random() * 2 - 1;
   
   // Get a random bubble style from site color scheme
   const [bubbleStyle] = useState(() => {
-    // Bubble background colors based on the website's theme
     const colors = [
-      'bg-accent/30',     // Teal accent - increased opacity from 10% to 30%
-      'bg-accent-2/30',   // Purple accent - increased opacity from 10% to 30%
-      'bg-accent-3/30',   // Orange accent - increased opacity from 10% to 30%
-      'bg-button/30',     // Button color (purple) - increased opacity from 10% to 30%
+      'bg-accent/30',
+      'bg-accent-2/30',
+      'bg-accent-3/30',
+      'bg-button/30',
     ];
     
-    // Matching border colors
     const borderClasses = [
-      'border-accent/50',  // Increased opacity from 30% to 50%
+      'border-accent/50',
       'border-accent-2/50',
       'border-accent-3/50',
       'border-button/50',
@@ -84,15 +68,11 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
 
   // Start the animation when component mounts
   useEffect(() => {
-    // Calculate safe vertical movement range based on index
-    // Less vertical movement for higher bubble counts
-    const safeYVariation = totalCount > 3 ? animation.yVariation / 2 : animation.yVariation;
-    
     controls.start({
       opacity: 1,
       scale: 1,
       x: [0, animation.x],
-      y: [0, safeYVariation, -safeYVariation, safeYVariation, 0],
+      y: [0, animation.yVariation, -animation.yVariation, animation.yVariation, 0],
       rotate: [0, rotation, 0, -rotation, 0],
       transition: {
         x: {
@@ -100,10 +80,10 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
           repeat: Infinity,
           repeatType: "loop",
           ease: "linear",
-          repeatDelay: (totalCount * animation.duration) / 6 - animation.duration // Wait for all bubbles to finish before repeating
+          repeatDelay: (totalCount * animation.duration) / 8 - animation.duration
         },
         y: {
-          duration: animation.duration / 8, // Even slower vertical movement
+          duration: animation.duration / 8,
           repeat: Infinity,
           repeatType: "reverse",
           ease: "easeInOut"
@@ -114,24 +94,22 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
           repeatType: "reverse",
           ease: "easeInOut"
         },
-        opacity: { duration: 0.8 },
-        scale: { duration: 0.8 },
+        opacity: { duration: 0.5 }, // Faster fade in
+        scale: { duration: 0.5 }, // Faster scale animation
         delay: animation.delay
       }
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <motion.div
       className={`absolute rounded-xl overflow-hidden backdrop-blur-sm ${bubbleStyle.colorClass} border ${bubbleStyle.borderClass} shadow-lg`}
       style={{ 
-        // Position at the right edge of the container
-        right: -220, // Start just outside the right edge
-        top: animation.yPosition, // Position based on calculated vertical position
-        boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)', // Add subtle glow effect
-        width: 'max-content', // Ensure the bubble takes only the space it needs
-        maxWidth: '220px' // Maximum width constraint
+        right: -220,
+        top: animation.yPosition,
+        boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)',
+        width: 'max-content',
+        maxWidth: '220px'
       }}
       animate={controls}
       initial={{ 
@@ -148,27 +126,22 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
     >
       <div className="p-4 max-w-[220px] bg-black/40">
         {React.Children.map(children, child => {
-          // If it's a direct text content div, apply our styling
           if (React.isValidElement(child) && child.type === 'div') {
             return React.cloneElement(child, {
               className: `p-4 max-w-[220px]`
             }, 
-            // Process its children to apply the right text color
             React.Children.map(child.props.children, (subChild, index) => {
               if (React.isValidElement(subChild) && subChild.type === 'p') {
-                // First paragraph (name) gets the accent color
                 if (index === 0) {
                   return React.cloneElement(subChild, {
                     className: `font-bold text-sm ${bubbleStyle.textClass}`
                   });
                 }
-                // Message text is white
                 if (index === 1) {
                   return React.cloneElement(subChild, {
                     className: "text-sm mt-1 text-white font-medium"
                   });
                 }
-                // Timestamp stays semi-transparent
                 if (index === 2) {
                   return React.cloneElement(subChild, {
                     className: "text-xs text-white/60 mt-2"

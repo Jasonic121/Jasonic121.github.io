@@ -158,7 +158,7 @@ const CommentWall = () => {
       {/* Floating bubbles container with transparent background */}
       <div 
         ref={commentContainerRef}
-        className="relative h-[400px] w-full overflow-hidden my-8 border border-button/20 rounded-xl backdrop-blur-sm"
+        className="relative h-[500px] w-full overflow-hidden my-8 border border-button/20 rounded-xl backdrop-blur-sm"
         style={{
           backgroundImage: 'url("/assets/images/Sky.JPG")',
           backgroundSize: 'cover',
