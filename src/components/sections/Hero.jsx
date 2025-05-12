@@ -141,7 +141,7 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-amber-400"></div>
               <div className="absolute inset-[2px] rounded-full overflow-hidden">
                 <img 
-                  src="/assets/images/Graduation.JPG" 
+                  src="/assets/images/Grad_TeddyBear.jpeg" 
                   alt="Profile" 
                   className="w-full h-full object-cover"
                 />

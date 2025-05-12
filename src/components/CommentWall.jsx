@@ -13,6 +13,17 @@ const CommentWall = () => {
   const [successMessage, setSuccessMessage] = useState(null);
   const commentContainerRef = useRef(null);
   const [mood, setMood] = useState('happy');
+  const [shuffledIndices, setShuffledIndices] = useState([]);
+
+  // Shuffle function using Fisher-Yates algorithm
+  const shuffleArray = (array) => {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+  };
 
   // Fetch comments from Firebase
   useEffect(() => {
@@ -24,7 +35,10 @@ const CommentWall = () => {
         try {
           const data = await getComments();
           console.log('Comments received:', data);
-          setComments(Array.isArray(data) ? data : []);
+          const commentsArray = Array.isArray(data) ? data : [];
+          setComments(commentsArray);
+          // Generate shuffled indices when comments are loaded
+          setShuffledIndices(shuffleArray(Array.from({ length: commentsArray.length }, (_, i) => i)));
         } catch (firebaseError) {
           console.error('Firebase error:', firebaseError);
           setError('Failed to load comments. Please try again later.');
@@ -144,7 +158,7 @@ const CommentWall = () => {
       {/* Floating bubbles container with transparent background */}
       <div 
         ref={commentContainerRef}
-        className="relative h-[300px] w-full overflow-hidden my-8 border border-button/20 rounded-xl backdrop-blur-sm"
+        className="relative h-[400px] w-full overflow-hidden my-8 border border-button/20 rounded-xl backdrop-blur-sm"
         style={{
           backgroundImage: 'url("/assets/images/Sky.JPG")',
           backgroundSize: 'cover',
@@ -167,24 +181,24 @@ const CommentWall = () => {
               </div>
             ) : (
               <>
-                {comments.map((comment, index) => (
+                {shuffledIndices.map((shuffledIndex, displayIndex) => (
                   <FloatingBubble 
-                    key={comment.id || index} 
-                    initialPosition={comment.position}
-                    delay={index * 2} // Increased delay between bubbles to space them out more
-                    index={index}
+                    key={comments[shuffledIndex].id || shuffledIndex} 
+                    initialPosition={comments[shuffledIndex].position}
+                    delay={displayIndex * 2} // Use displayIndex for delay to maintain spacing
+                    index={displayIndex}
                     totalCount={comments.length}
                   >
                     <div className="p-4 max-w-[220px] backdrop-blur-sm">
-                      <p className="font-bold text-sm">{comment.name}</p>
-                      <p className="text-sm mt-1 text-white">{comment.text}</p>
-                      {comment.timestamp && (
+                      <p className="font-bold text-sm">{comments[shuffledIndex].name}</p>
+                      <p className="text-sm mt-1 text-white">{comments[shuffledIndex].text}</p>
+                      {comments[shuffledIndex].timestamp && (
                         <p className="text-xs text-white/60 mt-2">
-                          {new Date(comment.timestamp).toLocaleDateString()}
+                          {new Date(comments[shuffledIndex].timestamp).toLocaleDateString()}
                         </p>
                       )}
-                      {comment.mood && (
-                        <span className="text-xl absolute -top-0 -right-0">{getMoodEmoji(comment.mood)}</span>
+                      {comments[shuffledIndex].mood && (
+                        <span className="text-xl absolute -top-0 -right-0">{getMoodEmoji(comments[shuffledIndex].mood)}</span>
                       )}
                     </div>
                   </FloatingBubble>

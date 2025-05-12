@@ -11,40 +11,46 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
     // If we have the index and total count, evenly distribute bubbles
     let yPosition;
     if (index !== undefined && totalCount > 1) {
-      // Divide the container into sections based on bubble count
-      // Container height is 300px (from CommentWall), leave 70px spacing for bubble height
-      const availableHeight = 300 - 70;
+      // Only use the top third of the container (500px / 3 ≈ 167px)
+      // Leave 120px spacing for bubble height within this region
+      const maxHeight = 167;
+      const availableHeight = maxHeight - 120;
       const sectionHeight = availableHeight / totalCount;
-      // Position each bubble within its section with a smaller random offset
-      yPosition = (index * sectionHeight) + (Math.random() * 5);
+      // Position each bubble exactly in the middle of its section
+      yPosition = (index * sectionHeight) + (sectionHeight / 2);
       
-      // Keep bubbles within reasonable bounds (10px-240px)
-      yPosition = Math.max(10, Math.min(yPosition, 240));
+      // Keep bubbles within reasonable bounds (30px-140px)
+      yPosition = Math.max(30, Math.min(yPosition, 140));
     } else {
-      // Fallback to random position if index/totalCount aren't provided
-      yPosition = 10 + Math.random() * 40; // Range of 10-50px from the top
+      // Fallback to upper area if index/totalCount aren't provided
+      yPosition = 85; // Middle of the upper third
     }
     
     // Calculate horizontal distance to travel (container width + bubble width)
     const distance = 2000; // Wider to ensure full traversal on all screen sizes
     
-    // More consistent speeds between 25-35 seconds for full traversal
-    const duration = 25 + Math.random() * 10;
+    // Use consistent speed for all bubbles
+    const duration = 30; // Fixed 30 seconds for all bubbles
+    
+    // Calculate delay based on index to spread bubbles horizontally
+    // Each bubble starts 1/6 of the total duration after the previous one
+    // This creates more frequent bubbles while still maintaining spacing
+    const baseDelay = (index * duration) / 6;
     
     // Smaller vertical bobbing motion
-    const yVariation = 3 + Math.random() * 3; // Reduced vertical variation to minimize overlap
+    const yVariation = 1 + Math.random() * 1; // Further reduced vertical variation
     
     return {
       x: -distance, // Move left (negative x direction)
       yPosition,
       yVariation,
       duration,
-      delay: delay * 2 // Double the delay to space out appearance
+      delay: baseDelay // Use calculated delay for even horizontal spacing
     };
   });
   
   // Generate a smaller rotation for subtle effect
-  const rotation = Math.random() * 4 - 2;
+  const rotation = Math.random() * 2 - 1; // Reduced rotation range
   
   // Get a random bubble style from site color scheme
   const [bubbleStyle] = useState(() => {
@@ -85,7 +91,7 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
     controls.start({
       opacity: 1,
       scale: 1,
-      x: animation.x,
+      x: [0, animation.x],
       y: [0, safeYVariation, -safeYVariation, safeYVariation, 0],
       rotate: [0, rotation, 0, -rotation, 0],
       transition: {
@@ -93,16 +99,17 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
           duration: animation.duration,
           repeat: Infinity,
           repeatType: "loop",
-          ease: "linear"
+          ease: "linear",
+          repeatDelay: (totalCount * animation.duration) / 6 - animation.duration // Wait for all bubbles to finish before repeating
         },
         y: {
-          duration: animation.duration / 5,
+          duration: animation.duration / 8, // Even slower vertical movement
           repeat: Infinity,
           repeatType: "reverse",
           ease: "easeInOut"
         },
         rotate: {
-          duration: animation.duration / 6,
+          duration: animation.duration / 8,
           repeat: Infinity,
           repeatType: "reverse",
           ease: "easeInOut"
@@ -122,7 +129,9 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
         // Position at the right edge of the container
         right: -220, // Start just outside the right edge
         top: animation.yPosition, // Position based on calculated vertical position
-        boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)' // Add subtle glow effect
+        boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)', // Add subtle glow effect
+        width: 'max-content', // Ensure the bubble takes only the space it needs
+        maxWidth: '220px' // Maximum width constraint
       }}
       animate={controls}
       initial={{ 
