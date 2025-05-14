@@ -10,8 +10,10 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
     // Determine which row this bubble should be in (top or bottom)
     const isTopRow = index % 2 === 0;
     
-    // Calculate vertical position based on row
-    const yPosition = isTopRow ? 50 : 200; // Top row at y=100px, bottom row at y=300px
+    // Calculate vertical position based on row with random range
+    const topRowRange = Math.random() * 50 + 25; // Random position between 25-75px
+    const bottomRowRange = Math.random() * 50 + 175; // Random position between 175-225px
+    const yPosition = isTopRow ? topRowRange : bottomRowRange;
     
     // Calculate horizontal distance to travel (container width + bubble width)
     const distance = 2000; // Wider to ensure full traversal on all screen sizes
@@ -24,7 +26,7 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
     const baseDelay = (index * duration) / 8;
     
     // Smaller vertical bobbing motion
-    const yVariation = 1 + Math.random() * 1; // Small vertical variation
+    const yVariation = 5 + Math.random() * 5; // Increased from 1 + Math.random() * 1
     
     return {
       x: -distance,
@@ -36,7 +38,7 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
   });
   
   // Generate a smaller rotation for subtle effect
-  const rotation = Math.random() * 2 - 1;
+  const rotation = Math.random() * 10 - 5; // Increased from Math.random() * 2 - 1
   
   // Get a random bubble style from site color scheme
   const [bubbleStyle] = useState(() => {
@@ -73,7 +75,7 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
       scale: 1,
       x: [0, animation.x],
       y: [0, animation.yVariation, -animation.yVariation, animation.yVariation, 0],
-      rotate: [0, rotation, 0, -rotation, 0],
+      rotate: [0, rotation, -rotation, rotation, 0],
       transition: {
         x: {
           duration: animation.duration,
@@ -83,13 +85,13 @@ const FloatingBubble = ({ children, initialPosition, delay = 0, index = 0, total
           repeatDelay: (totalCount * animation.duration) / 8 - animation.duration
         },
         y: {
-          duration: animation.duration / 8,
+          duration: animation.duration / 4,
           repeat: Infinity,
           repeatType: "reverse",
           ease: "easeInOut"
         },
         rotate: {
-          duration: animation.duration / 8,
+          duration: animation.duration / 4,
           repeat: Infinity,
           repeatType: "reverse",
           ease: "easeInOut"
