@@ -239,12 +239,6 @@ const Hero = () => {
           </div>
           <div className="flex flex-col items-center justify-start mx-4 my-4 sm:my-0 h-full">
             <h2 className="text-white sm:text-4xl text-xl font-bold flex flex-row">
-              <AnimatedCounter end={4} label="" />
-            </h2>
-            <p className="text-[#ADB7BE] text-base">Side Projects Ongoing 🚀</p>
-          </div>
-          <div className="flex flex-col items-center justify-start mx-4 my-4 sm:my-0 h-full">
-            <h2 className="text-white sm:text-4xl text-xl font-bold flex flex-row">
               <AnimatedCounter end={getCoffeeCount()} label="" />
             +
             </h2>
@@ -256,6 +250,13 @@ const Hero = () => {
             </h2>
             <p className="text-[#ADB7BE] text-base">Countries Visited 🌍</p>
           </div>
+          <div className="flex flex-col items-center justify-start mx-4 my-4 sm:my-0 h-full">
+            <h2 className="text-white sm:text-4xl text-xl font-bold flex flex-row">
+              <AnimatedCounter end={0} label="" />
+            </h2>
+            <p className="text-[#ADB7BE] text-base">Plants Kept Alive 🌱</p>
+          </div>
+
         </div>
       </div>
     </section>
