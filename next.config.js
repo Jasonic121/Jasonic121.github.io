@@ -2,20 +2,28 @@
 const nextConfig = {
   reactStrictMode: true,
   basePath: '',
-  exportPathMap: async function (
-    defaultPathMap,
-    { dev, dir, outDir, distDir, buildId }
-  ) {
-    return {
-      '/': { page: '/' },
-      '/projects/wireless-ai': { page: '/projects/wireless-ai' },
-      '/projects/watchpoint': { page: '/projects/watchpoint' },
-      '/projects/santorini': { page: '/projects/santorini' }
-    }
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.mdx?$/,
+      use: [
+        {
+          loader: '@mdx-js/loader',
+          options: {
+            jsx: true,
+            providerImportSource: '@mdx-js/react',
+            remarkPlugins: [],
+            rehypePlugins: [],
+          },
+        },
+      ],
+    });
+    return config;
   },
-  // Next.js 13 introduced the appDir property
-  // If using Next.js 12 or earlier, this can be removed
-  // appDir: false,
+  images: {
+    domains: ['localhost'],
+    unoptimized: true,
+  },
   // For static site export
   trailingSlash: true,
   // Add your domain if needed

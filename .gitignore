@@ -4,6 +4,9 @@ node_modules/
 # Ignore all files in the .next directory
 .next/
 
+# Ignore Next.js build output
+_next/
+
 # Ignore output directory
 out/
 

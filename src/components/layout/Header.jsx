@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import ContactModal from '../ui/ContactModal';
+import { config } from '../../utils/config';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,7 +62,12 @@ const Header = () => {
               Projects
             </a>
             <Link href="/blog">
-              <a className="hover:text-accent transition-colors text-xl">Blog</a>
+              <a className="hover:text-accent transition-colors text-xl relative">
+                Blog
+                {config.newBlogAvailable && (
+                  <span className="absolute -top-1 -right-3 h-2.5 w-2.5 bg-red-500 rounded-full animate-pulse shadow-[0_0_6px_rgba(239,68,68,0.7)]" />
+                )}
+              </a>
             </Link>
           </nav>
           
@@ -82,7 +88,12 @@ const Header = () => {
                 Projects
               </a>
               <Link href="/blog">
-                <a className="hover:text-accent transition-colors">Blog</a>
+                <a className="hover:text-accent transition-colors relative inline-block">
+                  Blog
+                  {config.newBlogAvailable && (
+                    <span className="absolute -top-1 -right-3 h-2.5 w-2.5 bg-red-500 rounded-full animate-pulse shadow-[0_0_6px_rgba(239,68,68,0.7)]" />
+                  )}
+                </a>
               </Link>
             </div>
           </div>

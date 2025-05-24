@@ -2,9 +2,22 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../components/layout/Layout';
-import { getBlogPosts } from '../../utils/blog';
+import { getAllPosts } from '../../utils/blog';
+import { GetStaticProps } from 'next';
 
-export default function Blog({ posts }) {
+interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
+  coverImage?: string;
+  excerpt?: string;
+}
+
+interface BlogProps {
+  posts: BlogPost[];
+}
+
+export default function Blog({ posts }: BlogProps) {
   return (
     <Layout>
       <Head>
@@ -27,7 +40,7 @@ export default function Blog({ posts }) {
                 <a className="group">
                   <article className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105">
                     {post.coverImage && (
-                      <div className="relative h-48 overflow-hidden">
+                      <div className="relative h-64 overflow-hidden">
                         <img 
                           src={post.coverImage} 
                           alt={post.title} 
@@ -37,7 +50,14 @@ export default function Blog({ posts }) {
                     )}
                     <div className="p-6">
                       <h2 className="text-xl font-semibold mb-2 group-hover:text-amber-400">{post.title}</h2>
-                      <p className="text-gray-400 text-sm mb-4">{new Date(post.date).toLocaleDateString()}</p>
+                      <p className="text-gray-400 text-sm mb-4">
+                        {new Date(post.date).toLocaleDateString('en-US', { 
+                          year: 'numeric', 
+                          month: 'long', 
+                          day: 'numeric',
+                          timeZone: 'UTC'
+                        })}
+                      </p>
                       <p className="line-clamp-3 text-gray-300">{post.excerpt}</p>
                     </div>
                   </article>
@@ -51,12 +71,12 @@ export default function Blog({ posts }) {
   );
 }
 
-export async function getStaticProps() {
-  const posts = getBlogPosts();
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = getAllPosts();
   
   return {
     props: {
       posts,
     },
   };
-} 
+}; 

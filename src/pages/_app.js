@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import '../styles/blog.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect } from 'react';
 import { trackPageView } from '../utils/analytics';

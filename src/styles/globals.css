@@ -1,3 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --primary: #667eea;
+    --primary-light: #764ba2;
+    --accent: #f093fb;
+    --accent-dark: #f5576c;
+    --success: #4facfe;
+    --success-light: #00f2fe;
+    --warning: #ffeaa7;
+    --warning-dark: #fdcb6e;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --dark-glass: rgba(0, 0, 0, 0.15);
+    --text-primary: #ffffff;
+    --text-secondary: #e2e8f0;
+    --text-muted: #94a3b8;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,6 +41,13 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.blog-intro-paragraph {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: inherit;
 }
 
 @layer components {
