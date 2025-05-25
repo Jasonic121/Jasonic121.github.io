@@ -66,28 +66,6 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
         </div>
       )}
 
-      {/* Navigation progress bars - only show if we have more than 1 image */}
-      {/* {images.length > 1 && (
-        <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-1.5 w-full max-w-[200px] z-10">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className="flex-1 group"
-              aria-label={`Go to image ${index + 1}`}
-            >
-              <div
-                className={`h-1 rounded-full transition-all duration-200 ${
-                  index === currentIndex
-                    ? 'bg-white w-full'
-                    : 'bg-white/50 group-hover:bg-white/75 w-full'
-                }`}
-              />
-            </button>
-          ))}
-        </div>
-      )} */}
-
       {/* Navigation arrows - only show if we have more than 1 image */}
       {images.length > 1 && (
         <>

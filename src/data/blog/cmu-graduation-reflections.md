@@ -6,12 +6,44 @@ excerpt: "A heartfelt reflection on my time at Carnegie Mellon University, the e
 ---
 
 <div className="intro-section">
-  As a student at Carnegie Mellon University from January 2024 to May 2025, pursuing my M.S. in Electrical and Computer Engineering, my journey has been nothing short of memorable. This reflection captures the essence of my time at CMU and the growth that happened both inside and outside the classroom.
+  As a student at Carnegie Mellon University from January 2024 to May 2025, pursuing my M.S. in Electrical and Computer Engineering, my journey has been nothing short of memorable. This blog is to act as a memory lane for me to look back on my time at CMU and the growth that happened both inside and outside the classroom. 
 </div>
 
 # The Beginning
 
 Choosing CMU wasn't just about its stellar reputation in computer science and engineering—it was about stepping into an ecosystem where I am surrounded by brilliant and hardworking people. Despite initial concerns about tuition costs and future uncertainties, this choice proved to be the most transformative decision of my academic career.
+
+# The People Who Made It Special
+
+<div className="people-section">
+  <h2>Lab Members, Family, and Friends</h2>
+  
+  <div className="people-grid">
+    <Person 
+      name="Wireless Technologies Lab"
+      role="Research Advisor and Lab Members"
+      type="lab"
+      images={["/images/blog/cmu-graduation/people/swarun.jpg", "/images/blog/cmu-graduation/people/veronica.jpg", "/images/blog/cmu-graduation/people/andy.jpg", "/images/blog/cmu-graduation/people/kuang.jpg"]}
+      captions={["Professor Swarun Kumar", "Veronica", "Jiangyifei", "Kuang"]}
+    />
+    <Person
+      name="Family"
+      role="The support pillars"
+      type="family"
+      images={["/images/blog/cmu-graduation/people/alice.jpg"]}
+      captions={["Sister"]}
+      description="Especially my parents who supported me every step of the way"
+    />
+    <Person
+      name="Friends"
+      role="Amazing people I've met at CMU"
+      type="friend"
+      images={["/images/blog/cmu-graduation/people/weichen.jpg","/images/blog/cmu-graduation/people/howard&johnson.jpg", "/images/blog/cmu-graduation/people/rodrigo.jpg", "/images/blog/cmu-graduation/people/elisa.jpg", "/images/blog/cmu-graduation/people/phyllis.jpg", "/images/blog/cmu-graduation/people/harvey.jpg", "/images/blog/cmu-graduation/people/anish.jpg", "/images/blog/cmu-graduation/people/cancungroup-2.jpg"]}
+      captions={["Jaswanth, Weichen, and Louis", "Howard and Johnson", "Rodrigo", "Elisa", "Phyllis", "Harvey, Hans, and Jerry", "Anish", "Cancun Group (Phyllis, Edward, Frank, George, Kevin, Elisa)"]}
+    />
+
+  </div>
+</div>
 
 # Academic Journey
 
@@ -47,7 +79,7 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
     <span className="text-2xl">💪</span>
     <div>
       <strong>Workload Survival Highlight:</strong>
-      <span className="text-blue-400 ml-2">Surviving CMU's Academic Intensity</span>
+      <span className="text-white-400 ml-2">Surviving CMU's Academic Intensity</span>
     </div>
   </div>
 </div>
@@ -123,8 +155,8 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
     <Event 
       title="NOVA Hackathon & TartanHacks"
       type="Hackathon"
-      images={["/images/blog/cmu-graduation/events/tartan-hacks-2025.jpg", "/images/blog/cmu-graduation/events/nova-hackathon.jpg", "/images/blog/cmu-graduation/events/tartan-hacks-2025-2.jpg","/images/blog/cmu-graduation/events/tartan-hacks-2025-3.jpg"]}
-      captions={["The TartanHacks squad", "NOVA Hackathon crew", "Hackers hacking", "Sleep deprived nights"]}
+      images={["/images/blog/cmu-graduation/events/nova-hackathon.jpg", "/images/blog/cmu-graduation/events/tartan-hacks-2025.jpg","/images/blog/cmu-graduation/events/tartan-hacks-2025-2.jpg","/images/blog/cmu-graduation/events/tartan-hacks-2025-3.jpg"]}
+      captions={["NOVA Hackathon crew", "The TartanHacks squad", "Hackers hacking", "Sleep deprived nights"]}
     />
 
     <Event 
@@ -140,71 +172,21 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
       images={["/images/blog/cmu-graduation/events/cancun-bar.jpg", "/images/blog/cmu-graduation/events/cancun-swim.jpg", "/images/blog/cmu-graduation/events/cancun-dinner.jpg"]}
     />
 
+    <Event
+      title="Other Fun Activities"
+      type="Other"
+      images={["/images/blog/cmu-graduation/events/kayak.jpg", "/images/blog/cmu-graduation/events/paintball.jpg", "/images/blog/cmu-graduation/events/halloween.jpg", "/images/blog/cmu-graduation/events/pittsburghpartybus.jpg", "/images/blog/cmu-graduation/events/hotpot.jpg", "/images/blog/cmu-graduation/events/debugging.jpg"]}
+      captions={["Kayaking", "Paintball", "Halloween", "Party Bus", "Hotpot", "Debugging (very memorable😅)"]}  
+    />
+
     <Event 
-      title="D.C. Cherry Blossoms Trip"
-      type="Cultural"
-      images={["/images/blog/cmu-graduation/events/dc-cherry-blossoms.jpg"]}
-      description="A beautiful weekend exploring the nation's capital during cherry blossom season"
+      title="Graduation Celebration"
+      type="Graduation"
+      images={["/images/blog/cmu-graduation/events/graduation-2.jpg", "/images/blog/cmu-graduation/events/graduation.jpg", "/images/blog/cmu-graduation/events/graduation-dinner.jpg", "/images/blog/cmu-graduation/events/WeichenDinner.jpg"]}
+      captions={["Friends and family who stayed to celebrate my graduation", "Running away from HH, cause why not?", "Dinner after graduation", "Dinner event with Weichen's family and new friends"]}
     />
   </div>
 </div>
-
-# The People Who Made It Special
-
-<div className="people-section">
-  <h2>Lab Members, Family, and Friends</h2>
-  
-  <div className="people-grid">
-    <Person 
-      name="Emerging Wireless Technologies Lab"
-      role="Research Advisor and Lab Members"
-      type="lab"
-      images={["/images/blog/cmu-graduation/people/swarun.jpg", "/images/blog/cmu-graduation/people/veronica.jpg", "/images/blog/cmu-graduation/people/andy.jpg", "/images/blog/cmu-graduation/people/kuang.jpg"]}
-      captions={["Professor Swarun Kumar", "Veronica", "Jiangyifei", "Kuang"]}
-    />
-    <Person
-      name="Family"
-      role="The family who supported me every step of the way"
-      type="family"
-      images={["/images/blog/cmu-graduation/people/alice.jpg"]}
-      captions={["Sister who came to visit me in Pittsburgh"]}
-    />
-    <Person
-      name="Friends"
-      role="Amazing people I've met at CMU"
-      type="friend"
-      images={["/images/blog/cmu-graduation/people/weichen.jpg","/images/blog/cmu-graduation/people/howard&johnson.jpg", "/images/blog/cmu-graduation/people/rodrigo.jpg", "/images/blog/cmu-graduation/people/anish.jpg", "/images/blog/cmu-graduation/people/cancungroup.jpg"]}
-      captions={["Jaswanth, Weichen, and Louis", "Howard and Johnson", "Rodrigo", "Anish", "Cancun Group (Edward, Elisa, Frank, Kevin, Phyllis, George)"]}
-    />
-
-  </div>
-
-  <div className="mt-8 p-6 bg-gradient-to-r from-pink-900/20 to-purple-900/20 rounded-xl border border-pink-800/30">
-    <h3 className="text-xl font-semibold text-pink-300 mb-4">Special Mentions</h3>
-    <div className="grid md:grid-cols-2 gap-6 text-sm">
-      <div>
-        <h4 className="font-semibold text-pink-200 mb-2">Study Groups & Teams</h4>
-        <ul className="text-gray-300 space-y-1">
-          <li>• Distributed Systems Study Circle</li>
-          <li>• ML Research Discussion Group</li>
-          <li>• Hackathon Dream Team</li>
-          <li>• International Student Network</li>
-        </ul>
-      </div>
-      <div>
-        <h4 className="font-semibold text-purple-200 mb-2">Campus Communities</h4>
-        <ul className="text-gray-300 space-y-1">
-          <li>• Graduate Student Assembly</li>
-          <li>• ECE Department Social Committee</li>
-          <li>• Carnegie Mellon Chinese Association</li>
-          <li>• Tech Entrepreneur Club</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
----
 
 # Key Takeaways & Growth
 

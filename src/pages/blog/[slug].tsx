@@ -327,18 +327,19 @@ export default function BlogPost({ source, frontMatter }: BlogPostProps) {
             {/* Enhanced author section */}
             <div className="mt-12 p-8 bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-pink-900/20 rounded-2xl border border-gray-700/50 backdrop-blur-sm">
               <div className="flex items-start space-x-6">
-                <div className="w-20 h-20 rounded-full border-3 border-blue-400 bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg">
-                  <span className="text-white font-bold text-2xl">JL</span>
-                </div>
+                <img 
+                  src="/assets/images/Profilepic_TeddyBear.jpeg"
+                  alt="Jason Li"
+                  className="w-20 h-20 rounded-full border-3 border-blue-400 bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg"
+                />
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-white mb-3">Jason Li</h3>
                   <p className="text-gray-300 leading-relaxed mb-4">
                     M.S. in Electrical and Computer Engineering at Carnegie Mellon University. 
-                    Passionate about distributed systems, machine learning, and building innovative solutions 
-                    that make a difference in the world.
+                    Passionate about technology and building innovative solutions.
                   </p>
                   <div className="flex space-x-4">
-                    <Link href="/about">
+                    <Link href="/">
                       <span className="inline-flex items-center text-blue-400 hover:text-blue-300 font-medium transition-all duration-300 cursor-pointer group">
                         <span className="group-hover:translate-x-1 transition-transform duration-300">Learn more about me</span>
                         <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
