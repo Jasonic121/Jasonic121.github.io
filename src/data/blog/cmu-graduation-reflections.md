@@ -1,32 +1,23 @@
 ---
-title: "My Transformative Journey at Carnegie Mellon University"
-date: "2024-05-19" 
+title: "My Journey at Carnegie Mellon University"
+date: "2024-05-25" 
 coverImage: "/images/blog/cmu-graduation/graduation-cover.jpg"
 excerpt: "A heartfelt reflection on my time at Carnegie Mellon University, the experiences that shaped me, the challenges I overcame, and the memories I'll carry forward into my career at Apple."
 ---
 
 <div className="intro-section">
-  As a student at Carnegie Mellon University from January 2024 to May 2025, pursuing my M.S. in Electrical and Computer Engineering, my journey has been nothing short of transformative. This reflection captures the essence of my time at CMU—the late nights in Hunt Library, the breakthrough moments in research, the friendships forged over countless group projects, and the growth that happened both inside and outside the classroom.
+  As a student at Carnegie Mellon University from January 2024 to May 2025, pursuing my M.S. in Electrical and Computer Engineering, my journey has been nothing short of memorable. This reflection captures the essence of my time at CMU and the growth that happened both inside and outside the classroom.
 </div>
 
-# <span className="heading-emoji">🌟</span>The Beginning
+# The Beginning
 
-Choosing CMU wasn't just about its stellar reputation in computer science and engineering—it was about stepping into an ecosystem where innovation thrives and impossible becomes possible. Despite initial concerns about tuition costs and future uncertainties, this choice proved to be the most transformative decision of my academic career.
+Choosing CMU wasn't just about its stellar reputation in computer science and engineering—it was about stepping into an ecosystem where I am surrounded by brilliant and hardworking people. Despite initial concerns about tuition costs and future uncertainties, this choice proved to be the most transformative decision of my academic career.
 
-I arrived with ambitious goals that would shape every aspect of my journey:
-- **Academic Excellence**: Master both theoretical foundations and practical applications
-- **Research Impact**: Contribute to cutting-edge research in wireless systems and AI
-- **Professional Growth**: Build industry connections and real-world experience
-- **Personal Development**: Develop leadership skills and expand my worldview
+# Academic Journey
 
----
-
-# <span className="heading-emoji">📚</span>Academic Excellence
-
-## Spring 2024: Building the Foundation
+## Spring 2024
 
 <div className="semester-section">
-  <h3>Core Technical Courses</h3>
   
   <Course 
     code="18-613"
@@ -45,8 +36,6 @@ I arrived with ambitious goals that would shape every aspect of my journey:
     title="Principles of Software Construction"
     type="swe"
   />
-
-  <h3>Leadership & Communication</h3>
   
   <Course 
     code="94-801"
@@ -55,19 +44,18 @@ I arrived with ambitious goals that would shape every aspect of my journey:
   />
 
   <div className="highlight-box">
-    <span className="text-2xl">🏖️</span>
+    <span className="text-2xl">💪</span>
     <div>
-      <strong>Spring Break Highlight:</strong> 
-      <span className="text-blue-400 ml-2">Miami Adventure with Classmates</span>
+      <strong>Workload Survival Highlight:</strong>
+      <span className="text-blue-400 ml-2">Surviving CMU's Academic Intensity</span>
     </div>
   </div>
 </div>
 
-## Fall 2024: Diving Deeper
+## Fall 2024
 
 <div className="semester-section">
-  <h3>Advanced Systems & AI</h3>
-  
+
   <Course 
     code="18-749"
     title="Building Reliable Distributed Systems"
@@ -101,10 +89,9 @@ I arrived with ambitious goals that would shape every aspect of my journey:
   </div>
 </div>
 
-## Spring 2025: Mastery & Synthesis
+## Spring 2025
 
 <div className="semester-section">
-  <h3>Specialization & Capstone</h3>
   
   <Course 
     code="18-631"
@@ -121,38 +108,36 @@ I arrived with ambitious goals that would shape every aspect of my journey:
   <div className="highlight-box">
     <span className="text-2xl">🎯</span>
     <div>
-      <strong>Capstone Focus:</strong> Conversational AI for Wireless Network Optimization
+      <strong>Research Focus:</strong> Conversational AI for Wireless Network Optimization
     </div>
   </div>
 </div>
 
----
 
-# <span className="heading-emoji">🎯</span>Beyond the Classroom
+# Beyond the Classroom
 
 <div className="experiences-section">
   <h2>Memorable Experiences</h2>
   
   <div className="experience-grid">
     <Event 
-      title="Tartan Hacks 2025"
+      title="NOVA Hackathon & TartanHacks"
       type="Hackathon"
-      images={["/images/blog/cmu-graduation/events/tartan-hacks-2025.jpg"]}
-      description="Built a real-time collaboration platform for distributed teams with my amazing teammates"
+      images={["/images/blog/cmu-graduation/events/tartan-hacks-2025.jpg", "/images/blog/cmu-graduation/events/nova-hackathon.jpg", "/images/blog/cmu-graduation/events/tartan-hacks-2025-2.jpg","/images/blog/cmu-graduation/events/tartan-hacks-2025-3.jpg"]}
+      captions={["The TartanHacks squad", "NOVA Hackathon crew", "Hackers hacking", "Sleep deprived nights"]}
     />
 
     <Event 
-      title="Palm Springs AI Conference"
+      title="HotMobile Conference"
       type="Conference"
-      images={["/images/blog/cmu-graduation/events/palm-springs-ai-conference.jpg"]}
-      description="Networking with industry leaders and presenting our research on conversational AI"
+      images={["/images/blog/cmu-graduation/events/palm-springs-conference-2.jpg", "/images/blog/cmu-graduation/events/palm-springs-conference.jpg"]}
+      captions={["On stage as a presenter", "HotMobile Conference"]}
     />
 
     <Event 
       title="Cancun Spring Break 2025"
       type="Travel"
-      images={["/images/blog/cmu-graduation/events/cancun-spring-break.jpg"]}
-      description="Unforgettable memories with classmates celebrating our hard work and achievements"
+      images={["/images/blog/cmu-graduation/events/cancun-bar.jpg", "/images/blog/cmu-graduation/events/cancun-swim.jpg", "/images/blog/cmu-graduation/events/cancun-dinner.jpg"]}
     />
 
     <Event 
@@ -164,76 +149,32 @@ I arrived with ambitious goals that would shape every aspect of my journey:
   </div>
 </div>
 
----
-
-# <span className="heading-emoji">🔬</span>Research & Innovation
-
-<div className="research-section">
-  <h2>Research Impact</h2>
-  
-  <div className="mb-6">
-    <h3 className="text-xl font-semibold text-blue-400 mb-3">Conversational AI in Wireless Systems</h3>
-    <p className="text-gray-300 leading-relaxed mb-4">
-      Under the mentorship of Professor Swarun Kumar, I explored the intersection of natural language processing 
-      and wireless network optimization. Our research focused on developing AI agents that can interpret 
-      complex network requirements and automatically configure wireless systems for optimal performance.
-    </p>
-    
-    <div className="grid md:grid-cols-2 gap-4 mt-4">
-      <div className="p-4 bg-blue-900/20 rounded-lg border border-blue-800/30">
-        <h4 className="font-semibold text-blue-300 mb-2">Key Contributions</h4>
-        <ul className="text-sm text-gray-300 space-y-1">
-          <li>• Novel NLP pipeline for network configuration</li>
-          <li>• 40% improvement in optimization speed</li>
-          <li>• Published preliminary findings</li>
-        </ul>
-      </div>
-      <div className="p-4 bg-purple-900/20 rounded-lg border border-purple-800/30">
-        <h4 className="font-semibold text-purple-300 mb-2">Technologies Used</h4>
-        <ul className="text-sm text-gray-300 space-y-1">
-          <li>• PyTorch & Transformers</li>
-          <li>• Network Simulation Tools</li>
-          <li>• Statistical Analysis</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <h3 className="text-xl font-semibold text-green-400 mb-3">Hackathons & Competitions</h3>
-  <div className="space-y-4">
-    <div className="p-4 bg-green-900/20 rounded-lg border border-green-800/30">
-      <h4 className="font-semibold text-green-300">NOVA GenAI Hackathon 🏆</h4>
-      <p className="text-sm text-gray-300 mt-2">Third Place - Developed an AI-powered tool for automated code review and optimization</p>
-    </div>
-    <div className="p-4 bg-indigo-900/20 rounded-lg border border-indigo-800/30">
-      <h4 className="font-semibold text-indigo-300">Tartan Hacks 2025</h4>
-      <p className="text-sm text-gray-300 mt-2">Built a real-time collaboration platform for distributed teams</p>
-    </div>
-  </div>
-</div>
-
----
-
-# <span className="heading-emoji">👥</span>The People Who Made It Special
+# The People Who Made It Special
 
 <div className="people-section">
-  <h2>Mentors, Friends, and Collaborators</h2>
+  <h2>Lab Members, Family, and Friends</h2>
   
   <div className="people-grid">
     <Person 
-      name="Professor Swarun Kumar"
-      role="Research Advisor & Mentor"
-      type="mentor"
-      images={["/images/blog/cmu-graduation/people/professor-swarun-kumar.jpg"]}
-      description="My research advisor who guided me through the fascinating world of wireless systems and AI. His mentorship shaped my approach to problem-solving and research methodology."
+      name="Emerging Wireless Technologies Lab"
+      role="Research Advisor and Lab Members"
+      type="lab"
+      images={["/images/blog/cmu-graduation/people/swarun.jpg", "/images/blog/cmu-graduation/people/veronica.jpg", "/images/blog/cmu-graduation/people/andy.jpg", "/images/blog/cmu-graduation/people/kuang.jpg"]}
+      captions={["Professor Swarun Kumar", "Veronica", "Jiangyifei", "Kuang"]}
     />
-
-    <Person 
-      name="Johnson"
-      role="Roommate & Best Friend"
+    <Person
+      name="Family"
+      role="The family who supported me every step of the way"
+      type="family"
+      images={["/images/blog/cmu-graduation/people/alice.jpg"]}
+      captions={["Sister who came to visit me in Pittsburgh"]}
+    />
+    <Person
+      name="Friends"
+      role="Amazing people I've met at CMU"
       type="friend"
-      images={["/images/blog/cmu-graduation/people/johnson-roommate.jpg"]}
-      description="My roommate and closest friend at CMU. From late-night study sessions to weekend adventures, Johnson made every moment at CMU more memorable and meaningful."
+      images={["/images/blog/cmu-graduation/people/weichen.jpg","/images/blog/cmu-graduation/people/howard&johnson.jpg", "/images/blog/cmu-graduation/people/rodrigo.jpg", "/images/blog/cmu-graduation/people/anish.jpg", "/images/blog/cmu-graduation/people/cancungroup.jpg"]}
+      captions={["Jaswanth, Weichen, and Louis", "Howard and Johnson", "Rodrigo", "Anish", "Cancun Group (Edward, Elisa, Frank, Kevin, Phyllis, George)"]}
     />
 
   </div>
@@ -265,7 +206,7 @@ I arrived with ambitious goals that would shape every aspect of my journey:
 
 ---
 
-# <span className="heading-emoji">🎯</span>Key Takeaways & Growth
+# Key Takeaways & Growth
 
 <div className="takeaways-section">
   <h2>Lessons That Will Last a Lifetime</h2>
@@ -315,10 +256,10 @@ I arrived with ambitious goals that would shape every aspect of my journey:
 
 ---
 
-# <span className="heading-emoji">🚀</span>The Next Chapter
+# The Next Chapter
 
 <div className="future-section">
-  <h2>From Pittsburgh to Cupertino</h2>
+  <h2>From Pittsburgh to Montreal</h2>
   
   <div className="mb-6">
     <div className="p-6 bg-gradient-to-r from-gray-700 to-gray-600 rounded-xl border border-gray-500">
@@ -328,7 +269,7 @@ I arrived with ambitious goals that would shape every aspect of my journey:
         </div>
         <div>
           <h3 className="text-xl font-bold text-white">Software Engineer at Apple</h3>
-          <p className="text-gray-300">Starting June 2025 • Cupertino, CA</p>
+          <p className="text-gray-300">Starting June 2025 • Montreal, Canada</p>
         </div>
       </div>
       <p className="text-gray-200 leading-relaxed">
@@ -338,85 +279,7 @@ I arrived with ambitious goals that would shape every aspect of my journey:
       </p>
     </div>
   </div>
-
-  <div className="grid md:grid-cols-3 gap-4">
-    <div className="p-4 bg-blue-900/20 rounded-lg border border-blue-800/30">
-      <h4 className="font-semibold text-blue-300 mb-2">Technical Skills</h4>
-      <ul className="text-sm text-gray-300 space-y-1">
-        <li>• Distributed Systems</li>
-        <li>• Machine Learning</li>
-        <li>• Software Architecture</li>
-        <li>• Information Security</li>
-      </ul>
-    </div>
-    <div className="p-4 bg-green-900/20 rounded-lg border border-green-800/30">
-      <h4 className="font-semibold text-green-300 mb-2">Leadership</h4>
-      <ul className="text-sm text-gray-300 space-y-1">
-        <li>• Team Collaboration</li>
-        <li>• Project Management</li>
-        <li>• Communication</li>
-        <li>• Mentoring</li>
-      </ul>
-    </div>
-    <div className="p-4 bg-purple-900/20 rounded-lg border border-purple-800/30">
-      <h4 className="font-semibold text-purple-300 mb-2">Research</h4>
-      <ul className="text-sm text-gray-300 space-y-1">
-        <li>• Problem Solving</li>
-        <li>• Innovation</li>
-        <li>• Data Analysis</li>
-        <li>• Critical Thinking</li>
-      </ul>
-    </div>
-  </div>
 </div>
-
----
-
-# <span className="heading-emoji">🙏</span>Gratitude
-
-<div className="acknowledgments-section">
-  <h2>To Everyone Who Made This Journey Possible</h2>
-  
-  <div className="space-y-6">
-    <div className="p-6 bg-gradient-to-r from-red-900/20 to-pink-900/20 rounded-xl border border-red-800/30">
-      <h3 className="text-xl font-semibold text-red-300 mb-3">❤️ Family</h3>
-      <p className="text-gray-300 leading-relaxed">
-        To my parents, who believed in this dream even when the future seemed uncertain. Your 
-        support, both emotional and financial, made everything possible. Every late-night phone 
-        call home reminded me why I was here and what I was working toward.
-      </p>
-    </div>
-
-    <div className="p-6 bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl border border-blue-800/30">
-      <h3 className="text-xl font-semibold text-blue-300 mb-3">🎓 Faculty & Staff</h3>
-      <p className="text-gray-300 leading-relaxed">
-        To every professor who challenged me to think deeper, every TA who patiently explained 
-        concepts, and every staff member who made CMU feel like home. Your dedication to excellence 
-        created an environment where extraordinary things become possible.
-      </p>
-    </div>
-
-    <div className="p-6 bg-gradient-to-r from-green-900/20 to-teal-900/20 rounded-xl border border-green-800/30">
-      <h3 className="text-xl font-semibold text-green-300 mb-3">🤝 Peers & Friends</h3>
-      <p className="text-gray-300 leading-relaxed">
-        To my classmates who became collaborators, study partners who became lifelong friends, 
-        and teammates who made every project an adventure. The best part of CMU wasn't the 
-        curriculum—it was sharing it with all of you.
-      </p>
-    </div>
-
-    <div className="p-6 bg-gradient-to-r from-purple-900/20 to-indigo-900/20 rounded-xl border border-purple-800/30">
-      <h3 className="text-xl font-semibold text-purple-300 mb-3">🌟 The CMU Community</h3>
-      <p className="text-gray-300 leading-relaxed">
-        To this incredible institution that doesn't just educate but transforms. CMU taught me 
-        that innovation happens at the intersection of disciplines, that failure is a stepping 
-        stone to success, and that the impossible is just another engineering problem to solve.
-      </p>
-    </div>
-  </div>
-</div>
-
----
 
 <div className="image-grid">
   <ImageWithCaption 

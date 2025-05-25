@@ -42,7 +42,7 @@ const TableOfContents = ({ content }) => {
           }
         });
       },
-      { rootMargin: '-20% 0px -80% 0px' }
+      { rootMargin: '-10% 0px -90% 0px' }
     );
 
     elements.forEach((element) => observer.observe(element));
@@ -79,8 +79,21 @@ const TableOfContents = ({ content }) => {
       <h2 className="text-lg font-semibold mb-4">Table of Contents</h2>
       <ul className="space-y-2">
         {headings.map((heading) => (
-          <li key={heading.id}>
-            <a href={`#${heading.id}`} className={`${activeId === heading.id ? 'text-blue-500' : 'text-gray-400'} hover:text-white transition-colors`}>
+          <li 
+            key={heading.id}
+            className={`
+              ${heading.level === 2 ? 'ml-4' : ''} 
+              ${activeId === heading.id ? 'text-blue-500' : 'text-gray-400'}
+              transition-colors
+            `}
+          >
+            <a 
+              href={`#${heading.id}`} 
+              className={`
+                hover:text-white
+                ${heading.level === 2 ? 'text-sm' : 'font-medium'}
+              `}
+            >
               {heading.text}
             </a>
           </li>

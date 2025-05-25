@@ -28,11 +28,10 @@ export const Course: React.FC<CourseProps> = ({ code, title, type, link }) => {
 
   return (
     <a href={link} className="course-link">
-      <div className="course-content">
-        <strong>{code}</strong>
-        <span className="course-title">{title}</span>
-        <span className={`tag ${type}`}>{type}</span>
-        <span className="view-more">View Details →</span>
+      <div className="course-content flex items-center gap-4">
+        <strong className="flex-shrink-0">{code}</strong>
+        <span className="course-title flex-grow">{title}</span>
+        <span className={`tag ${type} flex-shrink-0`}>{type}</span>
       </div>
     </a>
   );

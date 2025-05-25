@@ -6,6 +6,7 @@ interface EventProps {
   type: string;
   link: string;
   images?: string[];
+  captions?: string[];
   description?: string;
   isLinkActive?: boolean;
 }
@@ -15,6 +16,7 @@ export const Event: React.FC<EventProps> = ({
   type, 
   link, 
   images = [], 
+  captions = [],
   description,
   isLinkActive = false 
 }) => {
@@ -29,9 +31,10 @@ export const Event: React.FC<EventProps> = ({
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <span className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-amber-900/50 text-amber-300 mb-4">{type}</span>
       {images.length > 0 && (
-        <div className="relative w-full h-[300px] overflow-hidden rounded-lg mb-4">
+        <div className="relative w-full h-[400px] overflow-hidden rounded-lg mb-4">
           <ImageGallery 
             images={images} 
+            captions={captions}
             className="absolute inset-0 w-full h-full"
           />
         </div>

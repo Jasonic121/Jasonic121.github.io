@@ -60,12 +60,10 @@ export async function getBlogPostBySlug(slug) {
       throw new Error(`Blog post not found: ${slug}`);
     }
     
-    console.log('Reading blog post file');
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
-    console.log('Parsed frontmatter:', matterResult.data);
     
     // Ensure date is serializable, with a fallback
     let date = matterResult.data.date;
@@ -92,7 +90,7 @@ export async function getBlogPostBySlug(slug) {
         excerpt: matterResult.data.excerpt || matterResult.content.slice(0, 150) + '...',
       }
     };
-    console.log('Generated post data:', post);
+
     return post;
   } catch (error) {
     console.error(`Error getting blog post with slug ${slug}:`, error);

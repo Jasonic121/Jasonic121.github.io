@@ -6,6 +6,7 @@ interface PersonProps {
   role: string;
   type: string;
   images?: string[];
+  captions?: string[];
   description?: string;
   link: string;
   isLinkActive?: boolean;
@@ -16,71 +17,78 @@ export const Person: React.FC<PersonProps> = ({
   role, 
   type, 
   images = [], 
+  captions = [],
   description,
   link, 
   isLinkActive = false 
 }) => {
   const [isClient, setIsClient] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const image = images[0] || '';
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   const content = (
-    <>
+    <div className="card-content bg-gray-800/50 rounded-xl p-6">
+      <h3 className="text-xl font-semibold mb-2">{name}</h3>
+      <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium mb-4 ${
+        type === 'mentor' ? 'bg-blue-900/50 text-blue-300' :
+        type === 'friend' ? 'bg-green-900/50 text-green-300' :
+        'bg-purple-900/50 text-purple-300'
+      }`}>
+        {role}
+      </span>
+      
       {images.length > 0 && (
-        <div className="relative h-48 w-full overflow-hidden rounded-lg">
+        <div className="relative w-full h-[400px] overflow-hidden rounded-lg mb-4">
           <ImageGallery 
             images={images} 
-            className="absolute inset-0"
+            captions={captions}
+            className="absolute inset-0 w-full h-full"
           />
         </div>
       )}
-      <div className={`person-info ${images.length > 0 ? 'mt-4' : ''}`}>
-        <h3>{name}</h3>
-        <span className={`tag ${type}`}>{role}</span>
-        {description && (
-          <p className="mt-2 text-gray-400 text-sm">{description}</p>
-        )}
-        {isLinkActive && <span className="view-profile">View Profile →</span>}
-      </div>
-    </>
+      
+      {description && (
+        <p className="text-gray-400">{description}</p>
+      )}
+      
+      {isLinkActive && (
+        <span className="mt-4 inline-block text-blue-400 hover:text-blue-300 transition-colors">
+          View Profile →
+        </span>
+      )}
+    </div>
   );
 
   if (!isClient) {
     return (
       <div className="person-card animate-pulse">
-        {images.length > 0 && (
-          <div className="h-48 bg-gray-200 w-full rounded-lg" />
-        )}
-        <div className={`person-info ${images.length > 0 ? 'mt-4' : ''}`}>
-          <div className="h-6 bg-gray-200 w-3/4 mb-2" />
-          <div className="h-4 bg-gray-200 w-1/2" />
+        <div className="card-content bg-gray-800/50 rounded-xl p-6">
+          <div className="h-6 bg-gray-700 w-3/4 mb-2 rounded" />
+          <div className="h-4 bg-gray-700 w-1/4 mb-4 rounded" />
+          {images.length > 0 && (
+            <div className="h-[300px] bg-gray-700 w-full rounded-lg mb-4" />
+          )}
           {description && (
-            <div className="h-4 bg-gray-200 w-full mt-2" />
+            <div className="h-4 bg-gray-700 w-full rounded" />
           )}
         </div>
       </div>
     );
   }
 
+  if (isLinkActive) {
+    return (
+      <a href={link} className="block hover:transform hover:scale-[1.02] transition-transform duration-300">
+        {content}
+      </a>
+    );
+  }
+
   return (
-    <a href={link} className="person-card">
-      <img 
-        src={image} 
-        alt={name} 
-        className={`person-image transition-opacity duration-300 ${
-          imageLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
-        onLoad={() => setImageLoaded(true)}
-      />
-      <div className="person-info">
-        <h3>{name}</h3>
-        <span className={`tag ${type}`}>{role}</span>
-        <span className="view-profile">View Profile →</span>
-      </div>
-    </a>
+    <div className="block">
+      {content}
+    </div>
   );
-}; 
+};
