@@ -1,8 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push, set, onValue, get, update } from "firebase/database";
-import { collection, addDoc, query, where, orderBy, getDocs } from "firebase/firestore";
-import { serverTimestamp, updateDoc, doc } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 // Using environment variables for security
@@ -25,43 +23,62 @@ const database = getDatabase(app);
 const commentsRef = ref(database, 'comments');
 
 // Add a new comment
-export const addComment = async (name, text, position, mood) => {
+export const addComment = async (name, text, position, mood = 'happy') => {
   try {
-    const commentsRef = collection(db, 'comments');
-    await addDoc(commentsRef, {
+    const newCommentRef = push(commentsRef);
+    const timestamp = new Date().toISOString();
+    
+    await set(newCommentRef, {
       name,
       text,
       position,
-      mood,
-      timestamp: serverTimestamp(),
-      approved: false
+      timestamp,
+      mood, // Add mood to the comment data
+      approved: false // Default to unapproved
     });
+    
+    return {
+      id: newCommentRef.key,
+      name,
+      text,
+      position,
+      timestamp,
+      mood, // Include mood in the returned object
+      approved: false
+    };
   } catch (error) {
-    console.error("Error adding comment:", error);
+    console.error("Error adding comment: ", error);
     throw error;
   }
 };
 
 // Get all comments
 export const getComments = async () => {
-  try {
-    const commentsRef = collection(db, 'comments');
-    const q = query(commentsRef, where('approved', '==', true), orderBy('timestamp', 'desc'));
-    const snapshot = await getDocs(q);
-    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-  } catch (error) {
-    console.error("Error fetching comments:", error);
-    throw error;
-  }
+  return new Promise((resolve, reject) => {
+    onValue(commentsRef, (snapshot) => {
+      const data = snapshot.val();
+      const comments = data ? Object.keys(data).map(key => ({
+        id: key,
+        ...data[key]
+      })).filter(comment => comment.approved) : []; // Only return approved comments
+      resolve(comments);
+    }, (error) => {
+      console.error("Error fetching comments: ", error);
+      reject(error);
+    }, {
+      onlyOnce: true
+    });
+  });
 };
 
 // Approve a comment (for admin use)
 export const approveComment = async (commentId) => {
   try {
-    const commentRef = doc(db, 'comments', commentId);
-    await updateDoc(commentRef, { approved: true });
+    const commentRef = ref(database, `comments/${commentId}`);
+    await update(commentRef, { approved: true });
+    return true;
   } catch (error) {
-    console.error("Error approving comment:", error);
+    console.error("Error approving comment: ", error);
     throw error;
   }
 };
