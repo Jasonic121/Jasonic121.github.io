@@ -236,21 +236,6 @@ I arrived with ambitious goals that would shape every aspect of my journey:
       description="My roommate and closest friend at CMU. From late-night study sessions to weekend adventures, Johnson made every moment at CMU more memorable and meaningful."
     />
 
-    <Person 
-      name="Sarah Chen"
-      role="Study Group Leader"
-      type="friend"
-      images={["/images/blog/cmu-graduation/people/sarah-chen.jpg"]}
-      description="The brilliant leader of our machine learning study group. Sarah's ability to explain complex concepts and organize our team made her invaluable to our academic success."
-    />
-
-    <Person 
-      name="Dr. Emily Rodriguez"
-      role="Career Advisor"
-      type="mentor"
-      images={["/images/blog/cmu-graduation/people/dr-emily-rodriguez.jpg"]}
-      description="My career advisor who helped me navigate the path from academia to industry. Her guidance was instrumental in securing my position at Apple."
-    />
   </div>
 
   <div className="mt-8 p-6 bg-gradient-to-r from-pink-900/20 to-purple-900/20 rounded-xl border border-pink-800/30">
