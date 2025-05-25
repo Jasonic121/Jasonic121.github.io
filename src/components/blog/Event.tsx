@@ -1,47 +1,76 @@
 import React, { useState, useEffect } from 'react';
+import ImageGallery from '../ui/ImageGallery';
 
 interface EventProps {
   title: string;
   type: string;
   link: string;
-  image: string;
+  images?: string[];
+  description?: string;
+  isLinkActive?: boolean;
 }
 
-export const Event: React.FC<EventProps> = ({ title, type, link, image }) => {
+export const Event: React.FC<EventProps> = ({ 
+  title, 
+  type, 
+  link, 
+  images = [], 
+  description,
+  isLinkActive = false 
+}) => {
   const [isClient, setIsClient] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
+  const content = (
+    <div className="card-content bg-gray-800/50 rounded-xl p-6">
+      <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <span className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-amber-900/50 text-amber-300 mb-4">{type}</span>
+      {images.length > 0 && (
+        <div className="relative w-full h-[300px] overflow-hidden rounded-lg mb-4">
+          <ImageGallery 
+            images={images} 
+            className="absolute inset-0 w-full h-full"
+          />
+        </div>
+      )}
+      {description && (
+        <p className="text-gray-400">{description}</p>
+      )}
+      {isLinkActive && <span className="mt-4 inline-block text-blue-400 hover:text-blue-300 transition-colors">View Gallery →</span>}
+    </div>
+  );
+
   if (!isClient) {
     return (
       <div className="experience-card animate-pulse">
-        <div className="card-content">
-          <div className="h-6 bg-gray-200 w-3/4 mb-2" />
-          <div className="h-4 bg-gray-200 w-1/4 mb-4" />
-          <div className="h-32 bg-gray-200 w-full rounded" />
+        <div className="card-content bg-gray-800/50 rounded-xl p-6">
+          <div className="h-6 bg-gray-700 w-3/4 mb-2 rounded" />
+          <div className="h-4 bg-gray-700 w-1/4 mb-4 rounded" />
+          {images.length > 0 && (
+            <div className="h-[300px] bg-gray-700 w-full rounded-lg mb-4" />
+          )}
+          {description && (
+            <div className="h-4 bg-gray-700 w-full rounded" />
+          )}
         </div>
       </div>
     );
   }
 
+  if (isLinkActive) {
+    return (
+      <a href={link} className="block hover:transform hover:scale-[1.02] transition-transform duration-300">
+        {content}
+      </a>
+    );
+  }
+
   return (
-    <a href={link} className="experience-card">
-      <div className="card-content">
-        <h3>{title}</h3>
-        <span className="tag event">{type}</span>
-        <img 
-          src={image} 
-          alt={title} 
-          className={`card-image transition-opacity duration-300 ${
-            imageLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
-          onLoad={() => setImageLoaded(true)}
-        />
-        <span className="view-gallery">View Gallery →</span>
-      </div>
-    </a>
+    <div className="block">
+      {content}
+    </div>
   );
 }; 
