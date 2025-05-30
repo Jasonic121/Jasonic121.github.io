@@ -2,7 +2,7 @@
 title: "My Journey at Carnegie Mellon University"
 date: "2024-05-25" 
 coverImage: "/images/blog/cmu-graduation/graduation-cover.jpg"
-excerpt: "A heartfelt reflection on my time at Carnegie Mellon University, the experiences that shaped me, the challenges I overcame, and the memories I'll carry forward into my career at Apple."
+excerpt: "A heartfelt reflection on my journey at Carnegie Mellon—the growth, challenges, and memories I'll carry into my career at Apple."
 ---
 
 <div className="intro-section">
