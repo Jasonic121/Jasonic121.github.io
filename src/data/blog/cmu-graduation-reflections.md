@@ -239,17 +239,3 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
     caption="Arrived at Montreal"
   />
 </div>
-
-<div className="mt-12 p-8 bg-gradient-to-r from-amber-900/20 to-orange-900/20 rounded-2xl border border-amber-800/30 text-center">
-  <h2 className="text-2xl font-bold text-amber-300 mb-4">The Journey Continues</h2>
-  <p className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
-    As I close this chapter at Carnegie Mellon and open the next at Apple, I'm filled with 
-    gratitude for the journey and excitement for what lies ahead. The skills I've learned, 
-    the relationships I've built, and the mindset I've developed will be my foundation as 
-    I continue to grow, create, and contribute to the world of technology.
-  </p>
-  <div className="mt-6">
-    <span className="text-4xl">🚀</span>
-    <p className="text-amber-400 font-medium mt-2">Here's to the next adventure!</p>
-  </div>
-</div>
