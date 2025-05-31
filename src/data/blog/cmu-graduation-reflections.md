@@ -28,14 +28,14 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
       name="Wireless Technologies Lab"
       role="Research Advisor and Lab Members"
       type="lab"
-      images={["/images/blog/cmu-graduation/people/swarun.jpg", "/images/blog/cmu-graduation/people/veronica.jpg", "/images/blog/cmu-graduation/people/andy.jpg", "/images/blog/cmu-graduation/people/kuang.jpg"]}
+      images={["/images/blog/cmu-graduation/people/blog_swarun.jpg", "/images/blog/cmu-graduation/people/blog_veronica.jpg", "/images/blog/cmu-graduation/people/blog_andy.jpg", "/images/blog/cmu-graduation/people/blog_kuang.jpg"]}
       captions={["Professor Swarun Kumar", "Veronica", "Jiangyifei", "Kuang"]}
     />
     <Person
       name="Family"
       role="The support pillars"
       type="family"
-      images={["/images/blog/cmu-graduation/people/alice.jpg", "/images/blog/cmu-graduation/people/parents.jpg"]}
+      images={["/images/blog/cmu-graduation/people/blog_alice.jpg", "/images/blog/cmu-graduation/people/blog_parents.jpg"]}
       captions={["Sister", "Parents"]}
       description="My family who supported me every step of the way"
     />
@@ -43,7 +43,7 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
       name="Friends"
       role="Amazing people I've met at CMU"
       type="friend"
-      images={["/images/blog/cmu-graduation/people/weichen.jpg","/images/blog/cmu-graduation/people/howard&johnson.jpg", "/images/blog/cmu-graduation/people/rodrigo.jpg", "/images/blog/cmu-graduation/people/harvey.jpg", "/images/blog/cmu-graduation/people/anish.jpg", "/images/blog/cmu-graduation/people/elisa.jpg", "/images/blog/cmu-graduation/people/edward.jpg", "/images/blog/cmu-graduation/people/jerry.jpg", "/images/blog/cmu-graduation/people/george.jpg", "/images/blog/cmu-graduation/people/phyllis.jpg", "/images/blog/cmu-graduation/people/connie.jpg", "/images/blog/cmu-graduation/people/Jimmy.jpg","/images/blog/cmu-graduation/people/cancungroup-2.jpg"]}
+      images={["/images/blog/cmu-graduation/people/blog_weichen.jpg","/images/blog/cmu-graduation/people/blog_howard&johnson.jpg", "/images/blog/cmu-graduation/people/blog_rodrigo.jpg", "/images/blog/cmu-graduation/people/blog_harvey.jpg", "/images/blog/cmu-graduation/people/blog_anish.jpg", "/images/blog/cmu-graduation/people/blog_elisa.jpg", "/images/blog/cmu-graduation/people/blog_edward.jpg", "/images/blog/cmu-graduation/people/blog_jerry.jpg", "/images/blog/cmu-graduation/people/blog_george.jpg", "/images/blog/cmu-graduation/people/blog_phyllis.jpg", "/images/blog/cmu-graduation/people/blog_connie.jpg", "/images/blog/cmu-graduation/people/blog_Jimmy.jpg","/images/blog/cmu-graduation/people/blog_cancungroup-2.jpg"]}
       captions={["Jaswanth, Weichen, and Louis", "Howard and Johnson", "Rodrigo", "Harvey, Hans, and Jerry", "Anish", "Elisa", "Edward", "Jerry", "George", "Phyllis", "Connie", "Jimmy"]}
     />
 
@@ -160,34 +160,34 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
     <Event 
       title="NOVA Hackathon & TartanHacks"
       type="Hackathon"
-      images={["/images/blog/cmu-graduation/events/nova-hackathon.jpg", "/images/blog/cmu-graduation/events/tartan-hacks-2025.jpg","/images/blog/cmu-graduation/events/tartan-hacks-2025-3.jpg", "/images/blog/cmu-graduation/events/tartan-hacks-2025-2.jpg"]}
+      images={["/images/blog/cmu-graduation/events/blog_nova-hackathon.jpg", "/images/blog/cmu-graduation/events/blog_tartan-hacks-2025.jpg","/images/blog/cmu-graduation/events/blog_tartan-hacks-2025-3.jpg", "/images/blog/cmu-graduation/events/blog_tartan-hacks-2025-2.jpg"]}
       captions={["NOVA Hackathon crew", "The TartanHacks squad", "Sleep deprived nights", "Hackers hacking"]}
     />
 
     <Event 
       title="HotMobile Conference/Palm Springs"
       type="Conference"
-      images={["/images/blog/cmu-graduation/events/palm-springs-conference-2.jpg", "/images/blog/cmu-graduation/events/palm-springs-conference.jpg", "/images/blog/cmu-graduation/events/palm-springs-conference-3.jpg", "/images/blog/cmu-graduation/events/palm-springs-conference-4.jpg", "/images/blog/cmu-graduation/events/palm-springs-conference-5.jpg", "/images/blog/cmu-graduation/events/palm-springs-conference-6.jpg"]}
+      images={["/images/blog/cmu-graduation/events/blog_palm-springs-conference-2.jpg", "/images/blog/cmu-graduation/events/blog_palm-springs-conference.jpg", "/images/blog/cmu-graduation/events/blog_palm-springs-conference-3.jpg", "/images/blog/cmu-graduation/events/blog_palm-springs-conference-4.jpg", "/images/blog/cmu-graduation/events/blog_palm-springs-conference-5.jpg", "/images/blog/cmu-graduation/events/blog_palm-springs-conference-6.jpg"]}
       captions={["On stage as a presenter", "HotMobile Conference", "Dinner Gala"]}
     />
 
     <Event 
       title="Cancun Spring Break 2025"
       type="Travel"
-      images={["/images/blog/cmu-graduation/events/cancun-bar.jpg", "/images/blog/cmu-graduation/events/cancun-swim.jpg", "/images/blog/cmu-graduation/events/cancun-insta.jpg", "/images/blog/cmu-graduation/events/cancun-dinner.jpg", "/images/blog/cmu-graduation/events/fireworks.jpg"]}
+      images={["/images/blog/cmu-graduation/events/blog_cancun-bar.jpg", "/images/blog/cmu-graduation/events/blog_cancun-swim.jpg", "/images/blog/cmu-graduation/events/blog_cancun-insta.jpg", "/images/blog/cmu-graduation/events/blog_cancun-dinner.jpg", "/images/blog/cmu-graduation/events/blog_fireworks.jpg"]}
     />
 
     <Event 
       title="Graduation Celebration"
       type="Graduation"
-      images={["/images/blog/cmu-graduation/events/graduation-2.jpg", "/images/blog/cmu-graduation/events/graduation.jpg", "/images/blog/cmu-graduation/events/graduation-dinner.jpg", "/images/blog/cmu-graduation/events/WeichenDinner.jpg"]}
+      images={["/images/blog/cmu-graduation/events/blog_graduation-2.jpg", "/images/blog/cmu-graduation/events/blog_graduation.jpg", "/images/blog/cmu-graduation/events/blog_graduation-dinner.jpg", "/images/blog/cmu-graduation/events/blog_WeichenDinner.jpg"]}
       captions={["Friends and family who stayed to celebrate my graduation", "Running away from HH, cause why not?", "Dinner after graduation", "Dinner event with Weichen's family and new friends"]}
     />
 
     <Event
       title="Other Fun Activities"
       type="Other"
-      images={["/images/blog/cmu-graduation/events/snowboarding.jpg", "/images/blog/cmu-graduation/events/hiking.jpg", "/images/blog/cmu-graduation/events/moreskiing.jpg", "/images/blog/cmu-graduation/events/paintball.jpg", "/images/blog/cmu-graduation/events/pittsburghpartybus.jpg", "/images/blog/cmu-graduation/events/hotpot.jpg", "/images/blog/cmu-graduation/events/5Jason.jpg", "/images/blog/cmu-graduation/events/kayak.jpg", "/images/blog/cmu-graduation/events/halloween.jpg", "/images/blog/cmu-graduation/events/debugging.jpg"]}
+      images={["/images/blog/cmu-graduation/events/blog_snowboarding.jpg", "/images/blog/cmu-graduation/events/blog_hiking.jpg", "/images/blog/cmu-graduation/events/blog_moreskiing.jpg", "/images/blog/cmu-graduation/events/blog_paintball.jpg", "/images/blog/cmu-graduation/events/blog_pittsburghpartybus.jpg", "/images/blog/cmu-graduation/events/blog_hotpot.jpg", "/images/blog/cmu-graduation/events/blog_5Jason.jpg", "/images/blog/cmu-graduation/events/blog_kayak.jpg", "/images/blog/cmu-graduation/events/blog_halloween.jpg", "/images/blog/cmu-graduation/events/blog_debugging.jpg"]}
       captions={["Snowboarding & Skiing", "Hiking", "More Skiing!", "Paintball", "Party Bus", "Hotpot", "Free food at Spring Carnival!", "Kayaking", "Halloween", "Debugging nights(very memorable😅)"]}  
     />
 
