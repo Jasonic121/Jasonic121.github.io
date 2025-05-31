@@ -30,16 +30,16 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
       name="Family"
       role="The support pillars"
       type="family"
-      images={["/images/blog/cmu-graduation/people/alice.jpg"]}
-      captions={["Sister"]}
-      description="Especially my parents who supported me every step of the way"
+      images={["/images/blog/cmu-graduation/people/alice.jpg", "/images/blog/cmu-graduation/people/parents.jpg"]}
+      captions={["Sister", "Parents"]}
+      description="My family who supported me every step of the way"
     />
     <Person
       name="Friends"
       role="Amazing people I've met at CMU"
       type="friend"
-      images={["/images/blog/cmu-graduation/people/weichen.jpg","/images/blog/cmu-graduation/people/howard&johnson.jpg", "/images/blog/cmu-graduation/people/rodrigo.jpg", "/images/blog/cmu-graduation/people/elisa.jpg", "/images/blog/cmu-graduation/people/phyllis.jpg", "/images/blog/cmu-graduation/people/harvey.jpg", "/images/blog/cmu-graduation/people/anish.jpg", "/images/blog/cmu-graduation/people/cancungroup-2.jpg"]}
-      captions={["Jaswanth, Weichen, and Louis", "Howard and Johnson", "Rodrigo", "Elisa", "Phyllis", "Harvey, Hans, and Jerry", "Anish", "Cancun Group (Phyllis, Edward, Frank, George, Kevin, Elisa)"]}
+      images={["/images/blog/cmu-graduation/people/weichen.jpg","/images/blog/cmu-graduation/people/howard&johnson.jpg", "/images/blog/cmu-graduation/people/rodrigo.jpg", "/images/blog/cmu-graduation/people/elisa.jpg", "/images/blog/cmu-graduation/people/phyllis.jpg", "/images/blog/cmu-graduation/people/harvey.jpg", "/images/blog/cmu-graduation/people/anish.jpg", "/images/blog/cmu-graduation/people/connie.jpg", "/images/blog/cmu-graduation/people/Jimmy.jpg","/images/blog/cmu-graduation/people/cancungroup-2.jpg"]}
+      captions={["Jaswanth, Weichen, and Louis", "Howard and Johnson", "Rodrigo", "Elisa", "Phyllis", "Harvey, Hans, and Jerry", "Anish", "Connie", "Jimmy","Cancun Group (Phyllis, Edward, Frank, George, Kevin, Elisa)"]}
     />
 
   </div>
@@ -172,19 +172,21 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
       images={["/images/blog/cmu-graduation/events/cancun-bar.jpg", "/images/blog/cmu-graduation/events/cancun-swim.jpg", "/images/blog/cmu-graduation/events/cancun-dinner.jpg"]}
     />
 
-    <Event
-      title="Other Fun Activities"
-      type="Other"
-      images={["/images/blog/cmu-graduation/events/kayak.jpg", "/images/blog/cmu-graduation/events/paintball.jpg", "/images/blog/cmu-graduation/events/halloween.jpg", "/images/blog/cmu-graduation/events/pittsburghpartybus.jpg", "/images/blog/cmu-graduation/events/hotpot.jpg", "/images/blog/cmu-graduation/events/debugging.jpg"]}
-      captions={["Kayaking", "Paintball", "Halloween", "Party Bus", "Hotpot", "Debugging (very memorable😅)"]}  
-    />
-
     <Event 
       title="Graduation Celebration"
       type="Graduation"
       images={["/images/blog/cmu-graduation/events/graduation-2.jpg", "/images/blog/cmu-graduation/events/graduation.jpg", "/images/blog/cmu-graduation/events/graduation-dinner.jpg", "/images/blog/cmu-graduation/events/WeichenDinner.jpg"]}
       captions={["Friends and family who stayed to celebrate my graduation", "Running away from HH, cause why not?", "Dinner after graduation", "Dinner event with Weichen's family and new friends"]}
     />
+
+    <Event
+      title="Other Fun Activities"
+      type="Other"
+      images={["/images/blog/cmu-graduation/events/kayak.jpg", "/images/blog/cmu-graduation/events/paintball.jpg", "/images/blog/cmu-graduation/events/halloween.jpg", "/images/blog/cmu-graduation/events/pittsburghpartybus.jpg", "/images/blog/cmu-graduation/events/hotpot.jpg", "/images/blog/cmu-graduation/events/debugging.jpg"]}
+      captions={["Kayaking", "Paintball", "Halloween", "Party Bus", "Hotpot", "Debugging nights(very memorable😅)"]}  
+    />
+
+
   </div>
 </div>
 
@@ -218,21 +220,6 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
       </p>
     </li>
 
-    <li>
-      <h3 className="font-semibold text-yellow-300 mb-2">Research is About Questions, Not Just Answers</h3>
-      <p className="text-gray-300">
-        My research experience taught me that asking the right questions is often more valuable 
-        than having all the answers. Curiosity drives innovation.
-      </p>
-    </li>
-
-    <li>
-      <h3 className="font-semibold text-red-300 mb-2">Balance is Not a Luxury, It's a Necessity</h3>
-      <p className="text-gray-300">
-        From Miami beaches to D.C. monuments, taking time to recharge and explore made me a better 
-        student and researcher. Work-life integration, not separation.
-      </p>
-    </li>
   </ol>
 </div>
 
