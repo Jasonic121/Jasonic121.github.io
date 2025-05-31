@@ -2,11 +2,11 @@
 title: "My Journey at Carnegie Mellon University"
 date: "2024-05-31" 
 coverImages: 
-  - "/images/blog/cmu-graduation/graduation-cover.jpg"
-  - "/images/blog/cmu-graduation/graduation-cover-2.jpg"
-  - "/images/blog/cmu-graduation/walksky.jpg"
-  - "/images/blog/cmu-graduation/stickers.jpg"
-  - "/images/blog/cmu-graduation/flowers.jpg"
+  - "/images/blog/cmu-graduation/blog_graduation-cover.jpg"
+  - "/images/blog/cmu-graduation/blog_graduation-cover-2.jpg"
+  - "/images/blog/cmu-graduation/blog_walksky.jpg"
+  - "/images/blog/cmu-graduation/blog_stickers.jpg"
+  - "/images/blog/cmu-graduation/blog_flowers.jpg"
 excerpt: "A heartfelt reflection on my journey at Carnegie Mellon—the growth, challenges, and memories I'll carry forever."
 ---
 
@@ -222,19 +222,19 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
 
 <div className="image-grid">
   <ImageWithCaption 
-    src="/images/blog/cmu-graduation/packing.jpg"
+    src="/images/blog/cmu-graduation/blog_packing.jpg"
     alt="Celebrating with friends at graduation"
     caption="Packing my drive from Pittsburgh to Mtrl"
   />
 
   <ImageWithCaption 
-    src="/images/blog/cmu-graduation/drive.jpg"
+    src="/images/blog/cmu-graduation/blog_drive.jpg"
     alt="Family photo at graduation ceremony"
     caption="The gorgeous sunset at the US-CA border"
   />
 
   <ImageWithCaption 
-    src="/images/blog/cmu-graduation/arrived.jpg"
+    src="/images/blog/cmu-graduation/blog_arrived.jpg"
     alt="Final celebration with diploma"
     caption="Arrived at Montreal"
   />
