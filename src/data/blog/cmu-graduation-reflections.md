@@ -188,7 +188,7 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
       title="Other Fun Activities"
       type="Other"
       images={["/images/blog/cmu-graduation/events/snowboarding.jpg", "/images/blog/cmu-graduation/events/hiking.jpg", "/images/blog/cmu-graduation/events/moreskiing.jpg", "/images/blog/cmu-graduation/events/paintball.jpg", "/images/blog/cmu-graduation/events/pittsburghpartybus.jpg", "/images/blog/cmu-graduation/events/hotpot.jpg", "/images/blog/cmu-graduation/events/5Jason.jpg", "/images/blog/cmu-graduation/events/kayak.jpg", "/images/blog/cmu-graduation/events/halloween.jpg", "/images/blog/cmu-graduation/events/debugging.jpg"]}
-      captions={["Snowboarding & Skiing", "Hiking", "More Skiing!", "Paintball", "Party Bus", "Hotpot", "Free food on Spring Carnival!", "Kayaking", "Halloween", "Debugging nights(very memorable😅)"]}  
+      captions={["Snowboarding & Skiing", "Hiking", "More Skiing!", "Paintball", "Party Bus", "Hotpot", "Free food at Spring Carnival!", "Kayaking", "Halloween", "Debugging nights(very memorable😅)"]}  
     />
 
 
@@ -214,7 +214,7 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
         </div>
       </div>
       <p className="text-gray-200 leading-relaxed">
-        As I prepare to embark on my first full-time job, I am ready to keep learning and contribute to products that shape the experiences of millions around the world.
+        As I prepare to embark on my first full-time job, I am ready to keep learning and embrace more challenges!
       </p>
     </div>
   </div>

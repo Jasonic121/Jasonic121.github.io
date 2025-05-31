@@ -224,9 +224,19 @@ export default function BlogPost({ source, frontMatter }: BlogPostProps) {
 
   useEffect(() => {
     setIsMounted(true);
-    // Increment view count when mounted and slug is available
+    // Increment view count in production, fetch only in development
     if (router.query.slug && typeof router.query.slug === 'string') {
-      incrementViewCount(router.query.slug).then(setViews);
+      
+      if (process.env.NODE_ENV === 'development') {
+        import('../../utils/viewCounter').then(({ getViewCount }) => {
+          getViewCount(router.query.slug as string).then(setViews);
+        });
+      } else {
+        incrementViewCount(router.query.slug).then(setViews);
+      }
+
+      // Deprecated Backup View Counter Trigger
+      // incrementViewCount(router.query.slug).then(setViews);
     }
     return () => setIsMounted(false);
   }, [router.query.slug]);
@@ -257,6 +267,7 @@ export default function BlogPost({ source, frontMatter }: BlogPostProps) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={frontMatter.title} />
         <meta name="twitter:description" content={frontMatter.excerpt || ''} />
+        <meta name="viewport" content="width=1200" />
       </Head>
 
       <BlogLayout>

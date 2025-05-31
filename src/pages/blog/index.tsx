@@ -23,6 +23,7 @@ export default function Blog({ posts }: BlogProps) {
       <Head>
         <title>Blog | Jason Li</title>
         <meta name="description" content="Jason Li's blog - Thoughts, tutorials, and insights" />
+        <meta name="viewport" content="width=1200" />
       </Head>
       
       <section className="container mx-auto px-4 py-20">
