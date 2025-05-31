@@ -31,7 +31,8 @@ const TypedText = () => {
             ],
             typeSpeed: 80,
             backSpeed: 50,
-            loop: true
+            loop: true,
+            backDelay: 1500
           });
         } catch (error) {
           console.error('Error initializing Typed.js:', error);
@@ -159,7 +160,7 @@ const Hero = () => {
               <span className="bg-gradient-to-r from-blue-400 to-amber-400 text-transparent bg-clip-text">Hello, I'm a</span>
             </h2>
             <div className="h-[110px] md:h-[100px] mb-4 md:mb-4">
-              <h1 className="text-5xl md:text-6xl font-mono font-bold">
+              <h1 className="text-5xl md:text-6xl font-mono font-bold hero-title">
                 <TypedText />
               </h1>
             </div>

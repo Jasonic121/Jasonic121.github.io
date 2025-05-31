@@ -14,6 +14,7 @@ const CommentWall = () => {
   const commentContainerRef = useRef(null);
   const [mood, setMood] = useState('happy');
   const [shuffledIndices, setShuffledIndices] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Shuffle function using Fisher-Yates algorithm
   const shuffleArray = (array) => {
@@ -28,26 +29,16 @@ const CommentWall = () => {
   // Fetch comments from Firebase
   useEffect(() => {
     const fetchComments = async () => {
+      setIsLoading(true);
       try {
-        setIsLoading(true);
-        console.log('Fetching comments from Firebase...');
-        
-        try {
-          const data = await getComments();
-          console.log('Comments received:', data);
-          const commentsArray = Array.isArray(data) ? data : [];
-          setComments(commentsArray);
-          // Generate shuffled indices when comments are loaded
-          setShuffledIndices(shuffleArray(Array.from({ length: commentsArray.length }, (_, i) => i)));
-        } catch (firebaseError) {
-          console.error('Firebase error:', firebaseError);
-          setError('Failed to load comments. Please try again later.');
-        }
-        
-        setIsLoading(false);
+        const data = await getComments();
+        setComments(data);
+        // Generate shuffled indices when comments are loaded
+        setShuffledIndices(shuffleArray(Array.from({ length: data.length }, (_, i) => i)));
       } catch (err) {
         console.error('Error fetching comments:', err);
-        setError('Failed to load comments. Please try again later.');
+        setError('Failed to load comments');
+      } finally {
         setIsLoading(false);
       }
     };
@@ -64,40 +55,19 @@ const CommentWall = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (!newComment.trim() || !name.trim()) return;
-    
-    // We no longer need random positions since bubbles will float from right to left
-    // We'll just use a dummy position and the FloatingBubble will handle placement
-    const position = { x: 0, y: 0 };
-    
+    setIsSubmitting(true);
     try {
-      setIsLoading(true);
-      // Try to submit to Firebase
-      try {
-        await addComment(name, newComment, position, mood);
-        
-        // We don't add the new comment to the displayed comments anymore
-        // since it needs to be approved first
-        
-        setNewComment('');
-        setName('');
-        
-        // Show success message
-        setSuccessMessage('Your graduation message has lifted off! It will appear in the sky after approval. 🎓');
-        
-        // Hide form after successful submission
-        setShowForm(false);
-      } catch (firebaseError) {
-        console.error('Firebase error when adding comment:', firebaseError);
-        setError('Failed to add comment. Please try again.');
-      }
-      
-      setIsLoading(false);
+      await addComment(name, newComment, { x: 0, y: 0 }, mood);
+      setNewComment('');
+      setName('');
+      setSuccessMessage('Your graduation message has lifted off! It will appear in the sky after approval. 🎓');
+      setShowForm(false);
+      await fetchComments();
     } catch (err) {
       console.error('Error adding comment:', err);
-      setError('Failed to add comment. Please try again.');
-      setIsLoading(false);
+      setError('Failed to add comment');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -296,11 +266,11 @@ const CommentWall = () => {
             <motion.button 
               type="submit" 
               className="w-full bg-gradient-to-r from-accent via-accent-2 to-accent-3 hover:bg-gradient-to-r hover:from-accent/90 hover:via-accent-2/90 hover:to-accent-3/90 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 transform hover:translate-y-[-2px]"
-              disabled={isLoading}
+              disabled={isSubmitting}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              {isLoading ? (
+              {isSubmitting ? (
                 <span className="flex items-center justify-center">
                   <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
