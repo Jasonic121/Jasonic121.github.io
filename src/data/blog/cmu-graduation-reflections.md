@@ -1,15 +1,17 @@
 ---
 title: "My Journey at Carnegie Mellon University"
-date: "2024-05-25" 
+date: "2024-05-31" 
 coverImages: 
   - "/images/blog/cmu-graduation/graduation-cover.jpg"
   - "/images/blog/cmu-graduation/graduation-cover-2.jpg"
   - "/images/blog/cmu-graduation/walksky.jpg"
-excerpt: "A heartfelt reflection on my journey at Carnegie Mellon—the growth, challenges, and memories I'll carry into my career at Apple."
+  - "/images/blog/cmu-graduation/stickers.jpg"
+  - "/images/blog/cmu-graduation/flowers.jpg"
+excerpt: "A heartfelt reflection on my journey at Carnegie Mellon—the growth, challenges, and memories I'll carry forever."
 ---
 
 <div className="intro-section">
-  As a student at Carnegie Mellon University from January 2024 to May 2025, pursuing my M.S. in Electrical and Computer Engineering, my journey has been nothing short of memorable. This blog is to act as a memory lane for me to look back on my time at CMU and the growth that happened both inside and outside the classroom. 
+  From January 2024 to May 2025, I pursued my M.S. in Electrical and Computer Engineering at Carnegie Mellon University—a challenging and unforgettable chapter. This photoblog is my memory lane, capturing the moments of growth that unfolded both in and beyond the classroom.
 </div>
 
 # The Beginning
@@ -41,8 +43,8 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
       name="Friends"
       role="Amazing people I've met at CMU"
       type="friend"
-      images={["/images/blog/cmu-graduation/people/weichen.jpg","/images/blog/cmu-graduation/people/howard&johnson.jpg", "/images/blog/cmu-graduation/people/rodrigo.jpg", "/images/blog/cmu-graduation/people/harvey.jpg", "/images/blog/cmu-graduation/people/anish.jpg", "/images/blog/cmu-graduation/people/elisa.jpg", "/images/blog/cmu-graduation/people/phyllis.jpg", "/images/blog/cmu-graduation/people/connie.jpg", "/images/blog/cmu-graduation/people/Jimmy.jpg","/images/blog/cmu-graduation/people/cancungroup-2.jpg"]}
-      captions={["Jaswanth, Weichen, and Louis", "Howard and Johnson", "Rodrigo", "Harvey, Hans, and Jerry", "Anish", "Elisa", "Phyllis", "Connie", "Jimmy","Cancun Group (Phyllis, Edward, Frank, George, Kevin, Elisa)"]}
+      images={["/images/blog/cmu-graduation/people/weichen.jpg","/images/blog/cmu-graduation/people/howard&johnson.jpg", "/images/blog/cmu-graduation/people/rodrigo.jpg", "/images/blog/cmu-graduation/people/harvey.jpg", "/images/blog/cmu-graduation/people/anish.jpg", "/images/blog/cmu-graduation/people/elisa.jpg", "/images/blog/cmu-graduation/people/edward.jpg", "/images/blog/cmu-graduation/people/jerry.jpg", "/images/blog/cmu-graduation/people/george.jpg", "/images/blog/cmu-graduation/people/phyllis.jpg", "/images/blog/cmu-graduation/people/connie.jpg", "/images/blog/cmu-graduation/people/Jimmy.jpg","/images/blog/cmu-graduation/people/cancungroup-2.jpg"]}
+      captions={["Jaswanth, Weichen, and Louis", "Howard and Johnson", "Rodrigo", "Harvey, Hans, and Jerry", "Anish", "Elisa", "Edward", "Jerry", "George", "Phyllis", "Connie", "Jimmy"]}
     />
 
   </div>
@@ -81,7 +83,7 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
   <div className="highlight-box">
     <span className="text-2xl">💪</span>
     <div>
-      <strong>Workload Survival Highlight:</strong>
+      <strong>Workload Survival:</strong>
       <span className="text-white-400 ml-2">Surviving CMU's Academic Intensity</span>
     </div>
   </div>
@@ -119,7 +121,7 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
     <span className="text-2xl">🏆</span>
     <div>
       <strong>Major Achievement:</strong> 
-      <span className="text-green-400 ml-2">Third Place at NOVA GenAI Hackathon</span>
+      <span className="text-green-400 ml-2">Third Place at NOVA Hackathon</span>
     </div>
   </div>
 </div>
@@ -143,7 +145,7 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
   <div className="highlight-box">
     <span className="text-2xl">🎯</span>
     <div>
-      <strong>Research Focus:</strong> Conversational AI for Wireless Network Optimization
+      <strong>Research Focus:</strong> Attended my First Conference as a Presenter
     </div>
   </div>
 </div>
@@ -185,45 +187,12 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
     <Event
       title="Other Fun Activities"
       type="Other"
-      images={["/images/blog/cmu-graduation/events/snowboarding.jpg","/images/blog/cmu-graduation/events/paintball.jpg", "/images/blog/cmu-graduation/events/pittsburghpartybus.jpg", "/images/blog/cmu-graduation/events/hotpot.jpg", "/images/blog/cmu-graduation/events/kayak.jpg", "/images/blog/cmu-graduation/events/halloween.jpg", "/images/blog/cmu-graduation/events/debugging.jpg"]}
-      captions={["Snowboarding & Skiing", "Paintball", "Party Bus", "Hotpot", "Kayaking", "Halloween", "Debugging nights(very memorable😅)"]}  
+      images={["/images/blog/cmu-graduation/events/snowboarding.jpg", "/images/blog/cmu-graduation/events/hiking.jpg", "/images/blog/cmu-graduation/events/moreskiing.jpg", "/images/blog/cmu-graduation/events/paintball.jpg", "/images/blog/cmu-graduation/events/pittsburghpartybus.jpg", "/images/blog/cmu-graduation/events/hotpot.jpg", "/images/blog/cmu-graduation/events/5Jason.jpg", "/images/blog/cmu-graduation/events/kayak.jpg", "/images/blog/cmu-graduation/events/halloween.jpg", "/images/blog/cmu-graduation/events/debugging.jpg"]}
+      captions={["Snowboarding & Skiing", "Hiking", "More Skiing!", "Paintball", "Party Bus", "Hotpot", "Free food on Spring Carnival!", "Kayaking", "Halloween", "Debugging nights(very memorable😅)"]}  
     />
 
 
   </div>
-</div>
-
-# Key Takeaways & Growth
-
-<div className="takeaways-section">
-  <h2>Lessons That Will Last a Lifetime</h2>
-  
-  <ol>
-    <li>
-      <h3 className="font-semibold text-blue-300 mb-2">Embrace the Learning Curve</h3>
-      <p className="text-gray-300">
-        Every challenging course, every failed experiment, and every debugging session taught me resilience. 
-        The steepest learning curves often lead to the most rewarding breakthroughs.
-      </p>
-    </li>
-
-    <li>
-      <h3 className="font-semibold text-green-300 mb-2">Collaboration Over Competition</h3>
-      <p className="text-gray-300">
-        CMU's culture taught me that the best innovations come from diverse teams working together. 
-        Sharing knowledge multiplies everyone's potential for success.
-      </p>
-    </li>
-
-    <li>
-      <h3 className="font-semibold text-purple-300 mb-2">Technical Excellence + Communication = Impact</h3>
-      <p className="text-gray-300">
-        The most brilliant technical solutions mean nothing if you can't communicate their value. 
-        Learning to present, negotiate, and lead was just as important as coding.
-      </p>
-    </li>
-
-  </ol>
 </div>
 
 ---
@@ -245,9 +214,7 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
         </div>
       </div>
       <p className="text-gray-200 leading-relaxed">
-        As I prepare to join Apple's engineering team, I carry with me the technical excellence, 
-        collaborative spirit, and innovative mindset that CMU instilled. Ready to contribute to 
-        products that will impact millions of users worldwide.
+        As I prepare to embark on my first full-time job, I am ready to keep learning and contribute to products that shape the experiences of millions around the world.
       </p>
     </div>
   </div>
@@ -255,21 +222,21 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
 
 <div className="image-grid">
   <ImageWithCaption 
-    src="/images/blog/cmu-graduation/friends-celebration.jpg"
+    src="/images/blog/cmu-graduation/packing.jpg"
     alt="Celebrating with friends at graduation"
-    caption="Celebrating with the amazing friends who made this journey unforgettable"
+    caption="Packing my drive from Pittsburgh to Mtrl"
   />
 
   <ImageWithCaption 
-    src="/images/blog/cmu-graduation/family-photo.jpg"
+    src="/images/blog/cmu-graduation/drive.jpg"
     alt="Family photo at graduation ceremony"
-    caption="With my proud family who supported me every step of the way"
+    caption="The gorgeous sunset at the US-CA border"
   />
 
   <ImageWithCaption 
-    src="/images/blog/cmu-graduation/final-celebration.jpg"
+    src="/images/blog/cmu-graduation/arrived.jpg"
     alt="Final celebration with diploma"
-    caption="A final celebration of our achievements and the bright future ahead"
+    caption="Arrived at Montreal"
   />
 </div>
 
