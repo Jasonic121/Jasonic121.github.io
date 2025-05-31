@@ -9,7 +9,7 @@ interface BlogPost {
   slug: string;
   title: string;
   date: string;
-  coverImage?: string;
+  coverImages?: string;
   excerpt?: string;
 }
 
@@ -39,10 +39,10 @@ export default function Blog({ posts }: BlogProps) {
               <Link key={post.slug} href={`/blog/${post.slug}`}>
                 <a className="group">
                   <article className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105">
-                    {post.coverImage && (
+                    {post.coverImages && (
                       <div className="relative h-64 overflow-hidden">
                         <img 
-                          src={post.coverImage} 
+                          src={post.coverImages[0]} 
                           alt={post.title} 
                           className="w-full h-full object-cover transition-transform group-hover:scale-110"
                         />

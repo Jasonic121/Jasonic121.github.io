@@ -21,17 +21,6 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
   // If images is undefined or empty, return null early
   if (!images?.length) return null;
 
-  // // Auto-advance to next image
-  // useEffect(() => {
-  //   if (isPaused || images.length <= 1) return;
-
-  //   const interval = setInterval(() => {
-  //     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  //   }, autoplayInterval);
-
-  //   return () => clearInterval(interval);
-  // }, [isPaused, autoplayInterval, images.length]);
-
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) => 
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
@@ -43,17 +32,17 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
   };
 
   return (
-    <div className={`relative w-full h-[400px] overflow-hidden rounded-lg ${className}`}>
-      {/* Single image display */}
+    <div className={`relative w-full overflow-hidden rounded-lg ${className}`}>
+      {/* Single image display at original size */}
       <div
-        className="w-full h-full flex items-center justify-center px-4"
+        className="w-full flex items-center justify-center"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         <img
           src={images[currentIndex]}
           alt={alts[currentIndex] || `Image ${currentIndex + 1}`}
-          className="max-w-full max-h-full object-contain rounded-xl shadow-lg transition-opacity duration-500"
+          className="max-h-[70vh] h-full w-auto object-contain rounded-xl shadow-lg transition-opacity duration-500 mx-auto"
         />
       </div>
 
@@ -92,9 +81,11 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
       )}
 
       {/* Image counter */}
-      <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
-        {currentIndex + 1} / {images.length}
-      </div>
+      {images.length > 1 && (
+        <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+          {currentIndex + 1} / {images.length}
+        </div>
+      )}
     </div>
   );
 };

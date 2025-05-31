@@ -1,7 +1,10 @@
 ---
 title: "My Journey at Carnegie Mellon University"
 date: "2024-05-25" 
-coverImage: "/images/blog/cmu-graduation/graduation-cover.jpg"
+coverImages: 
+  - "/images/blog/cmu-graduation/graduation-cover.jpg"
+  - "/images/blog/cmu-graduation/graduation-cover-2.jpg"
+  - "/images/blog/cmu-graduation/walksky.jpg"
 excerpt: "A heartfelt reflection on my journey at Carnegie Mellon—the growth, challenges, and memories I'll carry into my career at Apple."
 ---
 
@@ -38,8 +41,8 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
       name="Friends"
       role="Amazing people I've met at CMU"
       type="friend"
-      images={["/images/blog/cmu-graduation/people/weichen.jpg","/images/blog/cmu-graduation/people/howard&johnson.jpg", "/images/blog/cmu-graduation/people/rodrigo.jpg", "/images/blog/cmu-graduation/people/elisa.jpg", "/images/blog/cmu-graduation/people/phyllis.jpg", "/images/blog/cmu-graduation/people/harvey.jpg", "/images/blog/cmu-graduation/people/anish.jpg", "/images/blog/cmu-graduation/people/connie.jpg", "/images/blog/cmu-graduation/people/Jimmy.jpg","/images/blog/cmu-graduation/people/cancungroup-2.jpg"]}
-      captions={["Jaswanth, Weichen, and Louis", "Howard and Johnson", "Rodrigo", "Elisa", "Phyllis", "Harvey, Hans, and Jerry", "Anish", "Connie", "Jimmy","Cancun Group (Phyllis, Edward, Frank, George, Kevin, Elisa)"]}
+      images={["/images/blog/cmu-graduation/people/weichen.jpg","/images/blog/cmu-graduation/people/howard&johnson.jpg", "/images/blog/cmu-graduation/people/rodrigo.jpg", "/images/blog/cmu-graduation/people/harvey.jpg", "/images/blog/cmu-graduation/people/anish.jpg", "/images/blog/cmu-graduation/people/elisa.jpg", "/images/blog/cmu-graduation/people/phyllis.jpg", "/images/blog/cmu-graduation/people/connie.jpg", "/images/blog/cmu-graduation/people/Jimmy.jpg","/images/blog/cmu-graduation/people/cancungroup-2.jpg"]}
+      captions={["Jaswanth, Weichen, and Louis", "Howard and Johnson", "Rodrigo", "Harvey, Hans, and Jerry", "Anish", "Elisa", "Phyllis", "Connie", "Jimmy","Cancun Group (Phyllis, Edward, Frank, George, Kevin, Elisa)"]}
     />
 
   </div>
@@ -155,21 +158,21 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
     <Event 
       title="NOVA Hackathon & TartanHacks"
       type="Hackathon"
-      images={["/images/blog/cmu-graduation/events/nova-hackathon.jpg", "/images/blog/cmu-graduation/events/tartan-hacks-2025.jpg","/images/blog/cmu-graduation/events/tartan-hacks-2025-2.jpg","/images/blog/cmu-graduation/events/tartan-hacks-2025-3.jpg"]}
-      captions={["NOVA Hackathon crew", "The TartanHacks squad", "Hackers hacking", "Sleep deprived nights"]}
+      images={["/images/blog/cmu-graduation/events/nova-hackathon.jpg", "/images/blog/cmu-graduation/events/tartan-hacks-2025.jpg","/images/blog/cmu-graduation/events/tartan-hacks-2025-3.jpg", "/images/blog/cmu-graduation/events/tartan-hacks-2025-2.jpg"]}
+      captions={["NOVA Hackathon crew", "The TartanHacks squad", "Sleep deprived nights", "Hackers hacking"]}
     />
 
     <Event 
-      title="HotMobile Conference"
+      title="HotMobile Conference/Palm Springs"
       type="Conference"
-      images={["/images/blog/cmu-graduation/events/palm-springs-conference-2.jpg", "/images/blog/cmu-graduation/events/palm-springs-conference.jpg"]}
-      captions={["On stage as a presenter", "HotMobile Conference"]}
+      images={["/images/blog/cmu-graduation/events/palm-springs-conference-2.jpg", "/images/blog/cmu-graduation/events/palm-springs-conference.jpg", "/images/blog/cmu-graduation/events/palm-springs-conference-3.jpg", "/images/blog/cmu-graduation/events/palm-springs-conference-4.jpg", "/images/blog/cmu-graduation/events/palm-springs-conference-5.jpg", "/images/blog/cmu-graduation/events/palm-springs-conference-6.jpg"]}
+      captions={["On stage as a presenter", "HotMobile Conference", "Dinner Gala"]}
     />
 
     <Event 
       title="Cancun Spring Break 2025"
       type="Travel"
-      images={["/images/blog/cmu-graduation/events/cancun-bar.jpg", "/images/blog/cmu-graduation/events/cancun-swim.jpg", "/images/blog/cmu-graduation/events/cancun-dinner.jpg"]}
+      images={["/images/blog/cmu-graduation/events/cancun-bar.jpg", "/images/blog/cmu-graduation/events/cancun-swim.jpg", "/images/blog/cmu-graduation/events/cancun-insta.jpg", "/images/blog/cmu-graduation/events/cancun-dinner.jpg", "/images/blog/cmu-graduation/events/fireworks.jpg"]}
     />
 
     <Event 
@@ -182,8 +185,8 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
     <Event
       title="Other Fun Activities"
       type="Other"
-      images={["/images/blog/cmu-graduation/events/kayak.jpg", "/images/blog/cmu-graduation/events/paintball.jpg", "/images/blog/cmu-graduation/events/halloween.jpg", "/images/blog/cmu-graduation/events/pittsburghpartybus.jpg", "/images/blog/cmu-graduation/events/hotpot.jpg", "/images/blog/cmu-graduation/events/debugging.jpg"]}
-      captions={["Kayaking", "Paintball", "Halloween", "Party Bus", "Hotpot", "Debugging nights(very memorable😅)"]}  
+      images={["/images/blog/cmu-graduation/events/snowboarding.jpg","/images/blog/cmu-graduation/events/paintball.jpg", "/images/blog/cmu-graduation/events/pittsburghpartybus.jpg", "/images/blog/cmu-graduation/events/hotpot.jpg", "/images/blog/cmu-graduation/events/kayak.jpg", "/images/blog/cmu-graduation/events/halloween.jpg", "/images/blog/cmu-graduation/events/debugging.jpg"]}
+      captions={["Snowboarding & Skiing", "Paintball", "Party Bus", "Hotpot", "Kayaking", "Halloween", "Debugging nights(very memorable😅)"]}  
     />
 
 

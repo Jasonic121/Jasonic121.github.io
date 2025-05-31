@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Layout from '../../components/layout/Layout';
 import BlogLayout from '../../components/blog/BlogLayout';
 import ImageGrid from '../../components/blog/ImageGrid';
+import ImageGallery from '../../components/ui/ImageGallery';
 import { Course } from '../../components/blog/Course';
 import { Event } from '../../components/blog/Event';
 import { Person } from '../../components/blog/Person';
@@ -31,6 +32,7 @@ interface BlogPostProps {
     title: string;
     date: string;
     coverImage?: string;
+    coverImages?: string[];
     excerpt?: string;
   };
 }
@@ -268,6 +270,10 @@ export default function BlogPost({ source, frontMatter }: BlogPostProps) {
     );
   }
 
+  // Determine whether to show gallery or single image
+  const hasCoverImages = frontMatter.coverImages && frontMatter.coverImages.length > 0;
+  const coverImageToUse = hasCoverImages ? frontMatter.coverImages : (frontMatter.coverImage ? [frontMatter.coverImage] : []);
+
   return (
     <Layout>
       <Head>
@@ -306,16 +312,25 @@ export default function BlogPost({ source, frontMatter }: BlogPostProps) {
             
             <BlogPostMeta frontMatter={frontMatter} />
             
-            {/* Enhanced cover image */}
-            {frontMatter.coverImage && (
+            {/* Enhanced cover image or gallery */}
+            {coverImageToUse.length > 0 && (
               <div className="hero-image relative mb-12">
                 <div className="relative overflow-hidden rounded-2xl">
-                  <img 
-                    src={frontMatter.coverImage} 
-                    alt={frontMatter.title}
-                    className="w-full h-64 md:h-96 object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  {hasCoverImages ? (
+                    <ImageGallery 
+                      images={frontMatter.coverImages}
+                      className="w-full"
+                    />
+                  ) : (
+                    <>
+                      <img 
+                        src={frontMatter.coverImage} 
+                        alt={frontMatter.title}
+                        className="w-full h-auto object-contain transition-transform duration-700 hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </>
+                  )}
                 </div>
               </div>
             )}
