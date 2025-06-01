@@ -43,8 +43,8 @@ Choosing CMU wasn't just about its stellar reputation in computer science and en
       name="Friends"
       role="Amazing people I've met at CMU"
       type="friend"
-      images={["/images/blog/cmu-graduation/people/blog_weichen.jpg","/images/blog/cmu-graduation/people/blog_howard&johnson.jpg", "/images/blog/cmu-graduation/people/blog_rodrigo.jpg", "/images/blog/cmu-graduation/people/blog_harvey.jpg", "/images/blog/cmu-graduation/people/blog_anish.jpg", "/images/blog/cmu-graduation/people/blog_elisa.jpg", "/images/blog/cmu-graduation/people/blog_edward.jpg", "/images/blog/cmu-graduation/people/blog_jerry.jpg", "/images/blog/cmu-graduation/people/blog_george.jpg", "/images/blog/cmu-graduation/people/blog_phyllis.jpg", "/images/blog/cmu-graduation/people/blog_connie.jpg", "/images/blog/cmu-graduation/people/blog_jimmy.jpg","/images/blog/cmu-graduation/people/blog_cancungroup-2.jpg"]}
-      captions={["Jaswanth, Weichen, and Louis", "Howard and Johnson", "Rodrigo", "Harvey, Hans, and Jerry", "Anish", "Elisa", "Edward", "Jerry", "George", "Phyllis", "Connie", "Jimmy"]}
+      images={["/images/blog/cmu-graduation/people/blog_weichen.jpg","/images/blog/cmu-graduation/people/blog_howard&johnson.jpg", "/images/blog/cmu-graduation/people/blog_rodrigo.jpg", "/images/blog/cmu-graduation/people/blog_harvey.jpg", "/images/blog/cmu-graduation/people/blog_anish.jpg", "/images/blog/cmu-graduation/people/blog_elisa.jpg", "/images/blog/cmu-graduation/people/blog_frank.jpg", "/images/blog/cmu-graduation/people/blog_kevin.jpg", "/images/blog/cmu-graduation/people/blog_edward.jpg", "/images/blog/cmu-graduation/people/blog_jerry.jpg", "/images/blog/cmu-graduation/people/blog_george.jpg", "/images/blog/cmu-graduation/people/blog_phyllis.jpg", "/images/blog/cmu-graduation/people/blog_connie.jpg", "/images/blog/cmu-graduation/people/blog_jimmy.jpg","/images/blog/cmu-graduation/people/blog_cancungroup-2.jpg"]}
+      captions={["Jaswanth, Weichen, and Louis", "Howard and Johnson", "Rodrigo", "Harvey, Hans, and Jerry", "Anish", "Elisa", "Frank", "Kevin","Edward", "Jerry", "George", "Phyllis", "Connie", "Jimmy"]}
     />
 
   </div>
