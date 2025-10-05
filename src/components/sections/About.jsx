@@ -216,15 +216,15 @@ const About = () => {
               {activeTab === 'experience' && (
                 <div className="space-y-8">
                   {experience.map((item) => (
-                    <div key={item.id} className={`relative pl-8 border-l-2 ${item.isUpcoming ? 'border-accent' : 'border-accent-2'}`}>
-                      <div className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full ${item.isUpcoming ? 'bg-accent' : 'bg-accent-2'}`}></div>
+                    <div key={item.id} className={`relative pl-8 border-l-2 ${item.currentPosition ? 'border-accent' : 'border-accent-2'}`}>
+                      <div className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full ${item.currentPosition ? 'bg-accent' : 'bg-accent-2'}`}></div>
                       <div className="space-y-2">
-                        <h3 className={`text-2xl font-bold ${item.isUpcoming ? 'text-accent' : 'text-accent-2'}`}>{item.company}</h3>
+                        <h3 className={`text-2xl font-bold ${item.currentPosition ? 'text-accent' : 'text-accent-2'}`}>{item.company}</h3>
                         <p className="text-lg text-gray-300">{item.position}</p>
                         <p className="text-sm text-gray-400">{item.duration}</p>
-                        {item.isUpcoming && (
+                        {item.currentPosition && (
                           <span className="inline-block px-3 py-1 text-sm font-semibold text-accent bg-accent/10 rounded-full">
-                            Upcoming Position
+                            Current Position
                           </span>
                         )}
                         {item.description && (
