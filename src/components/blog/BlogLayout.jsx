@@ -1,7 +1,9 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import TableOfContents from './TableOfContents';
 
 const BlogLayout = ({ children }) => {
+  const router = useRouter();
   return (
     <div className="min-h-screen">
       <div className="relative z-10 container mx-auto px-4 py-8">
@@ -22,7 +24,7 @@ const BlogLayout = ({ children }) => {
             {/* Table of Contents sidebar */}
             <aside className="hidden lg:block w-80 relative">
               <div className="sticky top-24">
-                <TableOfContents content={children} />
+                <TableOfContents key={router.asPath} content={children} />
               </div>
             </aside>
           </div>

@@ -16,49 +16,55 @@ const TableOfContents = ({ content }) => {
   useEffect(() => {
     if (!isMounted) return;
 
-    // Get all heading elements from the content
-    const elements = document.querySelectorAll('h1, h2');
-    const headingElements = Array.from(elements).map((element) => ({
-      id: element.id || element.textContent.toLowerCase().replace(/\s+/g, '-'),
-      text: element.textContent,
-      level: parseInt(element.tagName.substring(1)),
-    }));
+    const rafId = requestAnimationFrame(() => {
+      // Limit heading lookup to the blog article content area if present
+      const container = document.querySelector('article.blog-post');
+      const elements = container ? container.querySelectorAll('h1, h2') : document.querySelectorAll('h1, h2');
 
-    setHeadings(headingElements);
+      const headingElements = Array.from(elements).map((element) => ({
+        id: element.id || element.textContent.toLowerCase().replace(/\s+/g, '-'),
+        text: element.textContent,
+        level: parseInt(element.tagName.substring(1)),
+      }));
 
-    // Add IDs to headings if they don't have one
-    elements.forEach((element) => {
-      if (!element.id) {
-        element.id = element.textContent.toLowerCase().replace(/\s+/g, '-');
-      }
+      setHeadings(headingElements);
+
+      // Add IDs to headings if they don't have one
+      elements.forEach((element) => {
+        if (!element.id) {
+          element.id = element.textContent.toLowerCase().replace(/\s+/g, '-');
+        }
+      });
+
+      // Intersection Observer for active heading
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveId(entry.target.id);
+            }
+          });
+        },
+        { rootMargin: '-10% 0px -90% 0px' }
+      );
+
+      elements.forEach((element) => observer.observe(element));
+
+      // Handle scroll for visual effects
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 100);
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Check initial scroll position
+
+      return () => {
+        observer.disconnect();
+        window.removeEventListener('scroll', handleScroll);
+      };
     });
 
-    // Intersection Observer for active heading
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-10% 0px -90% 0px' }
-    );
-
-    elements.forEach((element) => observer.observe(element));
-
-    // Handle scroll for visual effects
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial scroll position
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => cancelAnimationFrame(rafId);
   }, [isMounted, router.asPath]);
 
   if (!isMounted) {

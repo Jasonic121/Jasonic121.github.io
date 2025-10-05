@@ -187,7 +187,7 @@ const CommentWall = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <span>{showForm ? 'Hide Form' : 'Congratulate Me!'}</span>
+          <span>{showForm ? 'Hide Form' : 'Leave a message!'}</span>
           <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
         </motion.button>
       </div>
