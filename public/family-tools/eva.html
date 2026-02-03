@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>長榮哩程計算器 - 台灣↔蒙特婁</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a5f4a 0%, #2d8a6e 50%, #45b08c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .tab-btn { transition: all 0.2s; }
+        .tab-btn:hover { transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        // 卡片資訊
+        const CARD_INFO = {
+            annualFee: 2400,
+            signupBonus: 6000,
+            signupSpendRequired: 10000,
+            renewalBonus: 2000,
+            generalRate: 22,
+            evaRate: 10,
+        };
+
+        // ========== 方案一：純哩程兌換 ==========
+        const SEGMENT_MILES = {
+            transPacific: {
+                economy: 35000,
+                premiumEconomy: 50000,
+                business: 70000,
+            },
+            northAmerica: {
+                short: { economy: 12500, premiumEconomy: 20000, business: 25000 },
+                long: { economy: 17500, premiumEconomy: 30000, business: 40000 }
+            }
+        };
+
+        const FLIGHT_OPTIONS = [
+            { id: 'all_economy', name: '全程經濟艙', emoji: '💺', desc: '最省哩程', transPacific: 'economy', northAmerica: 'economy', highlight: false },
+            { id: 'mixed_premium', name: '跨太平洋豪經艙', emoji: '✨', desc: '長途舒適，轉機經濟', transPacific: 'premiumEconomy', northAmerica: 'economy', highlight: true },
+            { id: 'mixed_business', name: '跨太平洋商務艙', emoji: '🌟', desc: '長途躺平，轉機經濟', transPacific: 'business', northAmerica: 'economy', highlight: true },
+            { id: 'all_premium', name: '全程豪華經濟艙', emoji: '💎', desc: '全程舒適', transPacific: 'premiumEconomy', northAmerica: 'premiumEconomy', highlight: false },
+            { id: 'all_business', name: '全程商務艙', emoji: '👑', desc: '頂級體驗', transPacific: 'business', northAmerica: 'business', highlight: false },
+        ];
+
+        // ========== 方案二：買票+升艙 ==========
+        // 升艙所需哩程（單程，跨太平洋段）
+        const UPGRADE_MILES = {
+            economyToPremium: 15000,
+            economyToBusiness: 50000,
+            premiumToBusiness: 35000,
+        };
+
+        // 參考票價（台北↔北美，來回，經典艙等可升艙）
+        const TICKET_PRICES = {
+            economy: 45000,
+            premiumEconomy: 75000,
+            business: 180000,
+        };
+
+        const UPGRADE_OPTIONS = [
+            { id: 'buy_eco', name: '買經濟艙（不升艙）', emoji: '💺', buyClass: 'economy', finalClass: 'economy', upgradeMiles: 0, desc: '最省錢' },
+            { id: 'buy_eco_up_premium', name: '買經濟艙＋升豪經', emoji: '✨', buyClass: 'economy', finalClass: 'premiumEconomy', upgradeMiles: UPGRADE_MILES.economyToPremium * 2, desc: '省錢又舒適', highlight: true },
+            { id: 'buy_eco_up_business', name: '買經濟艙＋升商務', emoji: '🚀', buyClass: 'economy', finalClass: 'business', upgradeMiles: UPGRADE_MILES.economyToBusiness * 2, desc: '跨級升等躺平' },
+            { id: 'buy_premium', name: '買豪經艙（不升艙）', emoji: '💎', buyClass: 'premiumEconomy', finalClass: 'premiumEconomy', upgradeMiles: 0, desc: '直接買舒適' },
+            { id: 'buy_premium_up_business', name: '買豪經艙＋升商務', emoji: '🌟', buyClass: 'premiumEconomy', finalClass: 'business', upgradeMiles: UPGRADE_MILES.premiumToBusiness * 2, desc: '最推薦躺平方案', highlight: true },
+            { id: 'buy_business', name: '直接買商務艙', emoji: '👑', buyClass: 'business', finalClass: 'business', upgradeMiles: 0, desc: '土豪方案' },
+        ];
+
+        function App() {
+            const [mode, setMode] = useState('redeem');
+            const [cards, setCards] = useState([
+                { id: 1, name: "爸爸", generalSpend: 0, evaSpend: 0, yearsHeld: 1, includeSignup: true },
+                { id: 2, name: "媽媽", generalSpend: 0, evaSpend: 0, yearsHeld: 1, includeSignup: true },
+            ]);
+            const [selectedOption, setSelectedOption] = useState('mixed_business');
+            const [connectionType, setConnectionType] = useState('short');
+            const [selectedUpgrade, setSelectedUpgrade] = useState('buy_premium_up_business');
+            const [passengers, setPassengers] = useState(1);
+            const [existingMiles, setExistingMiles] = useState(0);
+
+            const calculateCardMiles = (card) => {
+                let miles = 0;
+                if (card.includeSignup && (card.generalSpend + card.evaSpend) >= CARD_INFO.signupSpendRequired) {
+                    miles += CARD_INFO.signupBonus;
+                }
+                if (card.yearsHeld >= 2) {
+                    miles += CARD_INFO.renewalBonus * (card.yearsHeld - 1);
+                }
+                miles += Math.floor(card.generalSpend / CARD_INFO.generalRate);
+                miles += Math.floor(card.evaSpend / CARD_INFO.evaRate);
+                return miles;
+            };
+
+            const calculateRedeemMiles = (option) => {
+                const trans = SEGMENT_MILES.transPacific[option.transPacific];
+                const na = SEGMENT_MILES.northAmerica[connectionType][option.northAmerica];
+                return (trans + na) * 2;
+            };
+
+            const totalMiles = cards.reduce((sum, card) => sum + calculateCardMiles(card), 0) + existingMiles;
+
+            let targetMiles, targetCost, currentOption, currentUpgrade;
+            if (mode === 'redeem') {
+                currentOption = FLIGHT_OPTIONS.find(o => o.id === selectedOption);
+                targetMiles = calculateRedeemMiles(currentOption) * passengers;
+                targetCost = 0;
+            } else {
+                currentUpgrade = UPGRADE_OPTIONS.find(o => o.id === selectedUpgrade);
+                targetMiles = currentUpgrade.upgradeMiles * passengers;
+                targetCost = TICKET_PRICES[currentUpgrade.buyClass] * passengers;
+            }
+
+            const milesNeeded = Math.max(0, targetMiles - totalMiles);
+            const spendNeeded = milesNeeded * CARD_INFO.generalRate;
+            const progressPercent = targetMiles > 0 ? Math.min(100, (totalMiles / targetMiles) * 100) : 100;
+
+            const updateCard = (id, field, value) => {
+                setCards(cards.map(card => card.id === id ? { ...card, [field]: value } : card));
+            };
+
+            const inputStyle = {
+                width: '100%', padding: '12px', borderRadius: '8px',
+                border: '2px solid #e0e0e0', fontSize: '16px', outline: 'none',
+            };
+
+            const classNames = { economy: '經濟艙', premiumEconomy: '豪華經濟艙', business: '商務艙' };
+
+            return (
+                <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+                    {/* Header */}
+                    <div style={{ background: 'white', borderRadius: '16px', padding: '24px', marginBottom: '20px', textAlign: 'center', boxShadow: '0 4px 20px rgba(0,0,0,0.15)' }}>
+                        <h1 style={{ color: '#1a5f4a', fontSize: '28px', marginBottom: '8px' }}>✈️ 長榮哩程計算器</h1>
+                        <p style={{ color: '#666', fontSize: '16px' }}>台灣 ↔ 蒙特婁（加拿大）來回機票</p>
+                    </div>
+
+                    {/* 模式切換 */}
+                    <div style={{ background: 'white', borderRadius: '16px', padding: '20px', marginBottom: '20px', boxShadow: '0 4px 20px rgba(0,0,0,0.15)' }}>
+                        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                            <button className="tab-btn" onClick={() => setMode('redeem')}
+                                style={{ flex: 1, minWidth: '200px', padding: '16px', borderRadius: '12px', cursor: 'pointer',
+                                    border: mode === 'redeem' ? '3px solid #1a5f4a' : '2px solid #e0e0e0',
+                                    background: mode === 'redeem' ? '#e8f5e9' : 'white' }}>
+                                <div style={{ fontSize: '24px', marginBottom: '8px' }}>🎫</div>
+                                <div style={{ fontWeight: '600', color: '#333', marginBottom: '4px' }}>純哩程兌換機票</div>
+                                <div style={{ fontSize: '12px', color: '#666' }}>用哩程換整張機票</div>
+                            </button>
+                            <button className="tab-btn" onClick={() => setMode('upgrade')}
+                                style={{ flex: 1, minWidth: '200px', padding: '16px', borderRadius: '12px', cursor: 'pointer',
+                                    border: mode === 'upgrade' ? '3px solid #1a5f4a' : '2px solid #e0e0e0',
+                                    background: mode === 'upgrade' ? '#e8f5e9' : 'white' }}>
+                                <div style={{ fontSize: '24px', marginBottom: '8px' }}>💰+✨</div>
+                                <div style={{ fontWeight: '600', color: '#333', marginBottom: '4px' }}>買票＋哩程升艙</div>
+                                <div style={{ fontSize: '12px', color: '#666' }}>買機票後用哩程升級</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* 方案選擇區 */}
+                    <div style={{ background: 'white', borderRadius: '16px', padding: '24px', marginBottom: '20px', boxShadow: '0 4px 20px rgba(0,0,0,0.15)' }}>
+                        <h2 style={{ color: '#1a5f4a', marginBottom: '16px', fontSize: '20px' }}>
+                            {mode === 'redeem' ? '🎯 選擇艙等組合' : '🎯 選擇買票+升艙方案'}
+                        </h2>
+
+                        {mode === 'redeem' && (
+                            <>
+                                <div style={{ marginBottom: '20px' }}>
+                                    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#333' }}>轉機路線</label>
+                                    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                                        {[{ key: 'short', label: '🍁 經多倫多（短）' }, { key: 'long', label: '🌴 經美西（長）' }].map(r => (
+                                            <button key={r.key} onClick={() => setConnectionType(r.key)}
+                                                style={{ padding: '12px 20px', borderRadius: '8px', cursor: 'pointer', fontWeight: '600',
+                                                    border: connectionType === r.key ? '2px solid #1a5f4a' : '2px solid #e0e0e0',
+                                                    background: connectionType === r.key ? '#e8f5e9' : 'white',
+                                                    color: connectionType === r.key ? '#1a5f4a' : '#666' }}>{r.label}</button>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '12px' }}>
+                                    {FLIGHT_OPTIONS.map(option => {
+                                        const miles = calculateRedeemMiles(option);
+                                        const isSelected = selectedOption === option.id;
+                                        return (
+                                            <button key={option.id} onClick={() => setSelectedOption(option.id)}
+                                                style={{ padding: '14px', borderRadius: '12px', cursor: 'pointer', textAlign: 'center',
+                                                    border: isSelected ? '3px solid #1a5f4a' : '2px solid #e0e0e0',
+                                                    background: isSelected ? '#e8f5e9' : (option.highlight ? '#fff8e1' : 'white'), position: 'relative' }}>
+                                                {option.highlight && <div style={{ position: 'absolute', top: '-8px', right: '-8px', background: '#ff9800', color: 'white', padding: '2px 6px', borderRadius: '8px', fontSize: '10px', fontWeight: '600' }}>推薦</div>}
+                                                <div style={{ fontSize: '24px', marginBottom: '6px' }}>{option.emoji}</div>
+                                                <div style={{ fontWeight: '600', color: '#333', fontSize: '13px', marginBottom: '2px' }}>{option.name}</div>
+                                                <div style={{ fontSize: '10px', color: '#666', marginBottom: '6px' }}>{option.desc}</div>
+                                                <div style={{ fontWeight: '700', color: '#1a5f4a', fontSize: '14px', background: '#f5f5f5', padding: '4px', borderRadius: '6px' }}>{miles.toLocaleString()} 哩</div>
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            </>
+                        )}
+
+                        {mode === 'upgrade' && (
+                            <>
+                                <div style={{ marginBottom: '16px', padding: '12px', background: '#e3f2fd', borderRadius: '8px', fontSize: '13px', color: '#1565c0' }}>
+                                    💡 <strong>升艙須知：</strong>需購買「經典」或「尊寵」票價才能升艙，最低票價（基本）無法升艙！
+                                </div>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '12px' }}>
+                                    {UPGRADE_OPTIONS.map(option => {
+                                        const isSelected = selectedUpgrade === option.id;
+                                        const price = TICKET_PRICES[option.buyClass];
+                                        return (
+                                            <button key={option.id} onClick={() => setSelectedUpgrade(option.id)}
+                                                style={{ padding: '14px', borderRadius: '12px', cursor: 'pointer', textAlign: 'center',
+                                                    border: isSelected ? '3px solid #1a5f4a' : '2px solid #e0e0e0',
+                                                    background: isSelected ? '#e8f5e9' : (option.highlight ? '#fff8e1' : 'white'), position: 'relative' }}>
+                                                {option.highlight && <div style={{ position: 'absolute', top: '-8px', right: '-8px', background: '#ff9800', color: 'white', padding: '2px 6px', borderRadius: '8px', fontSize: '10px', fontWeight: '600' }}>推薦</div>}
+                                                <div style={{ fontSize: '24px', marginBottom: '6px' }}>{option.emoji}</div>
+                                                <div style={{ fontWeight: '600', color: '#333', fontSize: '12px', marginBottom: '2px' }}>{option.name}</div>
+                                                <div style={{ fontSize: '10px', color: '#666', marginBottom: '6px' }}>{option.desc}</div>
+                                                <div style={{ fontWeight: '700', color: '#e65100', fontSize: '12px' }}>票 ${price.toLocaleString()}</div>
+                                                <div style={{ fontWeight: '700', color: '#1a5f4a', fontSize: '12px' }}>+ {option.upgradeMiles.toLocaleString()} 哩</div>
+                                                <div style={{ marginTop: '4px', fontSize: '11px', color: '#666', background: '#f5f5f5', padding: '2px 4px', borderRadius: '4px' }}>→ {classNames[option.finalClass]}</div>
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            </>
+                        )}
+
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px', marginTop: '20px' }}>
+                            <div>
+                                <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#333' }}>乘客人數</label>
+                                <select value={passengers} onChange={(e) => setPassengers(Number(e.target.value))} style={{ ...inputStyle, cursor: 'pointer' }}>
+                                    {[1,2,3,4,5].map(n => <option key={n} value={n}>{n} 人</option>)}
+                                </select>
+                            </div>
+                            <div>
+                                <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#333' }}>帳戶已有哩程</label>
+                                <input type="number" value={existingMiles || ''} onChange={(e) => setExistingMiles(Number(e.target.value) || 0)} placeholder="0" style={inputStyle} />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* 卡片輸入 */}
+                    {cards.map((card) => (
+                        <div key={card.id} style={{ background: 'white', borderRadius: '16px', padding: '24px', marginBottom: '20px', boxShadow: '0 4px 20px rgba(0,0,0,0.15)' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                                <h2 style={{ color: '#1a5f4a', fontSize: '20px' }}>💳 {card.name}的卡</h2>
+                                <div style={{ background: '#e8f5e9', padding: '8px 16px', borderRadius: '20px', fontWeight: '600', color: '#1a5f4a' }}>{calculateCardMiles(card).toLocaleString()} 哩</div>
+                            </div>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '16px' }}>
+                                <div>
+                                    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#333', fontSize: '14px' }}>一般消費 (NT$22/哩)</label>
+                                    <input type="number" value={card.generalSpend || ''} onChange={(e) => updateCard(card.id, 'generalSpend', Number(e.target.value) || 0)} placeholder="0" style={inputStyle} />
+                                </div>
+                                <div>
+                                    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#333', fontSize: '14px' }}>長榮消費 (NT$10/哩)</label>
+                                    <input type="number" value={card.evaSpend || ''} onChange={(e) => updateCard(card.id, 'evaSpend', Number(e.target.value) || 0)} placeholder="0" style={inputStyle} />
+                                </div>
+                                <div>
+                                    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#333', fontSize: '14px' }}>持卡年數</label>
+                                    <select value={card.yearsHeld} onChange={(e) => updateCard(card.id, 'yearsHeld', Number(e.target.value))} style={{ ...inputStyle, cursor: 'pointer' }}>
+                                        {[1,2,3,4,5,6,7,8,9,10].map(n => <option key={n} value={n}>第 {n} 年</option>)}
+                                    </select>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                                        <input type="checkbox" checked={card.includeSignup} onChange={(e) => updateCard(card.id, 'includeSignup', e.target.checked)} style={{ width: '20px', height: '20px', marginRight: '8px' }} />
+                                        <span style={{ fontWeight: '600', color: '#333', fontSize: '14px' }}>含開卡禮</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div style={{ marginTop: '16px', padding: '12px', background: '#f5f5f5', borderRadius: '8px', fontSize: '14px', color: '#666', display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+                                {card.includeSignup && (card.generalSpend + card.evaSpend) >= CARD_INFO.signupSpendRequired && <span>✅ 開卡禮 6,000哩</span>}
+                                {card.includeSignup && (card.generalSpend + card.evaSpend) < CARD_INFO.signupSpendRequired && (card.generalSpend + card.evaSpend) > 0 && <span style={{ color: '#ff9800' }}>⏳ 開卡禮還差 NT${(CARD_INFO.signupSpendRequired - card.generalSpend - card.evaSpend).toLocaleString()}</span>}
+                                {card.yearsHeld >= 2 && <span>✅ 續卡禮 {((card.yearsHeld - 1) * CARD_INFO.renewalBonus).toLocaleString()}哩</span>}
+                                {card.generalSpend > 0 && <span>💰 一般消費 {Math.floor(card.generalSpend / CARD_INFO.generalRate).toLocaleString()}哩</span>}
+                                {card.evaSpend > 0 && <span>✈️ 長榮消費 {Math.floor(card.evaSpend / CARD_INFO.evaRate).toLocaleString()}哩</span>}
+                            </div>
+                        </div>
+                    ))}
+
+                    {/* 總計結果 */}
+                    <div style={{ background: 'linear-gradient(135deg, #1a5f4a, #2d8a6e)', borderRadius: '16px', padding: '24px', marginBottom: '20px', color: 'white', boxShadow: '0 4px 20px rgba(0,0,0,0.25)' }}>
+                        <h2 style={{ marginBottom: '20px', fontSize: '20px' }}>
+                            📊 {mode === 'redeem' ? `${currentOption.emoji} ${currentOption.name}` : `${currentUpgrade.emoji} ${currentUpgrade.name}`} - {passengers}人來回
+                        </h2>
+
+                        {mode === 'upgrade' && targetCost > 0 && (
+                            <div style={{ marginBottom: '20px', padding: '16px', background: 'rgba(255,255,255,0.15)', borderRadius: '12px' }}>
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+                                    <div style={{ textAlign: 'center' }}>
+                                        <div style={{ fontSize: '13px', opacity: 0.9 }}>機票費用</div>
+                                        <div style={{ fontSize: '28px', fontWeight: '700' }}>NT$ {targetCost.toLocaleString()}</div>
+                                        <div style={{ fontSize: '12px', opacity: 0.8 }}>{classNames[currentUpgrade.buyClass]}（經典）</div>
+                                    </div>
+                                    <div style={{ fontSize: '24px' }}>+</div>
+                                    <div style={{ textAlign: 'center' }}>
+                                        <div style={{ fontSize: '13px', opacity: 0.9 }}>升艙哩程</div>
+                                        <div style={{ fontSize: '28px', fontWeight: '700' }}>{targetMiles.toLocaleString()} 哩</div>
+                                        <div style={{ fontSize: '12px', opacity: 0.8 }}>升至{classNames[currentUpgrade.finalClass]}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {targetMiles > 0 && (
+                            <div style={{ marginBottom: '20px' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                                    <span>哩程進度</span>
+                                    <span>{progressPercent.toFixed(1)}%</span>
+                                </div>
+                                <div style={{ background: 'rgba(255,255,255,0.3)', borderRadius: '10px', height: '24px', overflow: 'hidden' }}>
+                                    <div style={{ background: progressPercent >= 100 ? '#4caf50' : '#ffc107', height: '100%', width: `${progressPercent}%`, borderRadius: '10px', transition: 'width 0.5s ease' }} />
+                                </div>
+                            </div>
+                        )}
+
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '12px' }}>
+                            <div style={{ background: 'rgba(255,255,255,0.15)', padding: '16px', borderRadius: '12px', textAlign: 'center' }}>
+                                <div style={{ fontSize: '12px', opacity: 0.9, marginBottom: '4px' }}>目前累積</div>
+                                <div style={{ fontSize: '24px', fontWeight: '700' }}>{totalMiles.toLocaleString()}</div>
+                                <div style={{ fontSize: '12px', opacity: 0.9 }}>哩</div>
+                            </div>
+                            <div style={{ background: 'rgba(255,255,255,0.15)', padding: '16px', borderRadius: '12px', textAlign: 'center' }}>
+                                <div style={{ fontSize: '12px', opacity: 0.9, marginBottom: '4px' }}>需要哩程</div>
+                                <div style={{ fontSize: '24px', fontWeight: '700' }}>{targetMiles.toLocaleString()}</div>
+                                <div style={{ fontSize: '12px', opacity: 0.9 }}>哩</div>
+                            </div>
+                            <div style={{ background: milesNeeded === 0 ? 'rgba(76,175,80,0.4)' : 'rgba(255,193,7,0.4)', padding: '16px', borderRadius: '12px', textAlign: 'center' }}>
+                                <div style={{ fontSize: '12px', opacity: 0.9, marginBottom: '4px' }}>還差</div>
+                                <div style={{ fontSize: '24px', fontWeight: '700' }}>{milesNeeded === 0 ? '🎉' : milesNeeded.toLocaleString()}</div>
+                                <div style={{ fontSize: '12px', opacity: 0.9 }}>{milesNeeded === 0 ? '達標！' : '哩'}</div>
+                            </div>
+                        </div>
+
+                        {milesNeeded > 0 && (
+                            <div style={{ marginTop: '20px', padding: '16px', background: 'rgba(255,255,255,0.1)', borderRadius: '12px', textAlign: 'center' }}>
+                                <p style={{ fontSize: '14px', marginBottom: '8px' }}>💡 以一般消費累積，還需消費約</p>
+                                <p style={{ fontSize: '28px', fontWeight: '700' }}>NT$ {spendNeeded.toLocaleString()}</p>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* 方案比較表 */}
+                    <div style={{ background: 'white', borderRadius: '16px', padding: '24px', marginBottom: '20px', boxShadow: '0 4px 20px rgba(0,0,0,0.15)' }}>
+                        <h2 style={{ color: '#1a5f4a', marginBottom: '16px', fontSize: '18px' }}>
+                            📋 {mode === 'redeem' ? '純兌換方案比較' : '買票+升艙方案比較'}（{passengers}人來回）
+                        </h2>
+                        <div style={{ overflowX: 'auto' }}>
+                            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
+                                <thead>
+                                    <tr style={{ background: '#f5f5f5' }}>
+                                        <th style={{ padding: '10px', textAlign: 'left', borderBottom: '2px solid #e0e0e0' }}>方案</th>
+                                        <th style={{ padding: '10px', textAlign: 'center', borderBottom: '2px solid #e0e0e0' }}>最終艙等</th>
+                                        {mode === 'upgrade' && <th style={{ padding: '10px', textAlign: 'center', borderBottom: '2px solid #e0e0e0' }}>機票費</th>}
+                                        <th style={{ padding: '10px', textAlign: 'center', borderBottom: '2px solid #e0e0e0' }}>所需哩程</th>
+                                        <th style={{ padding: '10px', textAlign: 'center', borderBottom: '2px solid #e0e0e0' }}>哩程差距</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {mode === 'redeem' ? (
+                                        FLIGHT_OPTIONS.map(option => {
+                                            const miles = calculateRedeemMiles(option) * passengers;
+                                            const needed = Math.max(0, miles - totalMiles);
+                                            const isSelected = selectedOption === option.id;
+                                            return (
+                                                <tr key={option.id} onClick={() => setSelectedOption(option.id)} style={{ background: isSelected ? '#e8f5e9' : 'transparent', cursor: 'pointer' }}>
+                                                    <td style={{ padding: '10px', borderBottom: '1px solid #e0e0e0', fontWeight: isSelected ? '600' : 'normal' }}>{option.emoji} {option.name}</td>
+                                                    <td style={{ padding: '10px', textAlign: 'center', borderBottom: '1px solid #e0e0e0' }}>{option.transPacific === option.northAmerica ? classNames[option.transPacific] : `混艙`}</td>
+                                                    <td style={{ padding: '10px', textAlign: 'center', borderBottom: '1px solid #e0e0e0', fontWeight: '600' }}>{miles.toLocaleString()}</td>
+                                                    <td style={{ padding: '10px', textAlign: 'center', borderBottom: '1px solid #e0e0e0', color: needed === 0 ? '#4caf50' : '#ff9800', fontWeight: '600' }}>{needed === 0 ? '✅ 達標' : needed.toLocaleString()}</td>
+                                                </tr>
+                                            );
+                                        })
+                                    ) : (
+                                        UPGRADE_OPTIONS.map(option => {
+                                            const miles = option.upgradeMiles * passengers;
+                                            const cost = TICKET_PRICES[option.buyClass] * passengers;
+                                            const needed = Math.max(0, miles - totalMiles);
+                                            const isSelected = selectedUpgrade === option.id;
+                                            return (
+                                                <tr key={option.id} onClick={() => setSelectedUpgrade(option.id)} style={{ background: isSelected ? '#e8f5e9' : 'transparent', cursor: 'pointer' }}>
+                                                    <td style={{ padding: '10px', borderBottom: '1px solid #e0e0e0', fontWeight: isSelected ? '600' : 'normal' }}>{option.emoji} {option.name}</td>
+                                                    <td style={{ padding: '10px', textAlign: 'center', borderBottom: '1px solid #e0e0e0' }}>{classNames[option.finalClass]}</td>
+                                                    <td style={{ padding: '10px', textAlign: 'center', borderBottom: '1px solid #e0e0e0', color: '#e65100' }}>${cost.toLocaleString()}</td>
+                                                    <td style={{ padding: '10px', textAlign: 'center', borderBottom: '1px solid #e0e0e0', fontWeight: '600' }}>{miles.toLocaleString()}</td>
+                                                    <td style={{ padding: '10px', textAlign: 'center', borderBottom: '1px solid #e0e0e0', color: needed === 0 ? '#4caf50' : '#ff9800', fontWeight: '600' }}>{needed === 0 ? '✅ 達標' : needed.toLocaleString()}</td>
+                                                </tr>
+                                            );
+                                        })
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    {/* 卡片權益 */}
+                    <div style={{ background: 'white', borderRadius: '16px', padding: '24px', boxShadow: '0 4px 20px rgba(0,0,0,0.15)' }}>
+                        <h2 style={{ color: '#1a5f4a', marginBottom: '16px', fontSize: '18px' }}>💳 國泰世華長榮聯名無限卡</h2>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '10px', marginBottom: '16px' }}>
+                            {[
+                                { label: '開卡禮', value: '6,000 哩', sub: '消費滿NT$10,000' },
+                                { label: '續卡禮', value: '2,000 哩/年', sub: '第二年起' },
+                                { label: '一般消費', value: 'NT$22/哩', sub: '國內外消費' },
+                                { label: '長榮消費', value: 'NT$10/哩', sub: '官網購票等' },
+                            ].map((item, i) => (
+                                <div key={i} style={{ padding: '12px', background: '#f5f5f5', borderRadius: '10px' }}>
+                                    <div style={{ fontWeight: '600', color: '#1a5f4a', marginBottom: '4px', fontSize: '12px' }}>{item.label}</div>
+                                    <div style={{ fontSize: '18px', fontWeight: '700', color: '#333' }}>{item.value}</div>
+                                    <div style={{ fontSize: '10px', color: '#666' }}>{item.sub}</div>
+                                </div>
+                            ))}
+                        </div>
+                        <div style={{ padding: '12px', background: '#fff3e0', borderRadius: '8px', fontSize: '12px', color: '#e65100', marginBottom: '10px' }}>
+                            ⚠️ <strong>升艙注意：</strong>需購買「經典」或「尊寵」票價才能用哩程升艙，最低票價（基本）無法升艙！
+                        </div>
+                        <div style={{ padding: '12px', background: '#e3f2fd', borderRadius: '8px', fontSize: '12px', color: '#1565c0' }}>
+                            💡 哩程數為估算值，實際兌換/升艙請以長榮航空官網為準。
+                        </div>
+                    </div>
+
+                    <div style={{ textAlign: 'center', marginTop: '20px', color: 'rgba(255,255,255,0.8)', fontSize: '13px' }}>
+                        <p>最後更新：2026年2月</p>
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
