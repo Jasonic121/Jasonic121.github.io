@@ -15,7 +15,6 @@ const About = () => {
   const images = [
     '/assets/images/Graduation.JPG',
     '/assets/images/apple-jason.JPG',
-    '/assets/images/logi-jason.png',
     '/assets/images/CMU-id.jpg',
     '/assets/images/AboutMe.JPG',
     '/assets/images/jason-conference.JPG'
@@ -129,7 +128,7 @@ const About = () => {
             viewport={{ once: true }}
           >
             <p className="text-lg text-gray-300 mb-8">
-              I'm Jason Li, a recent graduate with a Master's degree in Electrical and Computer Engineering from Carnegie Mellon University. I'm deeply passionate about building things—from scalable backend systems to AI-powered applications that tackle real-world challenges. Whether it's deploying full-stack apps or conducting research with large language models, I thrive on learning and innovating at the intersection of software and intelligence.            </p>
+              I'm Jason Li, a graduate with a Master's degree in Electrical and Computer Engineering from Carnegie Mellon University. I'm deeply passionate about building things that tackle real-world challenges. Whether it's deploying full-stack apps or conducting research with large language models, I thrive on learning and innovating at the intersection of software and intelligence.            </p>
             <p className="text-lg text-gray-300 mb-8">
               My toolkit includes <span className="text-accent">Python</span>, <span className="text-accent-2">Java</span>, and <span className="text-accent-3">Swift</span>, as well as frameworks such as <span className="text-accent">React.js</span>, <span className="text-accent-2">Node.js</span>, and <span className="text-accent-3">Pytorch</span>. Always eager to learn and tackle new challenges, I'm excited about opportunities to create impactful applications that push the boundaries of technology.
             </p>

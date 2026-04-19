@@ -7,11 +7,11 @@ coverImages:
   - "/images/blog/cmu-graduation/blog_walksky.jpg"
   - "/images/blog/cmu-graduation/blog_stickers.jpg"
   - "/images/blog/cmu-graduation/blog_flowers.jpg"
-excerpt: "A heartfelt reflection on my journey at Carnegie Mellon—the growth, challenges, and memories I'll carry forever."
+excerpt: "A heartfelt reflection on my journey at Carnegie Mellon"
 ---
 
 <div className="intro-section">
-  From January 2024 to May 2025, I pursued my M.S. in Electrical and Computer Engineering at Carnegie Mellon University—a challenging and unforgettable chapter. This photoblog is my memory lane, capturing the moments of growth that unfolded both in and beyond the classroom.
+  From January 2024 to May 2025, I pursued my M.S. in Electrical and Computer Engineering at Carnegie Mellon University. This photoblog is my memory lane, capturing the moments of growth that unfolded both in and beyond the classroom.
 </div>
 
 # The Beginning
