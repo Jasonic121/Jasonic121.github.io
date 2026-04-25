@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
+import { FaLinkedin } from 'react-icons/fa';
 import AnimatedCounter from '../ui/AnimatedCounter';
 
 // Create a separate client-only component for the typing effect
@@ -198,35 +198,6 @@ const Hero = () => {
                 </div>
               </a>
               
-              <a 
-                href="https://github.com/Jasonic121" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="group mt-2 inline-flex items-center justify-center h-12 w-12 hover:w-28 rounded-full border-2 border-red-400 text-gray-300 hover:border-blue-400 hover:bg-blue-400 hover:text-white transition-all duration-300 overflow-hidden"
-                aria-label="GitHub Profile"
-              >
-                <div className="flex items-center justify-center w-full transition-all duration-300">
-                  <div className="flex justify-center w-12 group-hover:w-0 transition-all duration-300 overflow-hidden">
-                    <FaGithub className="h-6 w-6" />
-                  </div>
-                  <span className="font-bold w-0 group-hover:w-full overflow-hidden transition-all duration-300 flex items-center justify-center">GitHub</span>
-                </div>
-              </a>
-              
-              {/* <a 
-                href="https://instagram.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="group mt-2 inline-flex items-center justify-center h-12 w-12 hover:w-28 rounded-full border-2 border-pink-600 text-gray-300 hover:border-pink-600 hover:bg-pink-600 hover:text-white transition-all duration-300 overflow-hidden"
-                aria-label="Instagram Profile"
-              >
-                <div className="flex items-center justify-center w-full transition-all duration-300">
-                  <div className="flex justify-center w-12 group-hover:w-0 transition-all duration-300 overflow-hidden">
-                    <FaInstagram className="h-6 w-6" />
-                  </div>
-                  <span className="font-bold w-0 group-hover:w-full overflow-hidden transition-all duration-300 flex items-center justify-center">Instagram</span>
-                </div>
-              </a> */}
             </div>
           </MotionWrapper>
         </div>

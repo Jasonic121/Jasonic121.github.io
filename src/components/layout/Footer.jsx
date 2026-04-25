@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -10,18 +9,6 @@ const Footer = () => {
           <Link href="/">
             <a className="text-xl font-mono font-bold mb-4 md:mb-0">JasonLi</a>
           </Link>
-          
-          {/* <div className="flex space-x-4 mb-4 md:mb-0">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-accent transition-colors">
-              <FaLinkedin />
-            </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-accent transition-colors">
-              <FaGithub />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-accent transition-colors">
-              <FaInstagram />
-            </a>
-          </div> */}
           
           <p className="text-gray-400">© {new Date().getFullYear()} All rights reserved.</p>
         </div>

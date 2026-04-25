@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaStar, FaCode, FaEye } from 'react-icons/fa';
+import { FaStar, FaEye } from 'react-icons/fa';
 
 const ProjectCard = ({ project, delay = 0 }) => {
   return (
@@ -25,22 +25,6 @@ const ProjectCard = ({ project, delay = 0 }) => {
         />
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-4">
-            {project.githubUrl && (
-              <a 
-                href={project.githubUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="group/button inline-flex items-center h-12 w-12 hover:w-36 rounded-full bg-white/90 text-gray-900 transition-all duration-500 ease-in-out hover:scale-110 hover:bg-white overflow-hidden"
-                aria-label="View Code"
-              >
-                <div className="flex items-center w-full">
-                  <div className="flex items-center justify-center w-12 flex-shrink-0">
-                    <FaCode className="text-xl" />
-                  </div>
-                  <span className="font-bold text-sm whitespace-nowrap opacity-0 group-hover/button:opacity-100 transition-opacity duration-500 pr-4">View Code</span>
-                </div>
-              </a>
-            )}
             {project.detailsUrl && (
               <a 
                 href={project.detailsUrl} 
